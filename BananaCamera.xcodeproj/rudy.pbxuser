@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* ShakeItPhoto */ = {
+		activeExec = 0;
+		executables = (
+			934320BB12852EEB002FFB39 /* ShakeItPhoto */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecturePreference = armv7;
+		activeBuildConfigurationName = Distribution;
+		activeExecutable = 934320BB12852EEB002FFB39 /* ShakeItPhoto */;
+		activeSDKPreference = iphoneos4.2;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* ShakeItPhoto */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* ShakeItPhoto */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 934320C212852EF5002FFB39 /* Code sense */;
+		executables = (
+			934320BB12852EEB002FFB39 /* ShakeItPhoto */,
+			934321BE12853107002FFB39 /* CrossProcess */,
+			93F31FB012EFEF55005979F5 /* LightLeaks */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					785,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					872,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					876,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					832,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 334436089;
+			PBXWorkspaceStateSaveDate = 334436089;
+		};
+		perUserProjectItems = {
+			936F0D0413F0F28100FEDB77 /* PlistBookmark */ = 936F0D0413F0F28100FEDB77 /* PlistBookmark */;
+		};
+		sourceControlManager = 934320C112852EF5002FFB39 /* Source Control */;
+		userBookmarkGroup = 934320B812852EEB002FFB39 /* PBXBookmarkGroup */;
+		userBuildSettings = {
+		};
+	};
+	8D1107310486CEB800E47090 /* BananaCamera-Info.plist */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = text.plist.xml;
+		name = "BananaCamera-Info.plist";
+		path = "/Users/rudy/git_personal/BananaCamera/BananaCamera-Info.plist";
+		plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist";
+		sourceTree = "<absolute>";
+	};
+	9321E54512891031001EC80F /* ShakeItPhotoImageProcessor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 520}}";
+			sepNavSelRange = "{1166, 23}";
+			sepNavVisRange = "{102, 1095}";
+		};
+	};
+	9321E54612891031001EC80F /* ShakeItPhotoImageProcessor.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 8892}}";
+			sepNavSelRange = "{12780, 0}";
+			sepNavVisRange = "{12269, 784}";
+		};
+	};
+	934320B812852EEB002FFB39 /* PBXBookmarkGroup */ = {
+		isa = PBXBookmarkGroup;
+		children = (
+			934320CB12852F6E002FFB39 /* PBXBookmark */,
+		);
+		name = Root;
+	};
+	934320BB12852EEB002FFB39 /* ShakeItPhoto */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = ShakeItPhoto;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	934320C112852EF5002FFB39 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	934320C212852EF5002FFB39 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	934320CB12852F6E002FFB39 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8D1107310486CEB800E47090 /* BananaCamera-Info.plist */;
+	};
+	934321A712853107002FFB39 /* CrossProcess */ = {
+		activeExec = 0;
+		executables = (
+			934321BE12853107002FFB39 /* CrossProcess */,
+		);
+	};
+	934321BE12853107002FFB39 /* CrossProcess */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = CrossProcess;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	934321D612853379002FFB39 /* BananaCamera_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 467}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 193}";
+		};
+	};
+	934321D712853379002FFB39 /* BananaCameraAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 741}}";
+			sepNavSelRange = "{1301, 8}";
+			sepNavVisRange = "{0, 1133}";
+		};
+	};
+	934321D812853379002FFB39 /* BananaCameraAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1344, 3744}}";
+			sepNavSelRange = "{3140, 317}";
+			sepNavVisRange = "{2767, 834}";
+		};
+	};
+	934321D912853379002FFB39 /* BananaCameraViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 1339}}";
+			sepNavSelRange = "{1931, 0}";
+			sepNavVisRange = "{524, 1679}";
+		};
+	};
+	934321DA12853379002FFB39 /* BananaCameraViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1510, 13910}}";
+			sepNavSelRange = "{19791, 107}";
+			sepNavVisRange = "{19451, 1265}";
+			sepNavWindowFrame = "{{15, 56}, {1395, 821}}";
+		};
+	};
+	934321DB12853379002FFB39 /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 607}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 308}";
+			sepNavWindowFrame = "{{15, 56}, {1395, 821}}";
+		};
+	};
+	934321E212853387002FFB39 /* ShakeItPhoto-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{62, 140}, {1061, 733}}";
+		};
+	};
+	934321F312853449002FFB39 /* ShakeItPhotoAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 689}}";
+			sepNavSelRange = "{140, 83}";
+			sepNavVisRange = "{0, 223}";
+		};
+	};
+	934321F412853449002FFB39 /* ShakeItPhotoAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 754}}";
+			sepNavSelRange = "{664, 0}";
+			sepNavVisRange = "{0, 1212}";
+		};
+	};
+	934321F512853449002FFB39 /* ShakeItPhotoViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 689}}";
+			sepNavSelRange = "{912, 78}";
+			sepNavVisRange = "{0, 1801}";
+		};
+	};
+	934321F612853449002FFB39 /* ShakeItPhotoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1344, 7904}}";
+			sepNavSelRange = "{10769, 0}";
+			sepNavVisRange = "{10089, 953}";
+		};
+	};
+	93432237128538A8002FFB39 /* ShakeItPhoto-AppIcon.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 56}, {1395, 821}}";
+		};
+	};
+	935E465C134199AD0009CD93 /* frame_1920x2300.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{61, 140}, {1061, 733}}";
+		};
+	};
+	936F0D0413F0F28100FEDB77 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 936F0D0513F0F28100FEDB77;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	936F0D0513F0F28100FEDB77 = {
+		isa = PBXFileReference;
+		sourceTree = "<group>";
+	};
+	937C25A912853A7B00D660AA /* BananaCameraImage.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 793}}";
+			sepNavSelRange = "{809, 0}";
+			sepNavVisRange = "{97, 1654}";
+		};
+	};
+	937C25AA12853A7B00D660AA /* BananaCameraImage.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1021, 6253}}";
+			sepNavSelRange = "{2156, 0}";
+			sepNavVisRange = "{1248, 1040}";
+		};
+	};
+	937C25AB12853A7B00D660AA /* BananaCameraImageCurve.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 1092}}";
+			sepNavSelRange = "{327, 0}";
+			sepNavVisRange = "{0, 768}";
+		};
+	};
+	937C25AC12853A7B00D660AA /* BananaCameraImageCurve.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 7397}}";
+			sepNavSelRange = "{348, 0}";
+			sepNavVisRange = "{3, 1183}";
+		};
+	};
+	937C25AD12853A7B00D660AA /* BananaCameraUtilities.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 1196}}";
+			sepNavSelRange = "{2892, 0}";
+			sepNavVisRange = "{1490, 1947}";
+		};
+	};
+	937C25AE12853A7B00D660AA /* BananaCameraUtilities.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 1690}}";
+			sepNavSelRange = "{136, 0}";
+			sepNavVisRange = "{0, 1304}";
+		};
+	};
+	937C25D612853C8500D660AA /* BananaCameraGrowlView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 490}}";
+			sepNavSelRange = "{19, 9}";
+			sepNavVisRange = "{0, 556}";
+		};
+	};
+	937C25D712853C8500D660AA /* BananaCameraGrowlView.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 1248}}";
+			sepNavSelRange = "{19, 9}";
+			sepNavVisRange = "{0, 1095}";
+		};
+	};
+	937C25D812853C8500D660AA /* CALayer_Additions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 490}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 236}";
+		};
+	};
+	937C25D912853C8500D660AA /* CALayer_Additions.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 490}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 667}";
+		};
+	};
+	937C25DA12853C8500D660AA /* NSNotificationCenter_Additions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 490}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 471}";
+		};
+	};
+	937C25DB12853C8500D660AA /* NSNotificationCenter_Additions.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 689}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 922}";
+		};
+	};
+	937C25E412853CF800D660AA /* BananaCameraSoundEffect.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 490}}";
+			sepNavSelRange = "{36, 63}";
+			sepNavVisRange = "{0, 331}";
+		};
+	};
+	937C25E512853CF800D660AA /* BananaCameraSoundEffect.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 546}}";
+			sepNavSelRange = "{19, 11}";
+			sepNavVisRange = "{0, 748}";
+		};
+	};
+	937C260A12853E5400D660AA /* SBJsonParser.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 5811}}";
+			sepNavSelRange = "{10103, 0}";
+			sepNavVisRange = "{9780, 1619}";
+		};
+	};
+	937C260D12853E5400D660AA /* FBConnect.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 490}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 706}";
+		};
+	};
+	937C260E12853E5400D660AA /* FBRequest.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1096, 1469}}";
+			sepNavSelRange = "{2531, 70}";
+			sepNavVisRange = "{2077, 1007}";
+		};
+	};
+	937C260F12853E5400D660AA /* FBRequest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1096, 4537}}";
+			sepNavSelRange = "{8906, 0}";
+			sepNavVisRange = "{9092, 971}";
+		};
+	};
+	937C261012853E5400D660AA /* Facebook.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1021, 7670}}";
+			sepNavSelRange = "{872, 0}";
+			sepNavVisRange = "{264, 1082}";
+		};
+	};
+	937C261112853E5400D660AA /* Facebook.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1219, 1456}}";
+			sepNavSelRange = "{3173, 11}";
+			sepNavVisRange = "{2818, 375}";
+		};
+	};
+	937C261512853E5400D660AA /* FBDialog.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 8632}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1491}";
+		};
+	};
+	937C2652128540D000D660AA /* BananaCameraConstants.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1344, 650}}";
+			sepNavSelRange = "{628, 13}";
+			sepNavVisRange = "{0, 988}";
+		};
+	};
+	937C2653128540D000D660AA /* BananaCameraConstants.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1344, 531}}";
+			sepNavSelRange = "{566, 13}";
+			sepNavVisRange = "{0, 1280}";
+		};
+	};
+	937C27601285B6B100D660AA /* ShakeItPhotoConstants.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 453}}";
+			sepNavSelRange = "{229, 0}";
+			sepNavVisRange = "{0, 556}";
+		};
+	};
+	937C27611285B6B100D660AA /* ShakeItPhotoConstants.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 453}}";
+			sepNavSelRange = "{330, 26}";
+			sepNavVisRange = "{0, 548}";
+		};
+	};
+	937C27C41285F9DB00D660AA /* preview@2x.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 56}, {1395, 821}}";
+		};
+	};
+	937C2969128726AD00D660AA /* NSObject+DDExtensions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 568}}";
+			sepNavSelRange = "{1164, 0}";
+			sepNavVisRange = "{0, 1354}";
+		};
+	};
+	93D7646E1290E13300BD26DC /* UIImage+Resize.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 473}}";
+			sepNavSelRange = "{529, 12}";
+			sepNavVisRange = "{0, 824}";
+		};
+	};
+	93D7646F1290E13300BD26DC /* UIImage+Resize.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1986, 2418}}";
+			sepNavSelRange = "{231, 26}";
+			sepNavVisRange = "{0, 1389}";
+		};
+	};
+	93E593A513160AC00085345E /* RoundedRectView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 453}}";
+			sepNavSelRange = "{257, 0}";
+			sepNavVisRange = "{0, 263}";
+		};
+	};
+	93E593A613160AC00085345E /* RoundedRectView.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 1079}}";
+			sepNavSelRange = "{1011, 0}";
+			sepNavVisRange = "{383, 1276}";
+		};
+	};
+	93F31F5A12EFEF55005979F5 /* LightLeaks */ = {
+		activeExec = 0;
+		executables = (
+			93F31FB012EFEF55005979F5 /* LightLeaks */,
+		);
+	};
+	93F31FB012EFEF55005979F5 /* LightLeaks */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = LightLeaks;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+}

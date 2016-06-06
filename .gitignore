@@ -1,0 +1,9 @@
+.DS_Store
+*.xcworkspace
+xcuserdata
+/build
+Pods/
+Podfile.lock
+*.ipa
+img
+Todo.md

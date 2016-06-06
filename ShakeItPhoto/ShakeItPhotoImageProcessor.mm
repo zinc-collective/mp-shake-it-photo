@@ -1,0 +1,671 @@
+//
+//  ShakeItPhotoImageProcessor.mm
+//
+//  Copyright Banana Camera Company 2010. All rights reserved.
+//
+
+#import "ShakeItPhotoImageProcessor.h"
+#import "ShakeItPhotoConstants.h"
+#import "BananaCameraUtilities.h"
+#import "BananaCameraConstants.h"
+#import "BananaCameraImage.h"
+#import "BananaCameraImageCurve.h"
+#import "NSObject+DDExtensions.h"
+#import "NSNotificationCenter_Additions.h"
+#import "UIImage+Resize.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
+// Returns an affine transform that takes into account the image orientation when drawing a scaled image
+
+static inline CGAffineTransform transformForOrientationAndSize(UIImageOrientation orientation, CGSize newSize) 
+{
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch(orientation) 
+	{
+        case UIImageOrientationDown:           // EXIF = 3
+        case UIImageOrientationDownMirrored:   // EXIF = 4
+            transform = CGAffineTransformTranslate(transform, newSize.width, newSize.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:           // EXIF = 6
+        case UIImageOrientationLeftMirrored:   // EXIF = 5
+            transform = CGAffineTransformTranslate(transform, newSize.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:          // EXIF = 8
+        case UIImageOrientationRightMirrored:  // EXIF = 7
+            transform = CGAffineTransformTranslate(transform, 0, newSize.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+    }
+    
+    switch(orientation)
+	{
+        case UIImageOrientationUpMirrored:     // EXIF = 2
+        case UIImageOrientationDownMirrored:   // EXIF = 4
+            transform = CGAffineTransformTranslate(transform, newSize.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:   // EXIF = 5
+        case UIImageOrientationRightMirrored:  // EXIF = 7
+            transform = CGAffineTransformTranslate(transform, newSize.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+    }
+    
+    return transform;
+}
+
+static inline void adjustForOrientation(CGContextRef context, UIImageOrientation orientation, float w, float h)
+{
+    if(orientation != UIImageOrientationUp && w > 0.0 && h > 0.0)
+    {
+        CGAffineTransform transform;
+        switch(orientation)
+        {
+            case UIImageOrientationDown:         
+            {
+                transform = CGAffineTransformMake(-1, 0, 0, -1, w, h); 
+                break;
+            }
+            case UIImageOrientationLeft:
+            {
+                transform = CGAffineTransformMake( 0,  h/w, -w/h,  0,  w, 0);
+                break;
+            }
+            case UIImageOrientationRight:        
+            {
+                transform = CGAffineTransformMake( 0, -h/w,  w/h,  0,  0, h); 
+                break;
+            }
+            case UIImageOrientationUpMirrored:
+            {
+                transform = CGAffineTransformMake(-1,    0,    0,  1,  w, 0); 
+                break;
+            }
+            case UIImageOrientationDownMirrored:
+            {
+                transform = CGAffineTransformMake( 1,    0,    0, -1,  0, h); 
+                break;
+            }
+            case UIImageOrientationLeftMirrored:  
+            {
+                transform = CGAffineTransformMake( 0, -h/w, -w/h,  0,  w, h); 
+                break;
+            }
+            case UIImageOrientationRightMirrored: 
+            {
+                transform = CGAffineTransformMake( 0,  h/w,  w/h,  0,  0, 0); 
+                break;
+            }
+            default:                              
+            {
+                transform = CGAffineTransformIdentity;                        
+                break;
+            }
+        }
+		
+        CGContextConcatCTM(context, transform);
+    }
+}
+
+@interface ShakeItPhotoImageProcessor(Private)
+- (void) _process;
+- (void) _processFinalImage;
+
+- (NSString*) _imagePath: (NSString*) baseName 
+		   pathExtension: (NSString*) extension 
+			   finalSize: (CGSize) finalSize
+			   useHeight: (BOOL) useHeight;
+
+- (void) _drawImageAtPath: (NSString*) inPath 
+				  context: (CGContextRef) inContext 
+				landscape: (BOOL) inLandscape
+				blendMode: (CGBlendMode) inBlendMode
+					alpha: (CGFloat) inAlpha
+		   finalImageSize: (CGSize) finalSize;
+
+- (CGSize) _previewImageSize;
+- (CGSize) _finalImageSize: (CGFloat*) outPolaroidOffset;
+
+- (BOOL) _isLandscape;
+
+- (void) _writeProcessedImageToPhotoLibrary: (BananaCameraImage*) image;
+- (void) _writeOriginalImageToPhotoLibrary: (UIImage*) image;
+
+
+@end
+
+@implementation ShakeItPhotoImageProcessor
+
+@synthesize rawImage = _rawImage;
+@synthesize delegate = _delegate;
+@synthesize writeOriginalToPhotoLibrary = _writeOriginalToPhotoLibrary;
+@synthesize usePolaroidAssets = _usePolaroidAssets;
+
++ (ShakeItPhotoImageProcessor*) imageProcessorForImage: (UIImage*) image 
+										  withDelegate: (NSObject<ShakeItPhotoImageProcessorDelegate>*) delegate
+						   writeOriginalToPhotoLibrary: (BOOL) writeOriginal
+{
+    ShakeItPhotoImageProcessor*  processor = [[ShakeItPhotoImageProcessor alloc] init];
+    if(processor)
+    {
+        processor.rawImage = image;
+        processor.delegate = delegate;
+		processor.writeOriginalToPhotoLibrary = writeOriginal;
+		processor.usePolaroidAssets = [delegate shouldUsePolaroidAssets];
+
+		if(ApplicationDelegate().backgroundTasksSupported)
+		{
+			UIApplication*						app = [UIApplication sharedApplication];
+			__block UIBackgroundTaskIdentifier	bgTask = UIBackgroundTaskInvalid;
+			
+			// Request permission to run in the background. Provide an
+			// expiration handler in case the task runs long.
+			
+			bgTask = [app beginBackgroundTaskWithExpirationHandler: ^{
+				// Synchronize the cleanup call on the main thread in case
+				// the task actually finishes at around the same time.
+				dispatch_async(dispatch_get_main_queue(), ^{
+					if(bgTask != UIBackgroundTaskInvalid)
+					{
+						[app endBackgroundTask:bgTask];
+						bgTask = UIBackgroundTaskInvalid;
+					}
+				});
+			}];
+			
+			// Start the long-running task and return immediately.
+			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+				
+				// Process the image.
+				[processor _process];
+				
+				// Synchronize the cleanup call on the main thread in case
+				// the expiration handler is fired at the same time.
+				
+				dispatch_async(dispatch_get_main_queue(), ^{
+					if(bgTask != UIBackgroundTaskInvalid)
+					{
+						[app endBackgroundTask:bgTask];
+						bgTask = UIBackgroundTaskInvalid;
+					}
+				});
+			});
+		}
+		else
+		{
+			[NSThread detachNewThreadSelector: @selector(_process) toTarget: processor withObject: nil];
+		}
+	}    
+    return [processor autorelease];
+}
+
+- (void) dealloc
+{
+	//NSLog(@"ShakeItPhotoImageProcessor dealloced");
+	ReleaseAndClear(_rawImage);
+	//ReleaseAndClear(_delegate);
+	ReleaseAndClear(_curves);    
+    [super dealloc];
+}
+
+- (void) _process
+{
+    NSAutoreleasePool*  pool = [NSAutoreleasePool new];
+    
+	NSString*			curvePath = [[NSBundle mainBundle] pathForResource: @"shakeitphoto" ofType: @"acv"];
+
+    _curves = [[BananaCameraImageCurve imageCurvesFromACV: curvePath] retain];
+
+    // border
+	// overlay (80% overlay)
+	// curves
+	// original
+	
+    [self _processFinalImage];
+	
+    [pool release];
+}
+
+- (NSString*) _imagePath: (NSString*) baseName 
+		   pathExtension: (NSString*) extension 
+			   finalSize: (CGSize) finalSize
+			   useHeight: (BOOL) useHeight
+{
+	// Always return assets as if they were UIImageOrientationUp
+	
+    NSString*	result = nil;
+	
+	if(finalSize.width == 1200.0)
+	{
+		if(useHeight && finalSize.height == 1438.0)
+		{
+			result = [baseName stringByAppendingFormat: @"%@", @"_1200x1438"];
+		}
+		else 
+		{
+			result = [baseName stringByAppendingFormat: @"%@", @"_1200x1172"];
+		}
+	}
+	else if(finalSize.width == 1520.0)
+	{
+		if(useHeight && finalSize.height == 1822.0)
+		{
+			result = [baseName stringByAppendingFormat: @"%@", @"_1520x1822"];
+		}
+		else 
+		{
+			result = [baseName stringByAppendingFormat: @"%@", @"_1520x1486"];
+		}
+	}
+	else if(finalSize.width == 1920.0)
+	{
+		if(useHeight && finalSize.height == 2300.0)
+		{
+			result = [baseName stringByAppendingFormat: @"%@", @"_1920x2300"];
+		}
+		else 
+		{
+			result = [baseName stringByAppendingFormat: @"%@", @"_1920x1876"];
+		}
+	}
+	else 
+	{
+		NSLog(@"_imagePath:pathExtension:finalSize: cannot determine proper dimensions");
+	}
+   
+    NSBundle*	mainBundle = [NSBundle mainBundle];
+	result = [mainBundle pathForResource: result ofType: extension];
+	
+	return result;
+}
+
+- (CGSize) _previewImageSize
+{
+	UIScreen*	mainscreen = [UIScreen mainScreen];
+	CGFloat		scale = 1.0;
+	
+	if([mainscreen respondsToSelector: @selector(displayLinkWithTarget:selector:)]) {
+		scale = mainscreen.scale;
+	}
+	
+	CGSize		previewSize;
+	
+	previewSize.width  = 320.0;
+	previewSize.height = 316.0;
+
+	// Front facing camera.
+	
+	if(self.rawImage.size.width == 480.0 && self.rawImage.size.height == 640.0)
+	{
+		// TODO - need to figure out how to scale this.
+	}
+
+	// account for scale
+	
+	previewSize.height *= scale;
+	previewSize.width  *= scale;
+	
+	// swap for landscape orientation
+	
+	if(self.rawImage.size.width > self.rawImage.size.height)
+	{
+		previewSize = CGSizeMake(previewSize.height, previewSize.width);
+	}
+	
+	NSLog(@"Preview Image Size = %@", NSStringFromCGSize(previewSize));
+	return previewSize;
+}
+
+- (CGSize) _finalImageSize: (CGFloat*) outPolaroidOffset
+{
+	CGSize	finalSize = self.rawImage.size;
+	CGFloat	testDim = MIN(finalSize.width, finalSize.height);
+		
+    if(testDim >= 1700.0) {
+		if(_usePolaroidAssets) {
+            finalSize = CGSizeMake(1920.0, 2300.0);
+		} else {
+			finalSize = CGSizeMake(1920.0, 1876.0);
+		}
+        
+        *outPolaroidOffset = 2300.0 - 1876.0;
+	} else if(testDim >= 1300.0) {
+		if(_usePolaroidAssets) {
+			finalSize = CGSizeMake(1520.0, 1822.0);
+		} else {
+			finalSize = CGSizeMake(1520.0, 1486.0);
+		}
+
+        *outPolaroidOffset = 1822.0 - 1486.0;
+	} else {
+		if(_usePolaroidAssets) {
+			finalSize = CGSizeMake(1200.0, 1438.0);
+		} else {
+			finalSize = CGSizeMake(1200.0, 1172.0);
+		}
+        
+        *outPolaroidOffset = 1438.0 - 1172.0;
+	}
+
+	return finalSize;	
+}
+
+- (BOOL) _isLandscape
+{
+	return self.rawImage.size.width > self.rawImage.size.height;
+}
+
++(CGRect) computeImageRect:(CGSize)finalSize usePolaroidAssets:(BOOL)_usePolaroidAssets
+{
+	CGRect		imageRect = CGRectZero;
+	
+	if(_usePolaroidAssets)
+	{
+		imageRect = CGRectMake(finalSize.width * kInteriorLeftPolaroid, 
+							   finalSize.height * kInteriorTopPolaroid,
+							   finalSize.width - ((finalSize.width * kInteriorLeftPolaroid) + (finalSize.width * kInteriorRightPolaroid)),
+							   finalSize.height - ((finalSize.height * kInteriorTopPolaroid) + (finalSize.height * kInteriorBottomPolaroid)));
+	}
+	else 
+	{
+		imageRect = CGRectMake(finalSize.width * kInteriorLeft, 
+							   finalSize.height * kInteriorTop, 
+							   finalSize.width - ((finalSize.width * kInteriorLeft) + (finalSize.width * kInteriorRight)),
+							   finalSize.height - ((finalSize.height * kInteriorTop) + (finalSize.height * kInteriorBottom)));
+	}
+
+	NSLog(@"_computeImageRect = %@", NSStringFromCGRect(imageRect));
+	return CGRectIntegral(imageRect);
+}
+
+#define SIP_ORIGINAL 1
+
+- (void) _processFinalImage
+{
+    START_TIMING(processFinalImage);
+ 
+    NSAutoreleasePool*  pool = [NSAutoreleasePool new];
+    	
+	BOOL				landscape = [self _isLandscape];
+    CGFloat             polaroidOffset = 0.0;
+	CGSize				finalSize = [self _finalImageSize: &polaroidOffset];
+	CGRect              imageRect = [ShakeItPhotoImageProcessor computeImageRect:finalSize
+                                                               usePolaroidAssets:_usePolaroidAssets];
+    
+	BananaCameraImage*	finalImage = [[BananaCameraImage alloc] initWithImage: self.rawImage 
+																		size: finalSize
+																   imageRect: imageRect];
+	
+	if(self.writeOriginalToPhotoLibrary == NO)
+	{
+		self.rawImage = nil;
+	}
+	
+	CGContextRef		context = [finalImage pushContext];
+	 
+#ifdef SIP_ORIGINAL
+	
+	START_TIMING(renderBlue);
+    
+    if(_usePolaroidAssets)
+    {
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, 0, polaroidOffset);
+    }
+    
+	[self _drawImageAtPath: [self _imagePath: @"blue" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
+				   context: context
+				 landscape: landscape
+				 blendMode: kCGBlendModeScreen
+					 alpha: _usePolaroidAssets ? 0.45 : 0.3
+			finalImageSize: finalSize];
+	END_TIMING(renderBlue);
+
+	START_TIMING(renderGreen);	
+	[self _drawImageAtPath: [self _imagePath: @"green" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
+				   context: context
+				 landscape: landscape
+				 blendMode: kCGBlendModeOverlay
+					 alpha: 1.0
+			finalImageSize: finalSize];
+	END_TIMING(renderGreen);
+
+    if(_usePolaroidAssets)
+    {
+        CGContextRestoreGState(context);
+    }
+	
+#else
+    // border
+	// overlay (80% overlay)
+	// curves
+	// original
+	
+    /*
+    START_TIMING(curves);
+	[finalImage applyCurves: _curves];
+    END_TIMING(curves);
+	
+	START_TIMING(overlay);	
+	[self _drawImageAtPath: [self _imagePath: @"overlay" pathExtension: @"png" finalSize: finalSize useHeight: NO]
+				   context: context
+				 landscape: landscape
+				 blendMode: kCGBlendModeOverlay
+					 alpha: 1.0
+			finalImageSize: finalSize];
+	END_TIMING(overlay);
+    
+    */
+#endif
+	
+	// Generate a preview image that doesn't include the frame.
+	
+	{
+        
+        CGImageRef imageRef = finalImage.CGImageRef;
+        UIImage*	finalPreviewImage = [[UIImage alloc] initWithCGImage:imageRef];
+        
+        UIImage* scaledImage = [finalPreviewImage resizedImage:CGSizeMake(640.0, 640.0) interpolationQuality:kCGInterpolationDefault];
+        
+		[[_delegate dd_invokeOnMainThread] imageProcessor: self didFinishProcessingPreviewImage: scaledImage];
+        
+        [finalPreviewImage release];
+        CGImageRelease(imageRef);
+        
+ 	}
+    
+	START_TIMING(renderFrame);
+	
+	[self _drawImageAtPath: [self _imagePath: @"frame" pathExtension: @"png" finalSize: finalSize useHeight: YES]
+				   context: context
+				 landscape: landscape
+				 blendMode: kCGBlendModeNormal
+					 alpha: 1.0
+			finalImageSize: finalSize];
+	
+	END_TIMING(renderFrame);
+    
+    [finalImage popContext];
+    	
+	// Done processing the final image - need to write the created image to the
+	// the photo library.
+	
+	[self _writeProcessedImageToPhotoLibrary: finalImage];
+	
+	if(_writeOriginalToPhotoLibrary && _rawImage)
+	{
+		[self _writeOriginalImageToPhotoLibrary: _rawImage];
+		ReleaseAndClear(_rawImage);
+	}
+	
+    END_TIMING(processFinalImage);
+		
+    [finalImage release];
+    [pool release];
+}
+
+- (void) _writeProcessedImageToPhotoLibrary: (BananaCameraImage*) image
+{
+	if(NSStringFromClass([ALAssetsLibrary class]) && image)
+	{
+		//uint64_t startTime = StartTiming();
+		
+		[image retain];
+		ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
+		CGImageRef			imageRef = image.CGImageRef;
+		
+		[library writeImageToSavedPhotosAlbum: imageRef 
+								  orientation: ALAssetOrientationUp
+							  completionBlock: ^(NSURL* assetURL, NSError* error)
+		 {
+			 //EndTiming(@"Time to write to photo album:", startTime);
+			 
+			 NSDictionary*	userInfo = nil;
+			 
+			 if(assetURL) {
+				 userInfo =  [NSDictionary dictionaryWithObject: assetURL forKey: @"url"];
+			 } else {
+				 userInfo = [NSDictionary dictionaryWithObject: error forKey: @"error"];
+			 }
+			 
+			 [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteProcessedImageToPhotoLibraryNotification 
+																			 object: self 
+																		   userInfo: userInfo];
+			 //[image dumpPixels];
+			 [image release];
+			 
+		 }];
+		
+		CGImageRelease(imageRef);
+		[library release];
+	}
+	else 
+	{
+		CGImageRef	imageRef = image.CGImageRef;
+		UIImage*	image = [UIImage imageWithCGImage: imageRef];
+		UIImageWriteToSavedPhotosAlbum(image, nil, NULL, NULL);
+		
+		NSData*		imageData = UIImageJPEGRepresentation(image, 1.0);
+		if(imageData)
+		{
+			NSString*	uniquePath = [ApplicationDelegate() createUniqueImagePath];
+			[imageData writeToFile: uniquePath atomically: NO];
+			
+			NSDictionary*	userInfo = nil;
+			userInfo = [NSDictionary dictionaryWithObject: [NSURL fileURLWithPath: uniquePath isDirectory: NO] forKey: @"url"];
+			[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteProcessedImageToPhotoLibraryNotification 
+																			object: self 
+																		  userInfo: userInfo];
+		}
+		
+		CGImageRelease(imageRef);
+	}
+}
+
+- (void) _writeOriginalImageToPhotoLibrary: (UIImage*) originalImage
+{
+	[originalImage retain];
+	
+	if(NSStringFromClass([ALAssetsLibrary class]) && originalImage)
+	{
+		ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
+		CGImageRef			imageRef = originalImage.CGImage;
+		
+		[library writeImageToSavedPhotosAlbum: imageRef 
+								  orientation: (ALAssetOrientation)originalImage.imageOrientation
+							  completionBlock: ^(NSURL* assetURL, NSError* error)
+		 {
+			 NSDictionary*	userInfo = nil;
+			 
+			 if(assetURL)
+			 {
+				 userInfo = [NSDictionary dictionaryWithObject: assetURL forKey: @"url"];
+			 }
+			 else 
+			 {
+				 userInfo = [NSDictionary dictionaryWithObject: error forKey: @"error"];
+			 }
+			 
+			 [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteOriginalImageToPhotoLibraryNotification 
+																			 object: self 
+																		   userInfo: userInfo];
+			 
+			 [originalImage release];
+		 }];
+		
+		[library release];
+	}
+	else 
+	{
+		[originalImage retain];
+		UIImageWriteToSavedPhotosAlbum(originalImage, nil, NULL, NULL);
+		
+		NSDictionary*	userInfo = nil;
+		userInfo = [NSDictionary dictionaryWithObject: @"original" forKey: @"url"];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteOriginalImageToPhotoLibraryNotification 
+																		object: self 
+																	  userInfo: userInfo];
+		
+		[originalImage release];
+	}
+}
+
+- (void) _drawImageAtPath: (NSString*) inPath 
+				  context: (CGContextRef) inContext 
+				landscape: (BOOL) inLandscape
+				blendMode: (CGBlendMode) inBlendMode
+					alpha: (CGFloat) inAlpha
+		   finalImageSize: (CGSize) finalSize
+{	
+	NSURL*		url = [NSURL fileURLWithPath: inPath];
+	NSString*	pathExtension = [inPath pathExtension];
+	
+	if(url)
+	{
+		// May want to use an in memory system here.
+		
+		CGDataProviderRef	dataProvider = CGDataProviderCreateWithURL((CFURLRef)url);
+		
+		if(dataProvider)
+		{
+			CGImageRef		imageRef = NULL;
+			
+			if([pathExtension compare: @"png" options: NSCaseInsensitiveSearch] == NSOrderedSame)
+			{
+				imageRef = CGImageCreateWithPNGDataProvider(dataProvider, NULL, false, kCGRenderingIntentDefault);
+			}
+			else if(([pathExtension compare: @"jpg" options: NSCaseInsensitiveSearch] == NSOrderedSame) ||
+					([pathExtension compare: @"jpeg" options: NSCaseInsensitiveSearch] == NSOrderedSame))
+			{
+				imageRef = CGImageCreateWithJPEGDataProvider(dataProvider, NULL, false, kCGRenderingIntentDefault);
+			}
+			
+			if(imageRef)
+			{
+				CGContextSaveGState(inContext);
+				
+				CGRect		imageRect = CGRectMake(0, 0, CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
+				
+				CGContextSetAlpha(inContext, inAlpha);
+				CGContextSetBlendMode(inContext, inBlendMode);
+				
+				CGContextDrawImage(inContext, imageRect, imageRef);
+				
+				CGImageRelease(imageRef);
+				CGContextRestoreGState(inContext);
+			}
+			
+			CGDataProviderRelease(dataProvider);
+		}
+	}
+}
+
+@end
+
