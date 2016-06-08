@@ -78,9 +78,6 @@ enum ToolbarItems
 - (IBAction) moreInfo: (id) sender;
 - (IBAction) handleDone: (id) sender;
 
-- (void) instagramPhoto: (id) sender;
-- (void) emailPhoto: (id) sender;
-
 - (void) showWelcomeView;
 - (void) disposeOfWelcomeView;
 - (IBAction) acknowledgeWelcome: (id) sender;
