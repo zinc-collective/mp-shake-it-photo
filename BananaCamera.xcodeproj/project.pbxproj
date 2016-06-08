@@ -10,6 +10,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		409944A8A90E37B1D734C3B4 /* Pods_ShakeItPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 584E24281D4028E00E323549 /* Pods_ShakeItPhoto.framework */; };
 		6AC4EB6519D8B00B00409E34 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6419D8B00B00409E34 /* FontAwesome.otf */; };
 		6AC4EB7219D8C22B00409E34 /* bg_iPhone6Plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */; };
 		6AC4EB7319D8C22B00409E34 /* bg_iPhone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6F19D8C22B00409E34 /* bg_iPhone4@2x.png */; };
@@ -37,15 +38,6 @@
 		6AEB15F31ABA503400B497BC /* SCSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DD1ABA503400B497BC /* SCSlider.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AEB15F51ABA503400B497BC /* SCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15E21ABA503400B497BC /* SCCommon.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB16081ABA51BB00B497BC /* DCCrossHairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15F81ABA51BB00B497BC /* DCCrossHairView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB16091ABA51BB00B497BC /* DCFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15FA1ABA51BB00B497BC /* DCFrameView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB160A1ABA51BB00B497BC /* DCIntrospect.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15FC1ABA51BB00B497BC /* DCIntrospect.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB160B1ABA51BB00B497BC /* DCStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15FF1ABA51BB00B497BC /* DCStatusBarOverlay.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB160C1ABA51BB00B497BC /* DCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB16011ABA51BB00B497BC /* DCTextView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB160D1ABA51BB00B497BC /* UIView+DCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB16031ABA51BB00B497BC /* UIView+DCAdditions.m */; };
-		6AEB160E1ABA51BB00B497BC /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB16051ABA51BB00B497BC /* SVProgressHUD.bundle */; };
-		6AEB160F1ABA51BB00B497BC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB16071ABA51BB00B497BC /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB16131ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB16121ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
 		9312B5F212A8C12000A3FBFB /* frame_1200x1172.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5E912A8C12000A3FBFB /* frame_1200x1172.png */; };
 		9312B5F312A8C12000A3FBFB /* frame_1520x1486.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5EA12A8C12000A3FBFB /* frame_1520x1486.png */; };
@@ -116,10 +108,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E358FF93FBD47D26D9B3AD9 /* Pods-ShakeItPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.debug.xcconfig"; sourceTree = "<group>"; };
+		1694F9B24DD03D94E7F7747F /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* ShakeItPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeItPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		539D7EB2DDDB4A3C251822AB /* Pods-ShakeItPhoto.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.distribution.xcconfig"; sourceTree = "<group>"; };
+		584E24281D4028E00E323549 /* Pods_ShakeItPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShakeItPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC4EB6419D8B00B00409E34 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_iPhone6Plus@2x.png"; sourceTree = "<group>"; };
 		6AC4EB6F19D8C22B00409E34 /* bg_iPhone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_iPhone4@2x.png"; sourceTree = "<group>"; };
@@ -157,24 +153,6 @@
 		6AEB15E11ABA503400B497BC /* SCCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCommon.h; sourceTree = "<group>"; };
 		6AEB15E21ABA503400B497BC /* SCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCommon.m; sourceTree = "<group>"; };
 		6AEB15E31ABA503400B497BC /* SCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDefines.h; sourceTree = "<group>"; };
-		6AEB15F71ABA51BB00B497BC /* DCCrossHairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCrossHairView.h; sourceTree = "<group>"; };
-		6AEB15F81ABA51BB00B497BC /* DCCrossHairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCrossHairView.m; sourceTree = "<group>"; };
-		6AEB15F91ABA51BB00B497BC /* DCFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFrameView.h; sourceTree = "<group>"; };
-		6AEB15FA1ABA51BB00B497BC /* DCFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFrameView.m; sourceTree = "<group>"; };
-		6AEB15FB1ABA51BB00B497BC /* DCIntrospect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIntrospect.h; sourceTree = "<group>"; };
-		6AEB15FC1ABA51BB00B497BC /* DCIntrospect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIntrospect.m; sourceTree = "<group>"; };
-		6AEB15FD1ABA51BB00B497BC /* DCIntrospectSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIntrospectSettings.h; sourceTree = "<group>"; };
-		6AEB15FE1ABA51BB00B497BC /* DCStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCStatusBarOverlay.h; sourceTree = "<group>"; };
-		6AEB15FF1ABA51BB00B497BC /* DCStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCStatusBarOverlay.m; sourceTree = "<group>"; };
-		6AEB16001ABA51BB00B497BC /* DCTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTextView.h; sourceTree = "<group>"; };
-		6AEB16011ABA51BB00B497BC /* DCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTextView.m; sourceTree = "<group>"; };
-		6AEB16021ABA51BB00B497BC /* UIView+DCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DCAdditions.h"; sourceTree = "<group>"; };
-		6AEB16031ABA51BB00B497BC /* UIView+DCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DCAdditions.m"; sourceTree = "<group>"; };
-		6AEB16051ABA51BB00B497BC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		6AEB16061ABA51BB00B497BC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		6AEB16071ABA51BB00B497BC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		6AEB16111ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
-		6AEB16121ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		930E05FE13E8AB4600F49FF5 /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
@@ -278,6 +256,7 @@
 		93F5FC0112EFED6D0090853B /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Shared/info.png; sourceTree = "<group>"; };
 		93F5FC0412EFED800090853B /* pickphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pickphoto.png; path = Shared/pickphoto.png; sourceTree = "<group>"; };
 		93F5FC0712EFEDF70090853B /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "Shared/info@2x.png"; sourceTree = "<group>"; };
+		A93532DF8070C06C7911DF69 /* Pods-ShakeItPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +273,7 @@
 				9343213212852FCC002FFB39 /* CoreMedia.framework in Frameworks */,
 				9343213312852FCC002FFB39 /* QuartzCore.framework in Frameworks */,
 				937C26B41285946000D660AA /* MessageUI.framework in Frameworks */,
+				409944A8A90E37B1D734C3B4 /* Pods_ShakeItPhoto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +298,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				8AA634DC5CB6C73E7B06D857 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -344,6 +325,7 @@
 				9343212B12852FCC002FFB39 /* CoreLocation.framework */,
 				9343212C12852FCC002FFB39 /* CoreMedia.framework */,
 				9343212D12852FCC002FFB39 /* QuartzCore.framework */,
+				584E24281D4028E00E323549 /* Pods_ShakeItPhoto.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,46 +404,15 @@
 			path = SCCommon;
 			sourceTree = "<group>";
 		};
-		6AEB15F61ABA51BB00B497BC /* DCIntrospect-ARC */ = {
+		8AA634DC5CB6C73E7B06D857 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6AEB15F71ABA51BB00B497BC /* DCCrossHairView.h */,
-				6AEB15F81ABA51BB00B497BC /* DCCrossHairView.m */,
-				6AEB15F91ABA51BB00B497BC /* DCFrameView.h */,
-				6AEB15FA1ABA51BB00B497BC /* DCFrameView.m */,
-				6AEB15FB1ABA51BB00B497BC /* DCIntrospect.h */,
-				6AEB15FC1ABA51BB00B497BC /* DCIntrospect.m */,
-				6AEB15FD1ABA51BB00B497BC /* DCIntrospectSettings.h */,
-				6AEB15FE1ABA51BB00B497BC /* DCStatusBarOverlay.h */,
-				6AEB15FF1ABA51BB00B497BC /* DCStatusBarOverlay.m */,
-				6AEB16001ABA51BB00B497BC /* DCTextView.h */,
-				6AEB16011ABA51BB00B497BC /* DCTextView.m */,
-				6AEB16021ABA51BB00B497BC /* UIView+DCAdditions.h */,
-				6AEB16031ABA51BB00B497BC /* UIView+DCAdditions.m */,
+				0E358FF93FBD47D26D9B3AD9 /* Pods-ShakeItPhoto.debug.xcconfig */,
+				A93532DF8070C06C7911DF69 /* Pods-ShakeItPhoto.release.xcconfig */,
+				539D7EB2DDDB4A3C251822AB /* Pods-ShakeItPhoto.distribution.xcconfig */,
+				1694F9B24DD03D94E7F7747F /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */,
 			);
-			name = "DCIntrospect-ARC";
-			path = "Vendor/DCIntrospect-ARC";
-			sourceTree = "<group>";
-		};
-		6AEB16041ABA51BB00B497BC /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				6AEB16051ABA51BB00B497BC /* SVProgressHUD.bundle */,
-				6AEB16061ABA51BB00B497BC /* SVProgressHUD.h */,
-				6AEB16071ABA51BB00B497BC /* SVProgressHUD.m */,
-			);
-			name = SVProgressHUD;
-			path = Vendor/SVProgressHUD;
-			sourceTree = "<group>";
-		};
-		6AEB16101ABA525500B497BC /* ALAssetsLibrary-CustomPhotoAlbum */ = {
-			isa = PBXGroup;
-			children = (
-				6AEB16111ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.h */,
-				6AEB16121ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.m */,
-			);
-			name = "ALAssetsLibrary-CustomPhotoAlbum";
-			path = "Vendor/ALAssetsLibrary-CustomPhotoAlbum";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		934320C512852F03002FFB39 /* ShakeItPhoto */ = {
@@ -530,9 +481,6 @@
 		934321F1128533BD002FFB39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				6AEB16101ABA525500B497BC /* ALAssetsLibrary-CustomPhotoAlbum */,
-				6AEB15F61ABA51BB00B497BC /* DCIntrospect-ARC */,
-				6AEB16041ABA51BB00B497BC /* SVProgressHUD */,
 				6AEB15C61ABA503400B497BC /* SCCaptureCamera */,
 				93D764661290E12300BD26DC /* Other */,
 				937C2965128726A100D660AA /* DDFoundation */,
@@ -649,9 +597,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ShakeItPhoto" */;
 			buildPhases = (
+				2FE6EB3B54CDB1DC773B0486 /* 📦 Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				0970C3128534A61703A59EA9 /* 📦 Embed Pods Frameworks */,
+				9D605C474ED3D7FB48FBB3CF /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -718,7 +669,6 @@
 				6AC4EB7519D8C22B00409E34 /* bg_iPhone6@2x.png in Resources */,
 				937C27C51285F9DB00D660AA /* preview.png in Resources */,
 				6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */,
-				6AEB160E1ABA51BB00B497BC /* SVProgressHUD.bundle in Resources */,
 				6AEB15ED1ABA503400B497BC /* touch_focus@2x.png in Resources */,
 				937C27C61285F9DB00D660AA /* preview@2x.png in Resources */,
 				6AEB15E71ABA503400B497BC /* photo_close_icon@2x.png in Resources */,
@@ -754,6 +704,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0970C3128534A61703A59EA9 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2FE6EB3B54CDB1DC773B0486 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D605C474ED3D7FB48FBB3CF /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -762,20 +760,16 @@
 				934321DC12853379002FFB39 /* BananaCameraAppDelegate.m in Sources */,
 				934321DD12853379002FFB39 /* BananaCameraViewController.m in Sources */,
 				6AEB15F31ABA503400B497BC /* SCSlider.m in Sources */,
-				6AEB160F1ABA51BB00B497BC /* SVProgressHUD.m in Sources */,
 				934321DE12853379002FFB39 /* main.m in Sources */,
 				934321F712853449002FFB39 /* ShakeItPhotoAppDelegate.m in Sources */,
 				934321F812853449002FFB39 /* ShakeItPhotoViewController.m in Sources */,
 				937C25AF12853A7B00D660AA /* BananaCameraImage.mm in Sources */,
-				6AEB16091ABA51BB00B497BC /* DCFrameView.m in Sources */,
 				937C25B012853A7B00D660AA /* BananaCameraImageCurve.mm in Sources */,
 				937C25B112853A7B00D660AA /* BananaCameraUtilities.mm in Sources */,
 				937C25DC12853C8500D660AA /* BananaCameraGrowlView.mm in Sources */,
 				937C25DD12853C8500D660AA /* CALayer_Additions.mm in Sources */,
 				937C25DE12853C8500D660AA /* NSNotificationCenter_Additions.mm in Sources */,
-				6AEB160B1ABA51BB00B497BC /* DCStatusBarOverlay.m in Sources */,
 				937C25E612853CF800D660AA /* BananaCameraSoundEffect.m in Sources */,
-				6AEB16081ABA51BB00B497BC /* DCCrossHairView.m in Sources */,
 				937C261712853E5400D660AA /* NSObject+SBJSON.m in Sources */,
 				6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */,
 				937C261812853E5400D660AA /* NSString+SBJSON.m in Sources */,
@@ -785,9 +779,7 @@
 				6AC4EB7E19D9036A00409E34 /* SettingsTableViewController.m in Sources */,
 				937C261B12853E5400D660AA /* SBJsonParser.m in Sources */,
 				937C261C12853E5400D660AA /* SBJsonWriter.m in Sources */,
-				6AEB160C1ABA51BB00B497BC /* DCTextView.m in Sources */,
 				6AEB15F11ABA503400B497BC /* SCCaptureSessionManager.m in Sources */,
-				6AEB160A1ABA51BB00B497BC /* DCIntrospect.m in Sources */,
 				6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */,
 				937C261D12853E5400D660AA /* FBRequest.m in Sources */,
 				6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */,
@@ -802,10 +794,8 @@
 				9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */,
 				6AEB15F51ABA503400B497BC /* SCCommon.m in Sources */,
 				93D764821290E36E00BD26DC /* UIImage+Alpha.m in Sources */,
-				6AEB160D1ABA51BB00B497BC /* UIView+DCAdditions.m in Sources */,
 				93D764831290E36E00BD26DC /* UIImage+RoundedCorner.m in Sources */,
 				93E593A713160AC00085345E /* RoundedRectView.mm in Sources */,
-				6AEB16131ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +804,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E358FF93FBD47D26D9B3AD9 /* Pods-ShakeItPhoto.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -828,7 +819,7 @@
 				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -837,6 +828,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A93532DF8070C06C7911DF69 /* Pods-ShakeItPhoto.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -849,7 +841,7 @@
 				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -859,6 +851,7 @@
 		};
 		93863811130843A900EC3F3F /* ShakeItPhoto_Distribution */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1694F9B24DD03D94E7F7747F /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -871,7 +864,7 @@
 				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -894,6 +887,7 @@
 		};
 		93AE66A9133AAECE0096D79C /* Distribution */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 539D7EB2DDDB4A3C251822AB /* Pods-ShakeItPhoto.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -906,7 +900,7 @@
 				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
