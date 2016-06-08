@@ -296,43 +296,32 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      UIImage *image = [UIImage imageWithCGImage:iref];
                      
                      
-                     NSMutableArray *array = [[NSMutableArray alloc] init];
-                     
+                     NSArray *activities = @[];
                      NSURL *instagramURL = [NSURL URLWithString:@"instagram://location?id=1"];
+                     InstagramActivity *instagram = [[[InstagramActivity alloc] init] autorelease];
+                     [instagram setActivity:^{
+                         
+                         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+                            [self shareImageToInstagram];
+                         } else {
+                             [self dismissViewControllerAnimated:YES completion:^{
+                                 [self shareImageToInstagram];
+                             }];
+                         }
+                     }];
+                     
                      if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-                         InstagramActivity *ac = [[InstagramActivity alloc] init];
-                         [ac setActivity:^{
-                             
-                             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-                                [self shareImageToInstagram];
-                             } else {
-                                 [self dismissViewControllerAnimated:YES completion:^{
-                                     [self shareImageToInstagram];
-                                 }];
-                             }
-                         }];
-                         [array addObject:ac];
-                         [ac release];
+                         activities = @[instagram];
                      }
                      
-                     UIActivityViewController *activityViewController =
-                     [[[UIActivityViewController alloc] initWithActivityItems:@[image,@"#ShakeItPhoto"]
-                                                        applicationActivities:array] autorelease];
+                     NSString *shareText = @"#ShakeItPhoto";
+                     NSURL *shareURL = [NSURL URLWithString:@"http://shakeitphoto.com"];
+                     NSArray *activityItems = @[image, shareText, shareURL];
                      
-                     [array release];
+                     UIActivityViewController *activityViewController = [[[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities] autorelease];
+                     [self presentViewController:activityViewController animated:YES completion:nil];
                      
-                     activityViewController.excludedActivityTypes = @[UIActivityTypeAirDrop,
-                                                                      UIActivityTypeAssignToContact,
-                                                                      UIActivityTypeCopyToPasteboard,
-                                                                      UIActivityTypePrint,
-                                                                      UIActivityTypeSaveToCameraRoll];
-                     
-                     [self presentViewController:activityViewController
-                                        animated:YES
-                                      completion:^{
-                                          // ...
-                                      }];
-                     
+                     // WTF is this? Why?
                      [image retain];
                  }
              }
