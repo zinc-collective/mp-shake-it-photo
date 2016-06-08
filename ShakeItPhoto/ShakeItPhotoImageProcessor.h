@@ -12,14 +12,14 @@
 @interface ShakeItPhotoImageProcessor : NSObject
 {
     UIImage*										_rawImage;
-    NSObject<ShakeItPhotoImageProcessorDelegate>*   _delegate;
+    NSObject<ShakeItPhotoImageProcessorDelegate>*   __weak _delegate;
     NSArray*										_curves;
 	BOOL											_writeOriginalToPhotoLibrary;
 	BOOL											_usePolaroidAssets;
 }
 
-@property (nonatomic, retain) UIImage*											rawImage;
-@property (nonatomic, assign) NSObject<ShakeItPhotoImageProcessorDelegate>*		delegate;
+@property (nonatomic, strong) UIImage*											rawImage;
+@property (nonatomic, weak) NSObject<ShakeItPhotoImageProcessorDelegate>*		delegate;
 @property (nonatomic, assign) BOOL												writeOriginalToPhotoLibrary;
 @property (nonatomic, assign) BOOL												usePolaroidAssets;
 

@@ -202,34 +202,26 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 			[NSThread detachNewThreadSelector: @selector(_process) toTarget: processor withObject: nil];
 		}
 	}    
-    return [processor autorelease];
+    return processor;
 }
 
-- (void) dealloc
-{
-	//NSLog(@"ShakeItPhotoImageProcessor dealloced");
-	ReleaseAndClear(_rawImage);
-	//ReleaseAndClear(_delegate);
-	ReleaseAndClear(_curves);    
-    [super dealloc];
-}
 
 - (void) _process
 {
-    NSAutoreleasePool*  pool = [NSAutoreleasePool new];
+    @autoreleasepool {
     
-	NSString*			curvePath = [[NSBundle mainBundle] pathForResource: @"shakeitphoto" ofType: @"acv"];
+		NSString*			curvePath = [[NSBundle mainBundle] pathForResource: @"shakeitphoto" ofType: @"acv"];
 
-    _curves = [[BananaCameraImageCurve imageCurvesFromACV: curvePath] retain];
+    _curves = [BananaCameraImageCurve imageCurvesFromACV: curvePath];
 
     // border
-	// overlay (80% overlay)
-	// curves
-	// original
-	
+		// overlay (80% overlay)
+		// curves
+		// original
+		
     [self _processFinalImage];
 	
-    [pool release];
+    }
 }
 
 - (NSString*) _imagePath: (NSString*) baseName 
@@ -390,28 +382,28 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 {
     START_TIMING(processFinalImage);
  
-    NSAutoreleasePool*  pool = [NSAutoreleasePool new];
+    @autoreleasepool {
     	
-	BOOL				landscape = [self _isLandscape];
+		BOOL				landscape = [self _isLandscape];
     CGFloat             polaroidOffset = 0.0;
-	CGSize				finalSize = [self _finalImageSize: &polaroidOffset];
-	CGRect              imageRect = [ShakeItPhotoImageProcessor computeImageRect:finalSize
+		CGSize				finalSize = [self _finalImageSize: &polaroidOffset];
+		CGRect              imageRect = [ShakeItPhotoImageProcessor computeImageRect:finalSize
                                                                usePolaroidAssets:_usePolaroidAssets];
     
-	BananaCameraImage*	finalImage = [[BananaCameraImage alloc] initWithImage: self.rawImage 
-																		size: finalSize
-																   imageRect: imageRect];
-	
-	if(self.writeOriginalToPhotoLibrary == NO)
-	{
-		self.rawImage = nil;
-	}
-	
-	CGContextRef		context = [finalImage pushContext];
-	 
+		BananaCameraImage*	finalImage = [[BananaCameraImage alloc] initWithImage: self.rawImage 
+																			size: finalSize
+																	   imageRect: imageRect];
+		
+		if(self.writeOriginalToPhotoLibrary == NO)
+		{
+			self.rawImage = nil;
+		}
+		
+		CGContextRef		context = [finalImage pushContext];
+		 
 #ifdef SIP_ORIGINAL
-	
-	START_TIMING(renderBlue);
+		
+		START_TIMING(renderBlue);
     
     if(_usePolaroidAssets)
     {
@@ -419,95 +411,93 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
         CGContextTranslateCTM(context, 0, polaroidOffset);
     }
     
-	[self _drawImageAtPath: [self _imagePath: @"blue" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
-				   context: context
-				 landscape: landscape
-				 blendMode: kCGBlendModeScreen
-					 alpha: _usePolaroidAssets ? 0.45 : 0.3
-			finalImageSize: finalSize];
-	END_TIMING(renderBlue);
+		[self _drawImageAtPath: [self _imagePath: @"blue" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
+					   context: context
+					 landscape: landscape
+					 blendMode: kCGBlendModeScreen
+						 alpha: _usePolaroidAssets ? 0.45 : 0.3
+				finalImageSize: finalSize];
+		END_TIMING(renderBlue);
 
-	START_TIMING(renderGreen);	
-	[self _drawImageAtPath: [self _imagePath: @"green" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
-				   context: context
-				 landscape: landscape
-				 blendMode: kCGBlendModeOverlay
-					 alpha: 1.0
-			finalImageSize: finalSize];
-	END_TIMING(renderGreen);
+		START_TIMING(renderGreen);	
+		[self _drawImageAtPath: [self _imagePath: @"green" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
+					   context: context
+					 landscape: landscape
+					 blendMode: kCGBlendModeOverlay
+						 alpha: 1.0
+				finalImageSize: finalSize];
+		END_TIMING(renderGreen);
 
     if(_usePolaroidAssets)
     {
         CGContextRestoreGState(context);
     }
-	
+		
 #else
     // border
-	// overlay (80% overlay)
-	// curves
-	// original
-	
+		// overlay (80% overlay)
+		// curves
+		// original
+		
     /*
     START_TIMING(curves);
-	[finalImage applyCurves: _curves];
+		[finalImage applyCurves: _curves];
     END_TIMING(curves);
-	
-	START_TIMING(overlay);	
-	[self _drawImageAtPath: [self _imagePath: @"overlay" pathExtension: @"png" finalSize: finalSize useHeight: NO]
-				   context: context
-				 landscape: landscape
-				 blendMode: kCGBlendModeOverlay
-					 alpha: 1.0
-			finalImageSize: finalSize];
-	END_TIMING(overlay);
+		
+		START_TIMING(overlay);	
+		[self _drawImageAtPath: [self _imagePath: @"overlay" pathExtension: @"png" finalSize: finalSize useHeight: NO]
+					   context: context
+					 landscape: landscape
+					 blendMode: kCGBlendModeOverlay
+						 alpha: 1.0
+				finalImageSize: finalSize];
+		END_TIMING(overlay);
     
     */
 #endif
-	
-	// Generate a preview image that doesn't include the frame.
-	
-	{
+		
+		// Generate a preview image that doesn't include the frame.
+		
+		{
         
         CGImageRef imageRef = finalImage.CGImageRef;
         UIImage*	finalPreviewImage = [[UIImage alloc] initWithCGImage:imageRef];
         
         UIImage* scaledImage = [finalPreviewImage resizedImage:CGSizeMake(640.0, 640.0) interpolationQuality:kCGInterpolationDefault];
         
-		[[_delegate dd_invokeOnMainThread] imageProcessor: self didFinishProcessingPreviewImage: scaledImage];
+			[[_delegate dd_invokeOnMainThread] imageProcessor: self didFinishProcessingPreviewImage: scaledImage];
         
-        [finalPreviewImage release];
         CGImageRelease(imageRef);
         
  	}
     
-	START_TIMING(renderFrame);
-	
-	[self _drawImageAtPath: [self _imagePath: @"frame" pathExtension: @"png" finalSize: finalSize useHeight: YES]
-				   context: context
-				 landscape: landscape
-				 blendMode: kCGBlendModeNormal
-					 alpha: 1.0
-			finalImageSize: finalSize];
-	
-	END_TIMING(renderFrame);
+		START_TIMING(renderFrame);
+		
+		[self _drawImageAtPath: [self _imagePath: @"frame" pathExtension: @"png" finalSize: finalSize useHeight: YES]
+					   context: context
+					 landscape: landscape
+					 blendMode: kCGBlendModeNormal
+						 alpha: 1.0
+				finalImageSize: finalSize];
+		
+		END_TIMING(renderFrame);
     
     [finalImage popContext];
     	
-	// Done processing the final image - need to write the created image to the
-	// the photo library.
-	
-	[self _writeProcessedImageToPhotoLibrary: finalImage];
-	
-	if(_writeOriginalToPhotoLibrary && _rawImage)
-	{
-		[self _writeOriginalImageToPhotoLibrary: _rawImage];
-		ReleaseAndClear(_rawImage);
-	}
-	
-    END_TIMING(processFinalImage);
+		// Done processing the final image - need to write the created image to the
+		// the photo library.
 		
-    [finalImage release];
-    [pool release];
+		[self _writeProcessedImageToPhotoLibrary: finalImage];
+		
+		if(_writeOriginalToPhotoLibrary && _rawImage)
+		{
+			[self _writeOriginalImageToPhotoLibrary: _rawImage];
+        _rawImage = nil;
+		}
+		
+    END_TIMING(processFinalImage);
+			
+    }
 }
 
 - (void) _writeProcessedImageToPhotoLibrary: (BananaCameraImage*) image
@@ -516,7 +506,6 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 	{
 		//uint64_t startTime = StartTiming();
 		
-		[image retain];
 		ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
 		CGImageRef			imageRef = image.CGImageRef;
 		
@@ -538,12 +527,10 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 																			 object: self 
 																		   userInfo: userInfo];
 			 //[image dumpPixels];
-			 [image release];
 			 
 		 }];
 		
 		CGImageRelease(imageRef);
-		[library release];
 	}
 	else 
 	{
@@ -570,7 +557,6 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 
 - (void) _writeOriginalImageToPhotoLibrary: (UIImage*) originalImage
 {
-	[originalImage retain];
 	
 	if(NSStringFromClass([ALAssetsLibrary class]) && originalImage)
 	{
@@ -596,14 +582,11 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 																			 object: self 
 																		   userInfo: userInfo];
 			 
-			 [originalImage release];
 		 }];
 		
-		[library release];
 	}
 	else 
 	{
-		[originalImage retain];
 		UIImageWriteToSavedPhotosAlbum(originalImage, nil, NULL, NULL);
 		
 		NSDictionary*	userInfo = nil;
@@ -613,7 +596,6 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 																		object: self 
 																	  userInfo: userInfo];
 		
-		[originalImage release];
 	}
 }
 

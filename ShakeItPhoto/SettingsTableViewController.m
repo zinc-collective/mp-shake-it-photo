@@ -66,7 +66,7 @@
         case 1:
         case 2:
         case 3:
-            cell.accessoryView = [[[UISwitch alloc] init] autorelease];
+            cell.accessoryView = [[UISwitch alloc] init];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
         default:

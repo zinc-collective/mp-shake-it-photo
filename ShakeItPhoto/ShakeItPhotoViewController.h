@@ -31,8 +31,8 @@
     BOOL							_imageProcessed;
 }
 
-@property(nonatomic, retain) ShakeItPhotoImageProcessor*	  imageProcessor;
-@property(nonatomic, retain) IBOutlet UIView*			  shakeView;
+@property(nonatomic, strong) ShakeItPhotoImageProcessor*	  imageProcessor;
+@property(nonatomic, strong) IBOutlet UIView*			  shakeView;
 
 - (void) startTrackingAcceleration;
 - (void) stopTrackingAcceleration;

@@ -59,7 +59,7 @@
 	// Turn off locations
 	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES)
 	{
-		self.locationManager = [[[CLLocationManager alloc] init] autorelease];
+		self.locationManager = [[CLLocationManager alloc] init];
 		[self.locationManager startUpdatingLocation];
 	}
 	
@@ -106,13 +106,6 @@
 {
 }
 
-- (void) dealloc
-{
-	ReleaseAndClear(_viewController);
-	ReleaseAndClear(_window);
-	ReleaseAndClear(_locationManager);
-    [super dealloc];
-}
 
 - (NSString*) platform
 {
@@ -135,7 +128,7 @@
 	
 	CFRelease(guid);
 	
-	return [(NSString*)guidString autorelease];
+	return (__bridge NSString*)guidString;
 }
 
 - (NSString*) createUniqueImagePath
@@ -154,7 +147,7 @@
 {
 	// Make sure we hold onto the image until everything is done.
 	
-	UIImage*		originalImage = [image retain];
+	UIImage*		originalImage = image;
 	NSString*		imagePath     = [self createUniqueImagePath];
 	
 	if(self.backgroundTasksSupported)
@@ -187,7 +180,6 @@
 				NSLog(@"Unable to get JPEG representation from original image. Could be low memory issue");
 			}
 			
-			[originalImage release];
 		});		
 	}
 	else
@@ -200,7 +192,6 @@
 			[self _addImagePath: imagePath imageFlags: flags];
 		}
 		
-		[originalImage release];
 	}
 }
 
@@ -225,12 +216,12 @@
 	{
 		@synchronized(_imagesToProcess)
 		{
-			result = [[_imagesToProcess objectAtIndex: 0] retain];
+			result = [_imagesToProcess objectAtIndex: 0];
 			[_imagesToProcess removeObjectAtIndex: 0];
 			
 			@synchronized(_imagesToProcessFlags)
 			{
-				NSNumber*	flags = [[_imagesToProcessFlags objectAtIndex: 0] retain];
+				NSNumber*	flags = [_imagesToProcessFlags objectAtIndex: 0];
 				[_imagesToProcessFlags removeObjectAtIndex: 0];
 				
 				if(outFlags)
@@ -238,12 +229,11 @@
 					*outFlags = [flags boolValue];
 				}
                 
-                [flags release];
 			}
 		}
 	}
 	
-    return [result autorelease];
+    return result;
 }
 
 - (NSUInteger) imagesToProcess

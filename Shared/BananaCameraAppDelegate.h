@@ -25,11 +25,11 @@
     UIImagePickerControllerCameraFlashMode  _flashMode;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow*	window;
-@property (nonatomic, retain) IBOutlet BananaCameraViewController*	viewController;
+@property (nonatomic, strong) IBOutlet UIWindow*	window;
+@property (nonatomic, strong) IBOutlet BananaCameraViewController*	viewController;
 @property (nonatomic, readonly) BOOL backgroundTasksSupported;
 @property (nonatomic, readonly) BOOL inBackground;
-@property (nonatomic, retain) IBOutlet CLLocationManager* locationManager;
+@property (nonatomic, strong) IBOutlet CLLocationManager* locationManager;
 
 @property(nonatomic, assign) UIImagePickerControllerCameraFlashMode flashMode;
 

@@ -183,11 +183,6 @@
 	[blueCurve preprocessCurve];
 	[alphaCurve preprocessCurve];
 	
-    [rgbCurve release];
-    [redCurve release];
-    [greenCurve release];
-    [blueCurve release];
-    [alphaCurve release];
 
     return curves;
 }
@@ -220,7 +215,6 @@
 		_samples = NULL;
 	}
 
-	[super dealloc];
 }
 
 - (void) setNumPoints: (int) numPoints

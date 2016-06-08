@@ -47,7 +47,7 @@
     BananaCameraImage*     image = [[BananaCameraImage alloc] initWithSize: size 
 																 colorSpace: [BananaCameraImage deviceRGBColorSpace]
 																orientation: orientation];
-    return [image autorelease];
+    return image;
 }
 
 - (id) initWithImage: (UIImage*) image size: (CGSize) size imageRect: (CGRect) imageRect
@@ -176,8 +176,6 @@
 	
 	[self dumpPixels];
 	
-	ReleaseAndClear(_imagePath);
-    [super dealloc];
 }
 
 - (CGContextRef) pushContext

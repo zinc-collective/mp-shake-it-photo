@@ -41,7 +41,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 @synthesize toolbar = _toolbar;
 @synthesize welcomeView = _welcomeView;
 @synthesize croprect = _croprect;
-@synthesize picker = _picker;
 
 - (void) dealloc 
 {
@@ -49,10 +48,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 
 	[_welcomeView removeFromSuperview];
-	ReleaseAndClear(_welcomeView);
-	ReleaseAndClear(_soundEffect);		// maybe move this to subclasses?
 	
-    [super dealloc];
 }
 
 - (void) viewDidLoad
@@ -248,10 +244,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 #pragma mark - Buttons
 
--(void)onTakePictureTap:(id)sender {
-    [self.picker takePicture];
-}
-
 - (IBAction) choosePhoto: (id) sender
 {
 	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
@@ -271,7 +263,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 - (IBAction) performAction: (id) sender
 {
 
-    ALAssetsLibrary*	library = [[[ALAssetsLibrary alloc] init] autorelease];
+    ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
     
     [library assetForURL: _latestProcessedImageURL
              resultBlock:^(ALAsset *asset) {
@@ -284,7 +276,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      
                      NSArray *activities = @[];
                      NSURL *instagramURL = [NSURL URLWithString:@"instagram://location?id=1"];
-                     InstagramActivity *instagram = [[[InstagramActivity alloc] init] autorelease];
+                     InstagramActivity *instagram = [[InstagramActivity alloc] init];
                      [instagram setActivity:^{
                          
                          if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
@@ -304,11 +296,10 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      NSURL *shareURL = [NSURL URLWithString:@"http://shakeitphoto.com"];
                      NSArray *activityItems = @[image, shareText, shareURL];
                      
-                     UIActivityViewController *activityViewController = [[[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities] autorelease];
+                     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities];
                      [self presentViewController:activityViewController animated:YES completion:nil];
                      
                      // WTF is this? Why?
-                     [image retain];
                  }
              }
             failureBlock:^(NSError *error) {
@@ -322,7 +313,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
     {
         
-        ALAssetsLibrary*	library = [[[ALAssetsLibrary alloc] init] autorelease];
+        ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
         [library assetForURL: _latestProcessedImageURL
                  resultBlock:^(ALAsset *asset) {
                      
@@ -489,8 +480,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
         
     }];
     
-    [settings release];
-    [nav release];
 }
 
 #pragma mark - SCNavigationControllerDelegate
@@ -522,16 +511,12 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     {
         ApplicationDelegate().flashMode = picker.cameraFlashMode;
     }
-    
-    _picker.delegate = nil;
-    ReleaseAndClear(_picker);
 }
 
 - (void) imagePickerControllerDidCancel: (UIImagePickerController*) picker
 {
 	[self setBackgroundImage];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [picker release];
 }
 
 #pragma mark
@@ -649,7 +634,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 -(UIBarButtonItem*)barButtonItemWithIcon:(unichar)icon action:(SEL)action {
     
     
-    UIButton *label = [[UIButton buttonWithType:UIButtonTypeCustom] autorelease];
+    UIButton *label = [UIButton buttonWithType:UIButtonTypeCustom];
     [label setFrame:CGRectMake(0.0, 0.0, 30.0, 30.0)];
     [label setTitle:[NSString stringWithFormat:@"%C",icon] forState:UIControlStateNormal];
     [label setTitleColor:_toolbar.tintColor forState:UIControlStateNormal];
@@ -688,7 +673,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void) setToolbarItems
 {
-    UIBarButtonItem*    flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil] autorelease];
+    UIBarButtonItem*    flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil];
     
 
     UIBarButtonItem* actionButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemAction action:@selector(performAction:)];
@@ -783,13 +768,12 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     if(_welcomeView)
     {
         [_welcomeView removeFromSuperview];
-		ReleaseAndClear(_welcomeView);
+        _welcomeView = nil;
     }
 }
 
 - (IBAction) acknowledgeWelcome: (id) sender
 {
-    
     [UIView animateWithDuration:0.33 animations:^{
         
         self.welcomeView.alpha = 0.0;
@@ -808,8 +792,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void) playSoundEffect: (NSString*) soundFile
 {
-	ReleaseAndClear(_soundEffect);
-    
     NSString*   soundEffectPath = [[NSBundle mainBundle] pathForResource: [soundFile stringByDeletingPathExtension] ofType: [soundFile pathExtension]];
     _soundEffect = [[BananaCameraSoundEffect alloc] initWithContentsOfFile: soundEffectPath];
     [_soundEffect play];
@@ -933,8 +915,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void) imageProcessorWroteProcessedImageToLibrary: (NSNotification*) notification
 {
-	ReleaseAndClear(_latestProcessedImageURL);
-	
 	NSDictionary*	userInfo = [notification userInfo];
 	NSURL*			imagePath = nil;
 	NSError*		error = nil;
@@ -946,7 +926,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	{
 		//NSLog(@"Did write processed image to photo library - %@", [imagePath absoluteString]);
 		
-		_latestProcessedImageURL = [imagePath retain];
+		_latestProcessedImageURL = imagePath;
 		[self _actionBarButtonItem].enabled = YES;
 	}
 	else if(error)

@@ -31,7 +31,7 @@ enum
 }
 
 @property(nonatomic) int numPoints;
-@property(nonatomic, retain) UIColor* curveColor;
+@property(nonatomic, strong) UIColor* curveColor;
 @property(nonatomic, readonly) BOOL identity;
 @property(nonatomic, readonly) BOOL preprocessed;
 

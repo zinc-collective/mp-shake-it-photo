@@ -14,10 +14,9 @@
     if( self )
     {
         NSURL*  audioURL = [NSURL fileURLWithPath: audioFile];
-        OSStatus err = AudioServicesCreateSystemSoundID( (CFURLRef)audioURL, &soundID );
+        OSStatus err = AudioServicesCreateSystemSoundID( (__bridge CFURLRef)audioURL, &soundID );
         if( err != noErr )
         {
-            [self release];
             self = nil;
         }
     }
@@ -30,7 +29,6 @@
     if( soundID )
         AudioServicesDisposeSystemSoundID( soundID );
     
-    [super dealloc];
 }
 
 - (void) play

@@ -82,14 +82,8 @@ static const NSTimeInterval	kDismissAnimationDuration = 1.5;
 	else if([animationID isEqualToString: @"notification_end"])
 	{
 		[self removeFromSuperview];
-		[self release];
 	}
 }
 
-- (void) dealloc
-{
-	ReleaseAndClear(_textLabel);
-	[super dealloc];
-}
 
 @end

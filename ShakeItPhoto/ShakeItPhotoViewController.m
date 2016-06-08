@@ -53,7 +53,6 @@
 
 - (void) stopTrackingAcceleration {
     [_motionManager stopAccelerometerUpdates];
-    ReleaseAndClear(_motionManager);
 }
 
 // Constant for the high-pass filter.
@@ -229,8 +228,6 @@
 - (void) processImage: (UIImage*) originalImage shouldWriteOriginal: (BOOL) writeOriginal
 {
 
-	ReleaseAndClear(_imageProcessor);
-    
 	[self clearBackgroundImage];
 
 	_imageProcessed = NO;
@@ -408,43 +405,43 @@
 {
     [self _discardPreviewLayers];
 
-    NSAutoreleasePool*	pool = [NSAutoreleasePool new];
+    @autoreleasepool {
 
-	CGSize				previewSize = [self _previewImageSize];
-	UIImage*			framePreviewImage = nil;
+		CGSize				previewSize = [self _previewImageSize];
+		UIImage*			framePreviewImage = nil;
 
-	if([self _usePolaroidBorder]) {
-		framePreviewImage = [UIImage imageNamed: @"preview_polaroid.png"];
-	} else {
-		framePreviewImage = [UIImage imageNamed: @"preview.png"];
-	}
-	
-	_frameView = [[UIView alloc] initWithFrame: CGRectMake( CGRectGetMidX(self.view.frame) - previewSize.width/2, 0.0f, previewSize.width, previewSize.height )];
-	_frameView.layer.contents = (id)framePreviewImage.CGImage;
-	[self.shakeView insertSubview: _frameView belowSubview: self.toolbar];
-	
-	//previewSize = [self _previewImageSize];
+		if([self _usePolaroidBorder]) {
+			framePreviewImage = [UIImage imageNamed: @"preview_polaroid.png"];
+		} else {
+			framePreviewImage = [UIImage imageNamed: @"preview.png"];
+		}
+		
+		_frameView = [[UIView alloc] initWithFrame: CGRectMake( CGRectGetMidX(self.view.frame) - previewSize.width/2, 0.0f, previewSize.width, previewSize.height )];
+		_frameView.layer.contents = (id)framePreviewImage.CGImage;
+		[self.shakeView insertSubview: _frameView belowSubview: self.toolbar];
+		
+		//previewSize = [self _previewImageSize];
     UIImage*    undevelopedPreviewImage = [UIImage imageNamed: @"film.png"];
     _undevelopedView = [[UIView alloc] initWithFrame: _frameView.frame];
     _undevelopedView.layer.contents = (id)undevelopedPreviewImage.CGImage;
     [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
 	
-    [pool release];
+    }
 }
 
 - (void) _discardPreviewLayers
 {
     _frameView.layer.contents = nil;
     [_frameView removeFromSuperview];
-	ReleaseAndClear(_frameView);
+    _frameView = nil;
     
     _undevelopedView.layer.contents = nil;
     [_undevelopedView removeFromSuperview];
-	ReleaseAndClear(_undevelopedView);
+    _undevelopedView = nil;
 	
     _developedView.layer.contents = nil;
     [_developedView removeFromSuperview];
-    ReleaseAndClear(_developedView);
+    _developedView = nil;
 }
 
 -(void)processingAnimationComplete {
@@ -509,7 +506,7 @@
         } completion:^(BOOL finished) {
             
             [_undevelopedView removeFromSuperview];
-            ReleaseAndClear(_undevelopedView);
+            _undevelopedView = nil;
             [self stopTrackingAcceleration];
         }];
 	}
@@ -517,7 +514,7 @@
 
 - (void) imageProcessor: (ShakeItPhotoImageProcessor*) ip didFinishProcessingPreviewImage: (UIImage*) previewImage
 {
-	ReleaseAndClear(_imageProcessor);
+    _imageProcessor = nil;
 	_imageProcessed = YES;
     _developedView = [[UIView alloc] initWithFrame: _undevelopedView.frame];
     _developedView.layer.contents = (id)previewImage.CGImage;

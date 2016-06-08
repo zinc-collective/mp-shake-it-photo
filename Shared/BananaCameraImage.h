@@ -23,7 +23,7 @@
     unsigned char       _blues[256];
 
 	CGImageRef			_borderImageRef;
-	NSString*			_imagePath;
+	NSString*			__weak _imagePath;
     
     CGRect              _renderRect;
 }
@@ -33,7 +33,7 @@
 @property(nonatomic, readonly) uint					bufferSize;
 @property(nonatomic, readonly) CGSize				size;
 @property(nonatomic, readonly) CGImageRef			CGImageRef;
-@property(nonatomic, readonly) NSString*			imagePath;
+@property(weak, nonatomic, readonly) NSString*			imagePath;
 @property(nonatomic, readonly) UIImageOrientation   orientation;
 @property(nonatomic, readonly) CGRect               renderRect;
 

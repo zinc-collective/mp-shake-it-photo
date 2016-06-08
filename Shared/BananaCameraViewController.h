@@ -36,11 +36,10 @@ enum ToolbarItems
 }
 
 @property (nonatomic,assign) CGRect croprect;
-@property (nonatomic,strong) UIImagePickerController* picker;
 
 
-@property(nonatomic, retain) IBOutlet UIView*		welcomeView;
-@property(nonatomic,retain) IBOutlet UIToolbar*     toolbar;
+@property(nonatomic, strong) IBOutlet UIView*		welcomeView;
+@property(nonatomic,strong) IBOutlet UIToolbar*     toolbar;
 @property(nonatomic,strong) UINavigationController *settingsNavigationController;
 
 @property (nonatomic,strong) UIDocumentInteractionController *doc;
