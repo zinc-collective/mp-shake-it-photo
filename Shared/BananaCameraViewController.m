@@ -75,7 +75,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	
     
     [self.view setBackgroundColor:kBackgroundColor];
-    [_toolbar setTintColor:[UIColor colorWithWhite:0.3333 alpha:1.0]];
+    [_toolbar setTintColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
     
 	[self setBackgroundImage];
 	[self setToolbarItems];

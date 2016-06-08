@@ -123,7 +123,7 @@
 		9343212B12852FCC002FFB39 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9343212C12852FCC002FFB39 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9343212D12852FCC002FFB39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		934321D612853379002FFB39 /* BananaCamera_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BananaCamera_Prefix.pch; path = Shared/BananaCamera_Prefix.pch; sourceTree = "<group>"; };
+		934321D612853379002FFB39 /* ShakeItPhoto_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeItPhoto_Prefix.pch; path = Shared/ShakeItPhoto_Prefix.pch; sourceTree = "<group>"; };
 		934321D712853379002FFB39 /* BananaCameraAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BananaCameraAppDelegate.h; path = Shared/BananaCameraAppDelegate.h; sourceTree = "<group>"; };
 		934321D812853379002FFB39 /* BananaCameraAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BananaCameraAppDelegate.m; path = Shared/BananaCameraAppDelegate.m; sourceTree = "<group>"; };
 		934321D912853379002FFB39 /* BananaCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BananaCameraViewController.h; path = Shared/BananaCameraViewController.h; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 				937C25AC12853A7B00D660AA /* BananaCameraImageCurve.mm */,
 				937C25AD12853A7B00D660AA /* BananaCameraUtilities.h */,
 				937C25AE12853A7B00D660AA /* BananaCameraUtilities.mm */,
-				934321D612853379002FFB39 /* BananaCamera_Prefix.pch */,
+				934321D612853379002FFB39 /* ShakeItPhoto_Prefix.pch */,
 				934321DB12853379002FFB39 /* main.m */,
 			);
 			name = "Banana Camera";
@@ -430,7 +430,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BananaCamera" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ShakeItPhoto" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -591,7 +591,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
+				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -614,7 +614,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
+				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -638,7 +638,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
+				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -675,7 +675,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Shared/BananaCamera_Prefix.pch;
+				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -725,7 +725,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BananaCamera" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ShakeItPhoto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
