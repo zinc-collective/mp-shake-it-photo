@@ -20,24 +20,7 @@
 		6AC4EB7F19D9036A00409E34 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB7D19D9036A00409E34 /* SettingsTableViewController.xib */; };
 		6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4EB8119D90F9000409E34 /* WebViewController.m */; };
 		6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD324621A8DC70400C115A5 /* InstagramActivity.m */; };
-		6AEB15E41ABA503400B497BC /* flashing_auto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15CA1ABA503400B497BC /* flashing_auto@2x.png */; };
-		6AEB15E51ABA503400B497BC /* flashing_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15CB1ABA503400B497BC /* flashing_off@2x.png */; };
-		6AEB15E61ABA503400B497BC /* flashing_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15CC1ABA503400B497BC /* flashing_on@2x.png */; };
-		6AEB15E71ABA503400B497BC /* photo_close_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15CD1ABA503400B497BC /* photo_close_icon@2x.png */; };
-		6AEB15E81ABA503400B497BC /* shot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15CE1ABA503400B497BC /* shot@2x.png */; };
-		6AEB15E91ABA503400B497BC /* shot_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15CF1ABA503400B497BC /* shot_h@2x.png */; };
-		6AEB15EA1ABA503400B497BC /* switch_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15D01ABA503400B497BC /* switch_camera@2x.png */; };
-		6AEB15EB1ABA503400B497BC /* take_photo_picture_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15D11ABA503400B497BC /* take_photo_picture_default@2x.png */; };
-		6AEB15EC1ABA503400B497BC /* touch_focus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15D21ABA503400B497BC /* touch_focus.png */; };
-		6AEB15ED1ABA503400B497BC /* touch_focus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15D31ABA503400B497BC /* touch_focus@2x.png */; };
-		6AEB15EE1ABA503400B497BC /* touch_focus_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15D41ABA503400B497BC /* touch_focus_x.png */; };
-		6AEB15EF1ABA503400B497BC /* touch_focus_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB15D51ABA503400B497BC /* touch_focus_x@2x.png */; };
-		6AEB15F01ABA503400B497BC /* SCCaptureCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15D71ABA503400B497BC /* SCCaptureCameraController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB15F11ABA503400B497BC /* SCCaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15D91ABA503400B497BC /* SCCaptureSessionManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB15F21ABA503400B497BC /* SCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DB1ABA503400B497BC /* SCNavigationController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		6AEB15F31ABA503400B497BC /* SCSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DD1ABA503400B497BC /* SCSlider.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
-		6AEB15F51ABA503400B497BC /* SCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15E21ABA503400B497BC /* SCCommon.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
 		9312B5F212A8C12000A3FBFB /* frame_1200x1172.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5E912A8C12000A3FBFB /* frame_1200x1172.png */; };
 		9312B5F312A8C12000A3FBFB /* frame_1520x1486.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5EA12A8C12000A3FBFB /* frame_1520x1486.png */; };
@@ -128,30 +111,8 @@
 		6AC4EB8119D90F9000409E34 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = ShakeItPhoto/WebViewController.m; sourceTree = "<group>"; };
 		6AD324611A8DC70400C115A5 /* InstagramActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramActivity.h; path = ShakeItPhoto/InstagramActivity.h; sourceTree = "<group>"; };
 		6AD324621A8DC70400C115A5 /* InstagramActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramActivity.m; path = ShakeItPhoto/InstagramActivity.m; sourceTree = "<group>"; };
-		6AEB15CA1ABA503400B497BC /* flashing_auto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashing_auto@2x.png"; sourceTree = "<group>"; };
-		6AEB15CB1ABA503400B497BC /* flashing_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashing_off@2x.png"; sourceTree = "<group>"; };
-		6AEB15CC1ABA503400B497BC /* flashing_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashing_on@2x.png"; sourceTree = "<group>"; };
-		6AEB15CD1ABA503400B497BC /* photo_close_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_close_icon@2x.png"; sourceTree = "<group>"; };
-		6AEB15CE1ABA503400B497BC /* shot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shot@2x.png"; sourceTree = "<group>"; };
-		6AEB15CF1ABA503400B497BC /* shot_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shot_h@2x.png"; sourceTree = "<group>"; };
-		6AEB15D01ABA503400B497BC /* switch_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_camera@2x.png"; sourceTree = "<group>"; };
-		6AEB15D11ABA503400B497BC /* take_photo_picture_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take_photo_picture_default@2x.png"; sourceTree = "<group>"; };
-		6AEB15D21ABA503400B497BC /* touch_focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch_focus.png; sourceTree = "<group>"; };
-		6AEB15D31ABA503400B497BC /* touch_focus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touch_focus@2x.png"; sourceTree = "<group>"; };
-		6AEB15D41ABA503400B497BC /* touch_focus_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch_focus_x.png; sourceTree = "<group>"; };
-		6AEB15D51ABA503400B497BC /* touch_focus_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touch_focus_x@2x.png"; sourceTree = "<group>"; };
-		6AEB15D61ABA503400B497BC /* SCCaptureCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCaptureCameraController.h; sourceTree = "<group>"; };
-		6AEB15D71ABA503400B497BC /* SCCaptureCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCaptureCameraController.m; sourceTree = "<group>"; };
-		6AEB15D81ABA503400B497BC /* SCCaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCaptureSessionManager.h; sourceTree = "<group>"; };
-		6AEB15D91ABA503400B497BC /* SCCaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCaptureSessionManager.m; sourceTree = "<group>"; };
-		6AEB15DA1ABA503400B497BC /* SCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNavigationController.h; sourceTree = "<group>"; };
-		6AEB15DB1ABA503400B497BC /* SCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNavigationController.m; sourceTree = "<group>"; };
-		6AEB15DC1ABA503400B497BC /* SCSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSlider.h; sourceTree = "<group>"; };
-		6AEB15DD1ABA503400B497BC /* SCSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSlider.m; sourceTree = "<group>"; };
 		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
-		6AEB15E11ABA503400B497BC /* SCCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCommon.h; sourceTree = "<group>"; };
-		6AEB15E21ABA503400B497BC /* SCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCommon.m; sourceTree = "<group>"; };
 		6AEB15E31ABA503400B497BC /* SCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDefines.h; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
@@ -352,53 +313,15 @@
 		6AEB15C71ABA503400B497BC /* SCCaptureCamera */ = {
 			isa = PBXGroup;
 			children = (
-				6AEB15C81ABA503400B497BC /* images */,
-				6AEB15D61ABA503400B497BC /* SCCaptureCameraController.h */,
-				6AEB15D71ABA503400B497BC /* SCCaptureCameraController.m */,
-				6AEB15D81ABA503400B497BC /* SCCaptureSessionManager.h */,
-				6AEB15D91ABA503400B497BC /* SCCaptureSessionManager.m */,
-				6AEB15DA1ABA503400B497BC /* SCNavigationController.h */,
-				6AEB15DB1ABA503400B497BC /* SCNavigationController.m */,
-				6AEB15DC1ABA503400B497BC /* SCSlider.h */,
-				6AEB15DD1ABA503400B497BC /* SCSlider.m */,
 				6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */,
 				6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */,
 			);
 			path = SCCaptureCamera;
 			sourceTree = "<group>";
 		};
-		6AEB15C81ABA503400B497BC /* images */ = {
-			isa = PBXGroup;
-			children = (
-				6AEB15C91ABA503400B497BC /* SCCamera */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		6AEB15C91ABA503400B497BC /* SCCamera */ = {
-			isa = PBXGroup;
-			children = (
-				6AEB15CA1ABA503400B497BC /* flashing_auto@2x.png */,
-				6AEB15CB1ABA503400B497BC /* flashing_off@2x.png */,
-				6AEB15CC1ABA503400B497BC /* flashing_on@2x.png */,
-				6AEB15CD1ABA503400B497BC /* photo_close_icon@2x.png */,
-				6AEB15CE1ABA503400B497BC /* shot@2x.png */,
-				6AEB15CF1ABA503400B497BC /* shot_h@2x.png */,
-				6AEB15D01ABA503400B497BC /* switch_camera@2x.png */,
-				6AEB15D11ABA503400B497BC /* take_photo_picture_default@2x.png */,
-				6AEB15D21ABA503400B497BC /* touch_focus.png */,
-				6AEB15D31ABA503400B497BC /* touch_focus@2x.png */,
-				6AEB15D41ABA503400B497BC /* touch_focus_x.png */,
-				6AEB15D51ABA503400B497BC /* touch_focus_x@2x.png */,
-			);
-			path = SCCamera;
-			sourceTree = "<group>";
-		};
 		6AEB15E01ABA503400B497BC /* SCCommon */ = {
 			isa = PBXGroup;
 			children = (
-				6AEB15E11ABA503400B497BC /* SCCommon.h */,
-				6AEB15E21ABA503400B497BC /* SCCommon.m */,
 				6AEB15E31ABA503400B497BC /* SCDefines.h */,
 			);
 			path = SCCommon;
@@ -655,27 +578,17 @@
 				937C2598128539AB00D660AA /* polaroid_eject_effect.aif in Resources */,
 				937C259A128539C800D660AA /* shakeitphoto.acv in Resources */,
 				937C261612853E5400D660AA /* FBDialog.bundle in Resources */,
-				6AEB15E61ABA503400B497BC /* flashing_on@2x.png in Resources */,
 				937C27B11285EFFC00D660AA /* film.png in Resources */,
-				6AEB15E51ABA503400B497BC /* flashing_off@2x.png in Resources */,
-				6AEB15EF1ABA503400B497BC /* touch_focus_x@2x.png in Resources */,
 				6AC4EB7F19D9036A00409E34 /* SettingsTableViewController.xib in Resources */,
 				937C27B21285EFFC00D660AA /* film@2x.png in Resources */,
-				6AEB15EA1ABA503400B497BC /* switch_camera@2x.png in Resources */,
-				6AEB15EE1ABA503400B497BC /* touch_focus_x.png in Resources */,
-				6AEB15EB1ABA503400B497BC /* take_photo_picture_default@2x.png in Resources */,
-				6AEB15EC1ABA503400B497BC /* touch_focus.png in Resources */,
 				6AC4EB7319D8C22B00409E34 /* bg_iPhone4@2x.png in Resources */,
 				6AC4EB7519D8C22B00409E34 /* bg_iPhone6@2x.png in Resources */,
 				937C27C51285F9DB00D660AA /* preview.png in Resources */,
 				6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */,
-				6AEB15ED1ABA503400B497BC /* touch_focus@2x.png in Resources */,
 				937C27C61285F9DB00D660AA /* preview@2x.png in Resources */,
-				6AEB15E71ABA503400B497BC /* photo_close_icon@2x.png in Resources */,
 				93488C841289F90400E90B20 /* iTunesArtwork in Resources */,
 				93418A1712976B9F00538E80 /* welcome_screen.png in Resources */,
 				93418A1812976B9F00538E80 /* welcome_screen@2x.png in Resources */,
-				6AEB15E91ABA503400B497BC /* shot_h@2x.png in Resources */,
 				9312B5F212A8C12000A3FBFB /* frame_1200x1172.png in Resources */,
 				6AC4EB6519D8B00B00409E34 /* FontAwesome.otf in Resources */,
 				9312B5F312A8C12000A3FBFB /* frame_1520x1486.png in Resources */,
@@ -693,8 +606,6 @@
 				9326E01A13E87C710087542A /* green_1200x1172.jpg in Resources */,
 				9326E01B13E87C710087542A /* green_1920x1876.jpg in Resources */,
 				6AC4EB7419D8C22B00409E34 /* bg_iPhone5@2x.png in Resources */,
-				6AEB15E81ABA503400B497BC /* shot@2x.png in Resources */,
-				6AEB15E41ABA503400B497BC /* flashing_auto@2x.png in Resources */,
 				9326E01C13E87C710087542A /* blue_1920x1876.jpg in Resources */,
 				6AC4EB7219D8C22B00409E34 /* bg_iPhone6Plus@2x.png in Resources */,
 				9326E01D13E87C710087542A /* blue_1200x1172.jpg in Resources */,
@@ -759,7 +670,6 @@
 			files = (
 				934321DC12853379002FFB39 /* BananaCameraAppDelegate.m in Sources */,
 				934321DD12853379002FFB39 /* BananaCameraViewController.m in Sources */,
-				6AEB15F31ABA503400B497BC /* SCSlider.m in Sources */,
 				934321DE12853379002FFB39 /* main.m in Sources */,
 				934321F712853449002FFB39 /* ShakeItPhotoAppDelegate.m in Sources */,
 				934321F812853449002FFB39 /* ShakeItPhotoViewController.m in Sources */,
@@ -774,12 +684,10 @@
 				6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */,
 				937C261812853E5400D660AA /* NSString+SBJSON.m in Sources */,
 				937C261912853E5400D660AA /* SBJSON.m in Sources */,
-				6AEB15F01ABA503400B497BC /* SCCaptureCameraController.m in Sources */,
 				937C261A12853E5400D660AA /* SBJsonBase.m in Sources */,
 				6AC4EB7E19D9036A00409E34 /* SettingsTableViewController.m in Sources */,
 				937C261B12853E5400D660AA /* SBJsonParser.m in Sources */,
 				937C261C12853E5400D660AA /* SBJsonWriter.m in Sources */,
-				6AEB15F11ABA503400B497BC /* SCCaptureSessionManager.m in Sources */,
 				6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */,
 				937C261D12853E5400D660AA /* FBRequest.m in Sources */,
 				6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */,
@@ -789,10 +697,8 @@
 				937C2654128540D000D660AA /* BananaCameraConstants.mm in Sources */,
 				937C27621285B6B100D660AA /* ShakeItPhotoConstants.mm in Sources */,
 				937C296B128726AD00D660AA /* DDInvocationGrabber.m in Sources */,
-				6AEB15F21ABA503400B497BC /* SCNavigationController.m in Sources */,
 				937C296C128726AD00D660AA /* NSObject+DDExtensions.m in Sources */,
 				9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */,
-				6AEB15F51ABA503400B497BC /* SCCommon.m in Sources */,
 				93D764821290E36E00BD26DC /* UIImage+Alpha.m in Sources */,
 				93D764831290E36E00BD26DC /* UIImage+RoundedCorner.m in Sources */,
 				93E593A713160AC00085345E /* RoundedRectView.mm in Sources */,
