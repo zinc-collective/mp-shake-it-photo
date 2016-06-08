@@ -19,7 +19,6 @@
 #import "InstagramActivity.h"
 #import "ShakeItPhotoConstants.h"
 #import "ShakeItPhotoImageProcessor.h"
-#import "SCDefines.h"
 
 #import "BananaCameraConstants.h"
 
