@@ -98,8 +98,8 @@
 		6AC4EB8119D90F9000409E34 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = ShakeItPhoto/WebViewController.m; sourceTree = "<group>"; };
 		6AD324611A8DC70400C115A5 /* InstagramActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramActivity.h; path = ShakeItPhoto/InstagramActivity.h; sourceTree = "<group>"; };
 		6AD324621A8DC70400C115A5 /* InstagramActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramActivity.m; path = ShakeItPhoto/InstagramActivity.m; sourceTree = "<group>"; };
-		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
-		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.h"; sourceTree = "<group>"; };
+		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		930E05FE13E8AB4600F49FF5 /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
@@ -259,24 +259,6 @@
 			name = Instagram;
 			sourceTree = "<group>";
 		};
-		6AEB15C61ABA503400B497BC /* SCCaptureCamera */ = {
-			isa = PBXGroup;
-			children = (
-				6AEB15C71ABA503400B497BC /* SCCaptureCamera */,
-			);
-			name = SCCaptureCamera;
-			path = Vendor/SCCaptureCamera;
-			sourceTree = "<group>";
-		};
-		6AEB15C71ABA503400B497BC /* SCCaptureCamera */ = {
-			isa = PBXGroup;
-			children = (
-				6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */,
-				6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */,
-			);
-			path = SCCaptureCamera;
-			sourceTree = "<group>";
-		};
 		8AA634DC5CB6C73E7B06D857 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,8 +336,7 @@
 		934321F1128533BD002FFB39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				6AEB15C61ABA503400B497BC /* SCCaptureCamera */,
-				93D764661290E12300BD26DC /* Other */,
+				93D764661290E12300BD26DC /* UIImage */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -400,15 +381,17 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		93D764661290E12300BD26DC /* Other */ = {
+		93D764661290E12300BD26DC /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */,
+				6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */,
 				93D7647E1290E36E00BD26DC /* UIImage+Alpha.h */,
 				93D7647F1290E36E00BD26DC /* UIImage+Alpha.m */,
 				93D764801290E36E00BD26DC /* UIImage+RoundedCorner.h */,
 				93D764811290E36E00BD26DC /* UIImage+RoundedCorner.m */,
 			);
-			name = Other;
+			name = UIImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
