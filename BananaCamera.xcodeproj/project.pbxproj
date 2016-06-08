@@ -176,6 +176,7 @@
 		6AEB16111ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		6AEB16121ABA525500B497BC /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
+		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		930E05FE13E8AB4600F49FF5 /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
 		9312B5E912A8C12000A3FBFB /* frame_1200x1172.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame_1200x1172.png; path = ShakeItPhoto/frame_1200x1172.png; sourceTree = "<group>"; };
 		9312B5EA12A8C12000A3FBFB /* frame_1520x1486.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame_1520x1486.png; path = ShakeItPhoto/frame_1520x1486.png; sourceTree = "<group>"; };
@@ -310,6 +311,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				78158BC91D086FBF005FD10A /* todo.md */,
 				934321F1128533BD002FFB39 /* Vendor */,
 				934321F2128533C7002FFB39 /* Banana Camera */,
 				934320C512852F03002FFB39 /* ShakeItPhoto */,
@@ -666,10 +668,10 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 93GDQDEE37;
+						DevelopmentTeam = G8R2KJ59DE;
 					};
 				};
 			};
@@ -827,6 +829,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
 			};
@@ -847,6 +850,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
@@ -868,6 +872,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
@@ -902,6 +907,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
@@ -912,6 +918,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

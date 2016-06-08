@@ -22,7 +22,7 @@ typedef void(^DidCapturePhotoBlock)(UIImage *stillImage);
 @interface SCCaptureSessionManager : NSObject
 
 
-@property (nonatomic) dispatch_queue_t sessionQueue;
+@property (nonatomic, strong) dispatch_queue_t sessionQueue;
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, strong) AVCaptureDeviceInput *inputDevice;

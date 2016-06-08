@@ -210,24 +210,6 @@
     return result;
 }
 
-/*
-- (void) desaturate
-{
-    unsigned long*  currentPixel = _rawBytes;
-    unsigned long*  lastPixel = (unsigned long*)((unsigned char*)_rawBytes + _bufferSize);
-    
-    while(currentPixel < lastPixel)
-    {        
-        CGFloat gray = roundf(0.2989 * (CGFloat)RED_COMPONENT(currentPixel) + 0.5870 * (CGFloat)GREEN_COMPONENT(currentPixel) + 0.1140 * (CGFloat)BLUE_COMPONENT(currentPixel)); 
-        
-        SET_RED_COMPONENT(currentPixel, gray);
-        SET_GREEN_COMPONENT(currentPixel, gray);
-        SET_BLUE_COMPONENT(currentPixel, gray);
-        ++currentPixel;
-    }
-}
-*/
-
 - (uint) curveApplyMask: (NSArray*) curves
 {
     BananaCameraImageCurve*   rgbCurve = [curves objectAtIndex: 0];
@@ -241,81 +223,6 @@
             (blueCurve.identity ? 0 : CURVE_BLUE));
 }
 
-/*
-
-- (void) applyCurves: (NSArray*) curves
-{
-	uint            curvesMask = [self curveApplyMask: curves];
-    
-    if(curvesMask != CURVE_NONE)
-    {
-        BananaCameraImageCurve*   rgbCurve = [curves objectAtIndex: 0];
-        BananaCameraImageCurve*   redCurve = [curves objectAtIndex: 1];
-        BananaCameraImageCurve*   greenCurve = [curves objectAtIndex: 2];
-        BananaCameraImageCurve*   blueCurve = [curves objectAtIndex: 3];
-        
-        for(unsigned int i = 0; i <= 255; ++i)
-        {
-            switch(curvesMask)
-            {
-                case CURVE_COLORS:
-                {
-                    _reds[i] = [rgbCurve mapPixelValue: i];
-                    _greens[i] = [rgbCurve mapPixelValue: i];
-                    _blues[i] = [rgbCurve mapPixelValue: i];
-                    break;
-                }
-                case CURVE_RED:
-                {
-                    _reds[i] = [redCurve mapPixelValue: i];
-                    _greens[i] = i;
-                    _blues[i] = i;
-                    break;
-                }
-                case CURVE_GREEN:
-                {
-                    _reds[i] = i;
-                    _greens[i] = [greenCurve mapPixelValue: i];
-                    _blues[i] = i;
-                    break;
-                }
-                case CURVE_BLUE:
-                {
-                    _reds[i] = i;
-                    _greens[i] = i;
-                    _blues[i] = [blueCurve mapPixelValue: i];
-                    break;
-                }
-                case (CURVE_RED | CURVE_GREEN | CURVE_BLUE):
-                {
-                    _reds[i] = [redCurve mapPixelValue: i];
-                    _greens[i] = [greenCurve mapPixelValue: i];
-                    _blues[i] = [blueCurve mapPixelValue: i];
-                    break;
-                }
-                default:
-                {
-                    _reds[i] = [rgbCurve mapPixelValue: [redCurve mapPixelValue: i]];
-                    _greens[i] = [rgbCurve mapPixelValue: [greenCurve mapPixelValue: i]];
-                    _blues[i] = [rgbCurve mapPixelValue: [blueCurve mapPixelValue: i]];
-                    break;
-                }
-            }
-        }
-        
-        unsigned long*  currentPixel = _rawBytes;
-        unsigned long*  lastPixel = (unsigned long*)((unsigned char*)_rawBytes + _bufferSize);
-        
-        while(currentPixel < lastPixel)
-        {
-            SET_RED_COMPONENT(currentPixel, _reds[RED_COMPONENT(currentPixel)]);
-            SET_GREEN_COMPONENT(currentPixel, _greens[GREEN_COMPONENT(currentPixel)]);
-            SET_BLUE_COMPONENT(currentPixel, _blues[BLUE_COMPONENT(currentPixel)]);
-            ++currentPixel;
-        }
-    }
-}
-*/
 
 - (void) setBorderImage: (NSString*) imagePath
 {

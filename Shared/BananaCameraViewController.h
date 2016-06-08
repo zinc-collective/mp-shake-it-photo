@@ -93,8 +93,6 @@ enum ToolbarItems
 
 - (void) playSoundEffect: (NSString*) soundFile;
 
-- (void) animationDidStop: (NSString*) animationID finished: (NSNumber*) finished context: (void*) context;
-
 - (void) setupOptions;
 
 - (void) presentGrowlNotification: (NSString*) message;

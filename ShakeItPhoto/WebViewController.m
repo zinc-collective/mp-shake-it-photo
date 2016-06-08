@@ -33,7 +33,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     
-    NSLog(@"request %@ %i",request.URL.absoluteString,navigationType);
+    NSLog(@"request %@ %li",request.URL.absoluteString,(long)navigationType);
     if ([request.URL.scheme isEqualToString:@"itms-apps"]) {
         //[[UIApplication sharedApplication] canOpenURL:myAppURL]) {
         //[[UIApplication sharedApplication] openURL:myAppURL];

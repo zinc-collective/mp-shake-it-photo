@@ -686,11 +686,12 @@ void c_slideAlpha() {
   return NO;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-  return UIInterfaceOrientationMaskAll;
-}
 
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//  return UIInterfaceOrientationMaskAll;
+//}
+//
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
   //    return [UIApplication sharedApplication].statusBarOrientation;

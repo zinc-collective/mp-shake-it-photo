@@ -52,8 +52,6 @@
 - (CGContextRef) pushContext;
 - (void) popContext;
 
-- (void) desaturate;
-- (void) applyCurves: (NSArray*) curves;
 - (uint) curveApplyMask: (NSArray*) curves;
 
 - (void) setBorderImage: (NSString*) imagePath;
