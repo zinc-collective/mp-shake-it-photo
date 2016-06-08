@@ -301,43 +301,43 @@
 #pragma mark - Did Take Picture
 
 
--(void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image {
-    
-    [super didTakePicture:navigationController image:image];
-    [self _discardPreviewLayers];
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-        //[self.view addSubview:[[UIImageView alloc] initWithImage:image]]; return;
-        
-        BOOL writeOriginal = ([[NSUserDefaults standardUserDefaults] boolForKey: kBananaCameraSaveOriginalKey] == YES);
-        
-        // Do we already have a pending image processing operation going
-        if(_imageProcessor) {
-            [ApplicationDelegate() addImageToProcess: image imageFlags: writeOriginal];
-        } else {
-            [self processImage: image shouldWriteOriginal: writeOriginal];
-        }
-    }];
-}
-
-
-- (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController {
-    
-    [super willDismissNavigationController:navigatonController];
-    
-    if([ApplicationDelegate() imagesToProcess] > 0) {
-        BOOL		imageFlags = NO;
-        NSString*	imagePath = [ApplicationDelegate() nextImageToProcess: &imageFlags];
-        UIImage*	image = [UIImage imageWithContentsOfFile: imagePath];
-        [self processImage: image shouldWriteOriginal: imageFlags];
-    } else {
-        self.toolbar.alpha = 1.0;
-        [self enableToolbarItems: kAllItems];
-    }
-
-    return YES;
-}
+//-(void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image {
+//    
+//    [super didTakePicture:navigationController image:image];
+//    [self _discardPreviewLayers];
+//    
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        
+//        //[self.view addSubview:[[UIImageView alloc] initWithImage:image]]; return;
+//        
+//        BOOL writeOriginal = ([[NSUserDefaults standardUserDefaults] boolForKey: kBananaCameraSaveOriginalKey] == YES);
+//        
+//        // Do we already have a pending image processing operation going
+//        if(_imageProcessor) {
+//            [ApplicationDelegate() addImageToProcess: image imageFlags: writeOriginal];
+//        } else {
+//            [self processImage: image shouldWriteOriginal: writeOriginal];
+//        }
+//    }];
+//}
+//
+//
+//- (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController {
+//    
+//    [super willDismissNavigationController:navigatonController];
+//    
+//    if([ApplicationDelegate() imagesToProcess] > 0) {
+//        BOOL		imageFlags = NO;
+//        NSString*	imagePath = [ApplicationDelegate() nextImageToProcess: &imageFlags];
+//        UIImage*	image = [UIImage imageWithContentsOfFile: imagePath];
+//        [self processImage: image shouldWriteOriginal: imageFlags];
+//    } else {
+//        self.toolbar.alpha = 1.0;
+//        [self enableToolbarItems: kAllItems];
+//    }
+//
+//    return YES;
+//}
 
 #pragma mark - UIImagePickerController
 

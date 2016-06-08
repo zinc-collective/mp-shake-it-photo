@@ -7,7 +7,6 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "FBConnect.h"
-#import "SCNavigationController.h"
 
 @class BananaCameraSoundEffect;
 
@@ -30,8 +29,8 @@ enum ToolbarItems
 														 UIActionSheetDelegate,
 														 MFMailComposeViewControllerDelegate,
 														 FBSessionDelegate,
-														 FBRequestDelegate,
-                                                         SCNavigationControllerDelegate>
+														 FBRequestDelegate>
+
 {
 	@private
     BOOL						_welcomeMode;

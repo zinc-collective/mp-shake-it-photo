@@ -19,8 +19,7 @@
 #import "InstagramActivity.h"
 #import "ShakeItPhotoConstants.h"
 #import "ShakeItPhotoImageProcessor.h"
-
-#import "SCCaptureCameraController.h"
+#import "SCDefines.h"
 
 #import "BananaCameraConstants.h"
 
@@ -154,27 +153,37 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (IBAction) capturePhoto: (id) sender
 {
-    BOOL usePolaroid = [[NSUserDefaults standardUserDefaults] boolForKey: kShakeItPhotoPolaroidBorderKey];
+//    BOOL usePolaroid = [[NSUserDefaults standardUserDefaults] boolForKey: kShakeItPhotoPolaroidBorderKey];
     
-    CGSize finalSize = (usePolaroid) ? CGSizeMake(1920.0, 2300.0) : CGSizeMake(1920.0, 1876.0);
-    CGRect imageSize = [ShakeItPhotoImageProcessor computeImageRect:finalSize usePolaroidAssets:usePolaroid];
-    CGRect previewRect = CGRectMake(0, 44, SC_APP_SIZE.width, SC_APP_SIZE.width);
-    previewRect.size.height *= (imageSize.size.height / imageSize.size.width);
+//    CGSize finalSize = (usePolaroid) ? CGSizeMake(1920.0, 2300.0) : CGSizeMake(1920.0, 1876.0);
+//    CGRect imageSize = [ShakeItPhotoImageProcessor computeImageRect:finalSize usePolaroidAssets:usePolaroid];
+//    CGRect previewRect = CGRectMake(0, 44, SC_APP_SIZE.width, SC_APP_SIZE.width);
+//    previewRect.size.height *= (imageSize.size.height / imageSize.size.width);
 
     
     //previewRect.size.width = 20.0;
     //previewRect.size.height = 200.0;
     
-    NSLog(@"preview rect %@",NSStringFromCGRect(previewRect));
-    SCNavigationController *nav = [[SCNavigationController alloc] init];
-    nav.scNaigationDelegate = self;
-    //nav.customAlbumName = @"Shake It Photo";
-    [nav showCameraWithParentController:self previewRect:previewRect];
-    [nav release];
+//    NSLog(@"preview rect %@",NSStringFromCGRect(previewRect));
+//    SCNavigationController *nav = [[SCNavigationController alloc] init];
+//    nav.scNaigationDelegate = self;
+//    //nav.customAlbumName = @"Shake It Photo";
+//    [nav showCameraWithParentController:self previewRect:previewRect];
+//    [nav release];
     
-    /*
     if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
     {
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.delegate = self;
+//        picker.showsCameraControls = NO;
+        picker.allowsEditing = NO;
+//        picker.modalPresentationStyle =
+        
+        [self presentViewController:picker animated:YES completion:^{}];
+        
+        /*
         _toolbar.alpha = 0.0;
 		[self disableToolbarItems: kAllItems];
         
@@ -248,8 +257,8 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
         ReleaseAndClear(picker);
         
         //color = nil;
+        */
     }
-    */
 }
 
 #pragma mark - Buttons
@@ -606,18 +615,18 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 #pragma mark - SCNavigationControllerDelegate
 
--(void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image {
-    
-    [self clearBackgroundImage];
-    navigationController.delegate = nil;
-}
-
-- (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController {
-    
-    [self setBackgroundImage];
-    return YES;
-}
-
+//-(void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image {
+//    
+//    [self clearBackgroundImage];
+//    navigationController.delegate = nil;
+//}
+//
+//- (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController {
+//    
+//    [self setBackgroundImage];
+//    return YES;
+//}
+//
 
 
 #pragma mark - UIImagePickerControllerDelegate
