@@ -40,12 +40,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 @synthesize toolbar = _toolbar;
 @synthesize welcomeView = _welcomeView;
-@synthesize optionsView = _optionsView;
-@synthesize keepOriginalCell = _keepOriginalCell;
-@synthesize infoCell = _infoCell;
-@synthesize communityCell = _communityCell;
-@synthesize optionsNavigationBar = _optionsNavigationBar;
-@synthesize optionsTableView = _optionsTableView;
 @synthesize croprect = _croprect;
 @synthesize picker = _picker;
 
@@ -53,9 +47,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-
-	[_optionsView removeFromSuperview];
-	ReleaseAndClear(_optionsView);
 
 	[_welcomeView removeFromSuperview];
 	ReleaseAndClear(_welcomeView);
@@ -473,91 +464,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (IBAction) moreInfo: (id) sender
-{
-	if(!_moreInfoWebView)
-	{
-		_moreInfoWebView = [[UIWebView alloc] initWithFrame: CGRectZero];
-		_moreInfoWebView.scalesPageToFit = YES;
-		_moreInfoWebView.delegate = self;
-		
-		// Webview frame is the full size of the screen - the height of the navigation bar.
-		
-		CGRect			webViewFrame = self.optionsTableView.frame;
-		webViewFrame.origin.x += webViewFrame.size.width;
-		webViewFrame.origin.y += self.optionsNavigationBar.frame.size.height;
-		webViewFrame.size.height -= self.optionsNavigationBar.frame.size.height;
-		_moreInfoWebView.frame = webViewFrame;
-	}		
-	
-	// Insert the webview as a sibling of the options view (below it - to ensure that it's also below the navigation bar)
-	
-	[self.optionsView.superview insertSubview: _moreInfoWebView aboveSubview: self.optionsView];
-	
-	// Calculate the final (animatable) frames
-	
-	CGRect			newWebViewFrame = _moreInfoWebView.frame;
-	newWebViewFrame.origin.x -= CGRectGetWidth(newWebViewFrame);
-	
-	// Animate them into place.
-    
-    [UIView animateWithDuration:0.4 animations:^{
-      _moreInfoWebView.frame = newWebViewFrame;
-    }];
-	
-    _moreInfoWebView.backgroundColor = [UIColor clearColor];
-	[_moreInfoWebView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: kBananaCameraMoreAppsURL]]];
-	
-	UINavigationItem*	navItem = [[[UINavigationItem alloc] initWithTitle: @"More Apps"] autorelease];
-	[self.optionsNavigationBar pushNavigationItem: navItem animated: YES];
-}
-
-
-- (IBAction) community: (id) sender
-{
-	if(!_socialWebView)
-	{
-		_socialWebView = [[UIWebView alloc] initWithFrame: CGRectZero];
-		_socialWebView.scalesPageToFit = YES;
-		_socialWebView.delegate = self;
-		
-		// Webview frame is the full size of the screen - the height of the navigation bar.
-		
-		CGRect			webViewFrame = self.optionsTableView.frame;
-		webViewFrame.origin.x += webViewFrame.size.width;
-		webViewFrame.origin.y += self.optionsNavigationBar.frame.size.height;
-		webViewFrame.size.height -= self.optionsNavigationBar.frame.size.height;
-		_socialWebView.frame = webViewFrame;
-	}		
-	
-	// Insert the webview as a sibling of the options view (below it - to ensure that it's also below the navigation bar)
-	
-	[self.optionsView.superview insertSubview: _socialWebView aboveSubview: self.optionsView];
-	
-	// Calculate the final (animatable) frames
-	
-	CGRect			newWebViewFrame = _socialWebView.frame;
-	newWebViewFrame.origin.x -= CGRectGetWidth(newWebViewFrame);
-	
-	// Animate them into place.
-	
-    [UIView animateWithDuration:0.4 animations:^{
-        _socialWebView.frame = newWebViewFrame;
-    }];
-	
-	
-	_socialWebView.backgroundColor = [UIColor clearColor];
-	[_socialWebView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: kBananaCameraSocialURL]]];
-	
-	UINavigationItem*	navItem = [[[UINavigationItem alloc] initWithTitle: @"Community"] autorelease];
-	[self.optionsNavigationBar pushNavigationItem: navItem animated: YES];
-}
-
-- (IBAction) handleDone: (id) sender
-{
-    [self chooseOptions: nil];
-}
-
 
 -(void)onSettingsDoneTap:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
@@ -585,15 +491,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
     [settings release];
     [nav release];
-}
-
-- (void) setupOptions
-{
-	NSUserDefaults*     defaults = [NSUserDefaults standardUserDefaults];
-	UISwitch*           aSwitch;
-		
-	aSwitch = (UISwitch*)[_keepOriginalCell.contentView viewWithTag: 1];
-	[aSwitch setOn: [defaults boolForKey: kBananaCameraSaveOriginalKey] animated: YES];
 }
 
 #pragma mark - SCNavigationControllerDelegate
@@ -946,11 +843,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 - (void) applicationDidEnterBackground
 {
 	[self clearBackgroundImage];
-    
-	if([self.optionsView superview] != nil)
-	{
-		[self chooseOptions: nil];
-	}
 }
 
 #pragma mark -
@@ -979,53 +871,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	}
 	
 	return height;
-}
-
-#pragma mark -
-#pragma mark UINavigationBarDelegate
-
-- (BOOL) navigationBar: (UINavigationBar*) navigationBar shouldPopItem: (UINavigationItem*) item
-{
-	if([item.title isEqualToString: @"More Apps"])
-	{
-		// Calculate the final (animatable) frames
-		
-		CGRect			newWebViewFrame = _moreInfoWebView.frame;
-		newWebViewFrame.origin.x += CGRectGetWidth(newWebViewFrame);
-		
-		// Animate them into place.
-        [UIView animateWithDuration:0.4 animations:^{
-            _moreInfoWebView.frame = newWebViewFrame;
-        }];
-        
-	} else if([item.title isEqualToString: @"Community"]) {
-		// Calculate the final (animatable) frames
-		
-		CGRect			newWebViewFrame = _socialWebView.frame;
-		newWebViewFrame.origin.x += CGRectGetWidth(newWebViewFrame);
-		
-        [UIView animateWithDuration:0.4 animations:^{
-            _socialWebView.frame = newWebViewFrame;
-        }];
-	}
-	return YES;
-}
-
-- (void) mailComposeController: (MFMailComposeViewController*) controller didFinishWithResult: (MFMailComposeResult) result error: (NSError*) error 
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        if(result == MFMailComposeResultSent)
-        {
-            [self presentGrowlNotification: @"Emailing your photo"];
-        }
-    }];
-}
-
-- (void) presentGrowlNotification: (NSString*) message
-{
-	CGRect					notificationFrame = CGRectMake(0, 0, 280, 60);
-	BananaCameraGrowlView*	view = [[BananaCameraGrowlView alloc] initWithFrame: notificationFrame];
-	[view beginNotificationInViewController: self withNotification: message];
 }
 
 

@@ -23,7 +23,6 @@
 @synthesize viewController = _viewController;
 @synthesize locationManager = _locationManager;
 @synthesize backgroundTasksSupported = _backgroundTasksSupported;
-@synthesize canSendMail = _canSendMail;
 @synthesize inBackground = _inBackground;
 @synthesize flashMode = _flashMode;
 
@@ -42,13 +41,6 @@
 	
     self.flashMode = UIImagePickerControllerCameraFlashModeOff;
     
-	// Check for email support
-	
-    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-    if(mailClass != nil && [mailClass canSendMail])
-	{
-		_canSendMail = YES;
-	}
 
 	// Hide the status bar
 	

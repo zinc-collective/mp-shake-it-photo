@@ -33,9 +33,6 @@
 
 @property(nonatomic, retain) ShakeItPhotoImageProcessor*	  imageProcessor;
 @property(nonatomic, retain) IBOutlet UIView*			  shakeView;
-@property(nonatomic, retain) IBOutlet UITableViewCell*    fasterShakingCell;
-@property(nonatomic, retain) IBOutlet UITableViewCell*    polaroidBorderCell;
-@property(nonatomic, retain) IBOutlet UIView*			  footerView;
 
 - (void) startTrackingAcceleration;
 - (void) stopTrackingAcceleration;

@@ -18,7 +18,6 @@
     BananaCameraViewController*	_viewController;
 	CLLocationManager*			_locationManager;
 	BOOL						_backgroundTasksSupported;
-	BOOL						_canSendMail;
 	BOOL						_inBackground;
 	NSMutableArray*				_imagesToProcess;
 	NSMutableArray*				_imagesToProcessFlags;
@@ -29,7 +28,6 @@
 @property (nonatomic, retain) IBOutlet UIWindow*	window;
 @property (nonatomic, retain) IBOutlet BananaCameraViewController*	viewController;
 @property (nonatomic, readonly) BOOL backgroundTasksSupported;
-@property (nonatomic, readonly) BOOL canSendMail;
 @property (nonatomic, readonly) BOOL inBackground;
 @property (nonatomic, retain) IBOutlet CLLocationManager* locationManager;
 
