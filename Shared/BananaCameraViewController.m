@@ -31,7 +31,6 @@
 - (UIBarButtonItem*) _actionBarButtonItem;
 - (UIBarButtonItem*) _capturePhotoBarButtonItem;
 - (UIBarButtonItem*) _pickPhotoBarButtonItem;
-- (void) _setupAudio;
 - (void) _loadProcessedImageDataForURL: (NSURL*) url forDestination: (NSString*) destination;
 - (void) _emailPhoto: (NSData*) photoData  ofType: (NSString*) uti;
 - (void) _facebookPhoto: (NSData*) photoData  ofType: (NSString*) uti;
@@ -102,7 +101,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	[self setBackgroundImage];
 	[self setToolbarItems];
 	[self disableToolbarItems: kAllItems];
-    [self _setupAudio];
 	_toolbar.alpha = 0.0;
     
 }
@@ -758,31 +756,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	
 	return result;
 }
-
-- (void) _setupAudio
-{
-    // Since we only have a sound effect we want to make sure that the audiosession we are using treats all our sounds as just ambient. This
-    // ensures music that is playing does not get turned off.
-    
-    OSStatus    err = AudioSessionInitialize(NULL, NULL, (AudioSessionInterruptionListener)BananaCameraAudioSessionInterruptionListener, (void*) self);
-    if(err == noErr)
-    {
-        UInt32      propertySize;
-        UInt32      audioIsAlreadyPlaying;
-        
-        propertySize = sizeof(UInt32);
-        AudioSessionGetProperty( kAudioSessionProperty_OtherAudioIsPlaying, &propertySize, &audioIsAlreadyPlaying);
-        if( audioIsAlreadyPlaying != 0 )
-        {
-            //NSLog( @"other audio is playing - attempting mixin" );
-			
-            UInt32	sessionCategory = kAudioSessionCategory_AmbientSound;
-            AudioSessionSetProperty( kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
-            AudioSessionSetActive( YES );
-        }
-    }
-}
-
 
 -(UIBarButtonItem*)barButtonItemWithIcon:(unichar)icon action:(SEL)action {
     
