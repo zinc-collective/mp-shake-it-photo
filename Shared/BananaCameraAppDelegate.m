@@ -21,7 +21,6 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
-@synthesize facebookSession = _facebookSession;
 @synthesize locationManager = _locationManager;
 @synthesize backgroundTasksSupported = _backgroundTasksSupported;
 @synthesize canSendMail = _canSendMail;
@@ -71,9 +70,6 @@
 		self.locationManager = [[[CLLocationManager alloc] init] autorelease];
 		[self.locationManager startUpdatingLocation];
 	}
-    
-    // Facebook
-    _facebookSession = [[Facebook alloc] initWithAppId: [self facebookAppID]];
 	
     return YES;
 }
@@ -122,7 +118,6 @@
 {
 	ReleaseAndClear(_viewController);
 	ReleaseAndClear(_window);
-	ReleaseAndClear(_facebookSession);
 	ReleaseAndClear(_locationManager);
     [super dealloc];
 }
@@ -276,16 +271,6 @@
 }
 
 - (NSString*) applicationURL
-{
-	return @"";
-}
-
-- (NSString*) facebookAPIKey
-{
-	return @"";
-}
-
-- (NSString*) facebookAppID
 {
 	return @"";
 }

@@ -6,7 +6,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#import "FBConnect.h"
 
 @class BananaCameraSoundEffect;
 
@@ -27,9 +26,7 @@ enum ToolbarItems
 													     UIWebViewDelegate,
 														 UINavigationBarDelegate,
 														 UIActionSheetDelegate,
-														 MFMailComposeViewControllerDelegate,
-														 FBSessionDelegate,
-														 FBRequestDelegate>
+														 MFMailComposeViewControllerDelegate>
 
 {
 	@private
@@ -48,7 +45,6 @@ enum ToolbarItems
 	UINavigationBar*			_optionsNavigationBar;
 	
 	NSURL*						_latestProcessedImageURL;
-	NSString*					_facebookAlbumID;	
 }
 
 @property (nonatomic,assign) CGRect croprect;
@@ -84,7 +80,6 @@ enum ToolbarItems
 
 - (void) instagramPhoto: (id) sender;
 - (void) emailPhoto: (id) sender;
-- (void) facebookPhoto: (id) sender;
 
 - (void) showWelcomeView;
 - (void) disposeOfWelcomeView;
@@ -97,7 +92,6 @@ enum ToolbarItems
 - (void) presentGrowlNotification: (NSString*) message;
 
 - (IBAction) saveOriginal: (id) sender;
-- (IBAction) resetFacebook: (id) sender;
 
 - (void) applicationWillResignActive;
 - (void) applicationWillEnterForeground;

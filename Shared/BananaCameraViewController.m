@@ -31,10 +31,8 @@
 - (UIBarButtonItem*) _pickPhotoBarButtonItem;
 - (void) _loadProcessedImageDataForURL: (NSURL*) url forDestination: (NSString*) destination;
 - (void) _emailPhoto: (NSData*) photoData  ofType: (NSString*) uti;
-- (void) _facebookPhoto: (NSData*) photoData  ofType: (NSString*) uti;
 - (void) _instagramPhoto: (NSData*) photoData  ofType: (NSString*) uti;
 - (NSString*) _mimeTypeForUTI: (NSString*) uti;
-- (void) _postPhotoToFacebookAlbum: (NSString*) albumID;
 - (NSString*) _createTempFileNameInDirectory: (NSString*) directory extension: (NSString*) ext;
 
 @end
@@ -1030,9 +1028,9 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 		case 0:
 			[self emailPhoto: nil];
 			break;
-		case 1:
-			[self facebookPhoto: nil];
-			break;
+//		case 1:
+//			[self facebookPhoto: nil];
+//			break;
         case 2:
             [self instagramPhoto: nil];
 		default:
@@ -1040,98 +1038,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	}
 }
 
-#pragma mark -
-#pragma mark Facebook
-
-- (void) facebookPhoto: (id) sender
-{
-	NSArray*	permissions = [NSArray arrayWithObjects: @"user_photos", @"publish_stream", @"read_stream", @"offline_access", nil];
-	Facebook*	fbSession = [ApplicationDelegate() facebookSession];
-	
-	if(![fbSession isSessionValid])
-	{
-		[fbSession authorize: permissions delegate: self];
-	}
-	else 
-	{
-		[self fbDidLogin];
-	}
-
-}
-
-- (void) fbDidLogin
-{
-	[[ApplicationDelegate() facebookSession] requestWithGraphPath: @"me/albums" andDelegate: self];
-}
-
-- (void) fbDidNotLogin: (BOOL) cancelled
-{
-}
-
-- (void) fbDidLogout
-{
-}
-
-- (void) request: (FBRequest*) request didFailWithError: (NSError*) error
-{
-	NSLog(@"FBRequest failed: %@", [error description]);
-}
-
-- (void) request: (FBRequest*) request didLoad: (id) result
-{
-	NSString*	method = [request.url lastPathComponent];
-	
-	if([method isEqualToString: @"albums"])
-	{
-		if([result isKindOfClass: [NSDictionary class]])
-		{
-			NSString*		albumID = [result objectForKey: @"id"];
-			
-			if(!albumID)
-			{
-				NSDictionary*	albums = (NSDictionary*)[result objectForKey: @"data"];
-				
-				for(NSDictionary* album in albums)
-				{
-					if([[album objectForKey: @"name"] isEqualToString: @"My ShakeItPhoto Photos"])
-					{
-						albumID = [album objectForKey: @"id"];
-					}
-				}
-				
-				if(albumID == nil)
-				{
-					NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"My ShakeItPhoto Photos", @"name",
-												   @"Photos created by the iPhone app - ShakeItPhoto", @"description",
-												   @"everyone", @"visible", nil];
-					
-					[[ApplicationDelegate() facebookSession] requestWithGraphPath: @"me/albums" 
-																		andParams: params
-																	andHttpMethod: @"POST"
-																	  andDelegate: self];
-				}
-			}
-			
-			if(albumID) 
-			{
-				[self _postPhotoToFacebookAlbum: albumID];
-			}
-		}
-	}  
-	else if([method isEqualToString: @"photo"])
-	{
-	}
-}
-
-- (void) _postPhotoToFacebookAlbum: (NSString*) albumID
-{
-	[self presentGrowlNotification: @"Sending your photo to Facebook"];
-	
-	ReleaseAndClear(_facebookAlbumID);
-	_facebookAlbumID = [albumID retain];
-	
-	[self _loadProcessedImageDataForURL: _latestProcessedImageURL forDestination: @"facebook"];
-}
 
 #pragma mark -
 #pragma mark Instagraming
@@ -1201,10 +1107,10 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 							 {
 								 [[self dd_invokeOnMainThread] _emailPhoto: data ofType: [rep UTI]];
 							 }
-							 else if([destination isEqualToString: @"facebook"])
-							 {
-								 [[self dd_invokeOnMainThread] _facebookPhoto: data ofType: [rep UTI]];
-							 }
+//							 else if([destination isEqualToString: @"facebook"])
+//							 {
+//								 [[self dd_invokeOnMainThread] _facebookPhoto: data ofType: [rep UTI]];
+//							 }
 							 else if([destination isEqualToString: @"instagram"])
 							 {
 								 [[self dd_invokeOnMainThread] _instagramPhoto: data ofType: [rep UTI]];
@@ -1251,11 +1157,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 			{
 				[self _emailPhoto: data ofType: uti];
 			}
-			else if([destination isEqualToString: @"facebook"])
-			{
-				[self _facebookPhoto: data ofType: uti];
-			}
-			else 
+//			else if([destination isEqualToString: @"facebook"])
+//			{
+//				[self _facebookPhoto: data ofType: uti];
+//			}
+			else
 			{
 				NSLog(@"Unknown destination for processed image");
 			}
@@ -1321,24 +1227,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
             [ic presentOpenInMenuFromBarButtonItem: [self _actionBarButtonItem] animated: YES];
         }
     }
-}
-
-- (void) _facebookPhoto: (NSData*) photoData  ofType: (NSString*) uti
-{
-	if(_facebookAlbumID && photoData)
-	{
-		UIImage*				imageRep = [[UIImage alloc] initWithData: photoData];
-		NSString*				photoName = [self defaultPhotoName];
-		NSMutableDictionary*	params = [NSMutableDictionary dictionaryWithObjectsAndKeys: imageRep, @"data", photoName, @"message", nil];
-
-		[[ApplicationDelegate() facebookSession] requestWithGraphPath: [NSString stringWithFormat: @"%@/photos", _facebookAlbumID]
-															andParams: params
-														andHttpMethod: @"POST"
-														  andDelegate: self];
-
-		[imageRep release];
-		[photoData release];
-	}
 }
 
 - (void) _emailPhoto: (NSData*) photoData ofType: (NSString*) uti;
@@ -1410,12 +1298,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	}
 	
 	[self enableToolbarItems: kAllItems];
-}
-
-- (IBAction) resetFacebook: (id) sender
-{
-	Facebook*	fbSession = [ApplicationDelegate() facebookSession];
-	[fbSession logout: self];
 }
 
 @end

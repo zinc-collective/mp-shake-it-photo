@@ -5,19 +5,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBConnect.h"
 
 #define kBackgroundColor [UIColor colorWithRed:(24.0/255.0) green:(22.0/255.0) blue:(31.0/255.0) alpha:1.0]
 
 @class BananaCameraViewController;
 @class CLLocationManager;
 
-@interface BananaCameraAppDelegate : NSObject <UIApplicationDelegate, FBSessionDelegate>
+@interface BananaCameraAppDelegate : NSObject <UIApplicationDelegate>
 {
 	@private
     UIWindow*					_window;
     BananaCameraViewController*	_viewController;
-	Facebook*					_facebookSession;
 	CLLocationManager*			_locationManager;
 	BOOL						_backgroundTasksSupported;
 	BOOL						_canSendMail;
@@ -30,7 +28,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow*	window;
 @property (nonatomic, retain) IBOutlet BananaCameraViewController*	viewController;
-@property (nonatomic, retain) Facebook*	facebookSession;
 @property (nonatomic, readonly) BOOL backgroundTasksSupported;
 @property (nonatomic, readonly) BOOL canSendMail;
 @property (nonatomic, readonly) BOOL inBackground;
@@ -45,8 +42,6 @@
 
 - (NSString*) applicationName;
 - (NSString*) applicationURL;
-- (NSString*) facebookAPIKey;
-- (NSString*) facebookAppID;
 
 - (void) addImageToProcess: (UIImage*) image imageFlags: (BOOL) flags;
 - (NSUInteger) imagesToProcess;

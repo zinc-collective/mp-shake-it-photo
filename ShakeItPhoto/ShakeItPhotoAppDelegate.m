@@ -21,15 +21,5 @@
 	return @"http://shakeitphoto.com/";
 }
 
-- (NSString*) facebookAPIKey
-{
-	return kShakeItPhotoFacebookAPIKey;
-}
-
-- (NSString*) facebookAppID
-{
-	return kShakeItPhotoFacebookAppID;
-}
-
 
 @end

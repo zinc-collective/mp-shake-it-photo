@@ -10,10 +10,6 @@ extern NSString* const      kShakeItPhotoFasterShakingKey;
 extern NSString* const      kShakeItPhotoPolaroidBorderKey;
 extern NSString* const      kShakeItPhotoMakeSquareKey;
 
-extern NSString* const		kShakeItPhotoFacebookAppID;
-extern NSString* const		kShakeItPhotoFacebookAPIKey;
-extern NSString* const		kShakeItPhotoFacebookAppSecret;
-
 #define kInteriorTop				0.070
 #define kInteriorLeft				0.0583
 #define kInteriorRight				0.0583
