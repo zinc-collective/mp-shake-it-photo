@@ -10,7 +10,6 @@
 #import "BananaCameraConstants.h"
 #import "BananaCameraImage.h"
 #import "BananaCameraImageCurve.h"
-#import "NSObject+DDExtensions.h"
 #import "NSNotificationCenter_Additions.h"
 #import "UIImage+Resize.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -465,7 +464,9 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
         
         UIImage* scaledImage = [finalPreviewImage resizedImage:CGSizeMake(640.0, 640.0) interpolationQuality:kCGInterpolationDefault];
         
-			[[_delegate dd_invokeOnMainThread] imageProcessor: self didFinishProcessingPreviewImage: scaledImage];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_delegate imageProcessor:self didFinishProcessingPreviewImage:scaledImage];
+        });
         
         CGImageRelease(imageRef);
         

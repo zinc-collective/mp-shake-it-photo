@@ -68,8 +68,6 @@
 		937C27B21285EFFC00D660AA /* film@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 937C27A61285EFFC00D660AA /* film@2x.png */; };
 		937C27C51285F9DB00D660AA /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 937C27C31285F9DB00D660AA /* preview.png */; };
 		937C27C61285F9DB00D660AA /* preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 937C27C41285F9DB00D660AA /* preview@2x.png */; };
-		937C296B128726AD00D660AA /* DDInvocationGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = 937C2968128726AD00D660AA /* DDInvocationGrabber.m */; };
-		937C296C128726AD00D660AA /* NSObject+DDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 937C296A128726AD00D660AA /* NSObject+DDExtensions.m */; };
 		939EE6B61338DA920079B253 /* MadeinPolaroid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 939EE6B51338DA920079B253 /* MadeinPolaroid@2x.png */; };
 		93D764821290E36E00BD26DC /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7647F1290E36E00BD26DC /* UIImage+Alpha.m */; };
 		93D764831290E36E00BD26DC /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D764811290E36E00BD26DC /* UIImage+RoundedCorner.m */; };
@@ -168,10 +166,6 @@
 		937C27A61285EFFC00D660AA /* film@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "film@2x.png"; path = "ShakeItPhoto/film@2x.png"; sourceTree = "<group>"; };
 		937C27C31285F9DB00D660AA /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = preview.png; path = ShakeItPhoto/preview.png; sourceTree = "<group>"; };
 		937C27C41285F9DB00D660AA /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
-		937C2967128726AD00D660AA /* DDInvocationGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDInvocationGrabber.h; path = Vendor/DDFoundation/DDInvocationGrabber.h; sourceTree = "<group>"; };
-		937C2968128726AD00D660AA /* DDInvocationGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDInvocationGrabber.m; path = Vendor/DDFoundation/DDInvocationGrabber.m; sourceTree = "<group>"; };
-		937C2969128726AD00D660AA /* NSObject+DDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+DDExtensions.h"; path = "Vendor/DDFoundation/NSObject+DDExtensions.h"; sourceTree = "<group>"; };
-		937C296A128726AD00D660AA /* NSObject+DDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+DDExtensions.m"; path = "Vendor/DDFoundation/NSObject+DDExtensions.m"; sourceTree = "<group>"; };
 		939EE6B51338DA920079B253 /* MadeinPolaroid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MadeinPolaroid@2x.png"; path = "ShakeItPhoto/MadeinPolaroid@2x.png"; sourceTree = "<group>"; };
 		93D7647E1290E36E00BD26DC /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Alpha.h"; path = "Vendor/Other/UIImage+Alpha.h"; sourceTree = "<group>"; };
 		93D7647F1290E36E00BD26DC /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Alpha.m"; path = "Vendor/Other/UIImage+Alpha.m"; sourceTree = "<group>"; };
@@ -362,7 +356,6 @@
 			children = (
 				6AEB15C61ABA503400B497BC /* SCCaptureCamera */,
 				93D764661290E12300BD26DC /* Other */,
-				937C2965128726A100D660AA /* DDFoundation */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -405,17 +398,6 @@
 				93F5FC0412EFED800090853B /* pickphoto.png */,
 			);
 			name = Shared;
-			sourceTree = "<group>";
-		};
-		937C2965128726A100D660AA /* DDFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				937C2967128726AD00D660AA /* DDInvocationGrabber.h */,
-				937C2968128726AD00D660AA /* DDInvocationGrabber.m */,
-				937C2969128726AD00D660AA /* NSObject+DDExtensions.h */,
-				937C296A128726AD00D660AA /* NSObject+DDExtensions.m */,
-			);
-			name = DDFoundation;
 			sourceTree = "<group>";
 		};
 		93D764661290E12300BD26DC /* Other */ = {
@@ -601,8 +583,6 @@
 				6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */,
 				937C2654128540D000D660AA /* BananaCameraConstants.mm in Sources */,
 				937C27621285B6B100D660AA /* ShakeItPhotoConstants.mm in Sources */,
-				937C296B128726AD00D660AA /* DDInvocationGrabber.m in Sources */,
-				937C296C128726AD00D660AA /* NSObject+DDExtensions.m in Sources */,
 				9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */,
 				93D764821290E36E00BD26DC /* UIImage+Alpha.m in Sources */,
 				93D764831290E36E00BD26DC /* UIImage+RoundedCorner.m in Sources */,

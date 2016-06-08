@@ -13,7 +13,6 @@
 #import "BananaCameraSoundEffect.h"
 #import "BananaCameraConstants.h"
 #import "BananaCameraGrowlView.h"
-#import "NSObject+DDExtensions.h"
 #import "SettingsTableViewController.h"
 #import "UIImage+Resize.h"
 #import "InstagramActivity.h"
