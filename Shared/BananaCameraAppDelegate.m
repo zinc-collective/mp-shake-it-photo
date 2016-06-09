@@ -10,6 +10,8 @@
 #import "BananaCameraUtilities.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MessageUI/MessageUI.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
@@ -30,7 +32,9 @@
 #pragma mark Application lifecycle
 
 - (BOOL) application: (UIApplication*) application didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
-{        
+{
+    [Fabric with:@[[Crashlytics class]]];
+    
 	// Check for background task support
 	
 	UIDevice* device = [UIDevice currentDevice];

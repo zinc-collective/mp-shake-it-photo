@@ -6,4 +6,5 @@ target 'ShakeItPhoto' do
 
     pod 'SVProgressHUD', '~> 2.0'
     pod 'ALAssetsLibrary-CustomPhotoAlbum', '~> 1.3'
+    pod 'Crashlytics', '~> 3.7.0'
 end
