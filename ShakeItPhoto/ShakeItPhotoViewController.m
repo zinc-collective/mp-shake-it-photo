@@ -227,7 +227,6 @@
 
 - (void) processImage: (UIImage*) originalImage shouldWriteOriginal: (BOOL) writeOriginal
 {
-
 	[self clearBackgroundImage];
 
 	_imageProcessed = NO;
@@ -257,26 +256,32 @@
         _slideOutAnimationFinished = NO;
         frame.origin.y = (_shakeView.frame.size.height - frame.size.height - self.toolbar.frame.size.height) / 2.0f;
         
-        [UIView animateWithDuration:2.5
-                              delay:0.3
-                            options:UIViewAnimationCurveEaseInOut animations:^{
-            
-            _frameView.frame       = frame;
-            _undevelopedView.frame = frame;
-            
-        } completion:^(BOOL finished) {
-            
-            NSLog(@"finished %i",finished);
-            
-            if(finished) {
-                NSLog(@"Animation Completed On Time");
-                [self slideOutAnimationCompelte];
-            } else {
-                NSLog(@"Animation Completed Early");
-                //Hack because complete animation fires too early
-                [self performSelector:@selector(slideOutAnimationCompelte) withObject:nil afterDelay:2.5];
-            }            
-        }];
+        // delay the start of the animation, otherwise it gets interrupted by
+        // the modal transition of the UIImagePicker dismissing
+        NSTimeInterval delay = 0.3;
+        double time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:2.5
+                                  delay:0.0
+                                options:UIViewAnimationCurveEaseInOut animations:^{
+                
+                _frameView.frame       = frame;
+                _undevelopedView.frame = frame;
+                
+            } completion:^(BOOL finished) {
+                
+                NSLog(@"finished %i",finished);
+                
+                if(finished) {
+                    NSLog(@"Animation Completed On Time");
+                    [self slideOutAnimationCompelte];
+                } else {
+                    NSLog(@"Animation Completed Early");
+                    //Hack because complete animation fires too early
+                    [self performSelector:@selector(slideOutAnimationCompelte) withObject:nil afterDelay:2.5];
+                }            
+            }];
+        });
         
 		// Play the sound effect.
 		[self playSoundEffect: @"polaroid_eject_effect.aif"];
@@ -371,7 +376,6 @@
 		self.toolbar.alpha = 1.0;
 		[self enableToolbarItems: kAllItems];
 	}
-
 }
 
 - (CGSize) _previewImageSize
@@ -525,7 +529,6 @@
 }
 
 -(void)animateDevelopedView {
-    
     if(_slideOutAnimationFinished && _imageProcessed) {
         [self _animateDevelopedView];
         [self enableToolbarItems: kCapturePhotoItem | kPickPhotoItem | kSettingsItem];
