@@ -19,9 +19,10 @@ NSString* const     kBananaCameraFirstLaunchKey  = @"BananaCameraFirstLaunchKey"
 NSString* const     kBananaCameraSaveOriginalKey = @"BananaCameraSaveOriginalKey";
 
 
-NSString* const		kBananaCameraCompanyURL = @"http://bananacameraco.com";
-NSString* const		kBananaCameraMoreAppsURL = @"https://itunes.apple.com/artist/banana-camera-co/id302926606?mt=8";
-NSString* const		kBananaCameraSocialURL = @"http://shakeitphoto.com/socialsip/"; //@"http://shakeitphoto.com/social/";
+NSString* const		kBananaCameraCompanyURL = @"http://momentpark.com";
+NSString* const		kBananaCameraMoreAppsURL = @"http://momentpark.com/products";
+NSString* const		kBananaCameraSocialURL = @"http://momentpark.com/shakeitphoto";
+NSString* const		kBananaCameraIntroVideoURL = @"http://www.momentpark.com/shakeitphoto-videos";
 
 NSString* const		kDidWriteOriginalImageToPhotoLibraryNotification = @"DidWriteOriginalImageToPhotoLibraryNotification";
 NSString* const		kDidWriteProcessedImageToPhotoLibraryNotification = @"DidWriteProcessedImageToPhotoLibraryNotification";

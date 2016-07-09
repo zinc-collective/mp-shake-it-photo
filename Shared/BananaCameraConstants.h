@@ -53,4 +53,5 @@ extern NSString* const	kDidWriteProcessedImageToPhotoLibraryNotification;
 extern NSString* const		kBananaCameraMoreAppsURL;
 extern NSString* const		kBananaCameraSocialURL;
 extern NSString* const		kBananaCameraCompanyURL;
+extern NSString* const      kBananaCameraIntroVideoURL;
 

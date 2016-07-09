@@ -771,6 +771,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     }
 }
 
+- (IBAction) introVideo:(id)sender {
+    NSURL *url = [NSURL URLWithString:kBananaCameraIntroVideoURL];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 - (IBAction) acknowledgeWelcome: (id) sender
 {
     [UIView animateWithDuration:0.33 animations:^{

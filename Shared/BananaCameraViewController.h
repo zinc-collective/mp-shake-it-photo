@@ -59,6 +59,7 @@ enum ToolbarItems
 - (void) showWelcomeView;
 - (void) disposeOfWelcomeView;
 - (IBAction) acknowledgeWelcome: (id) sender;
+- (IBAction)introVideo:(id)sender;
 
 - (void) playSoundEffect: (NSString*) soundFile;
 

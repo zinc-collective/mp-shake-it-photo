@@ -116,10 +116,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 - (void) _process;
 - (void) _processFinalImage;
 
-- (NSString*) _imagePath: (NSString*) baseName 
-		   pathExtension: (NSString*) extension 
-			   finalSize: (CGSize) finalSize
-			   useHeight: (BOOL) useHeight;
+- (NSString*) _framePath: (BOOL)usePolaroid;
 
 - (void) _drawImageAtPath: (NSString*) inPath 
 				  context: (CGContextRef) inContext 
@@ -223,57 +220,16 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
     }
 }
 
-- (NSString*) _imagePath: (NSString*) baseName 
-		   pathExtension: (NSString*) extension 
-			   finalSize: (CGSize) finalSize
-			   useHeight: (BOOL) useHeight
-{
+- (NSString*) _framePath: (BOOL)usePolaroid {
 	// Always return assets as if they were UIImageOrientationUp
 	
-    NSString*	result = nil;
-	
-	if(finalSize.width == 1200.0)
-	{
-		if(useHeight && finalSize.height == 1438.0)
-		{
-			result = [baseName stringByAppendingFormat: @"%@", @"_1200x1438"];
-		}
-		else 
-		{
-			result = [baseName stringByAppendingFormat: @"%@", @"_1200x1172"];
-		}
-	}
-	else if(finalSize.width == 1520.0)
-	{
-		if(useHeight && finalSize.height == 1822.0)
-		{
-			result = [baseName stringByAppendingFormat: @"%@", @"_1520x1822"];
-		}
-		else 
-		{
-			result = [baseName stringByAppendingFormat: @"%@", @"_1520x1486"];
-		}
-	}
-	else if(finalSize.width == 1920.0)
-	{
-		if(useHeight && finalSize.height == 2300.0)
-		{
-			result = [baseName stringByAppendingFormat: @"%@", @"_1920x2300"];
-		}
-		else 
-		{
-			result = [baseName stringByAppendingFormat: @"%@", @"_1920x1876"];
-		}
-	}
-	else 
-	{
-		NSLog(@"_imagePath:pathExtension:finalSize: cannot determine proper dimensions");
-	}
-   
-    NSBundle*	mainBundle = [NSBundle mainBundle];
-	result = [mainBundle pathForResource: result ofType: extension];
-	
-	return result;
+    NSString * pathName = @"frame";
+    
+    if (usePolaroid) {
+        pathName = [pathName stringByAppendingString:@"_polaroid"];
+    }
+    
+    return [[NSBundle mainBundle] pathForResource:pathName ofType:@"png"];
 }
 
 - (CGSize) _previewImageSize
@@ -410,7 +366,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
         CGContextTranslateCTM(context, 0, polaroidOffset);
     }
     
-		[self _drawImageAtPath: [self _imagePath: @"blue" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
+		[self _drawImageAtPath: [[NSBundle mainBundle] pathForResource:@"blue" ofType:@"jpg"]
 					   context: context
 					 landscape: landscape
 					 blendMode: kCGBlendModeScreen
@@ -419,7 +375,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 		END_TIMING(renderBlue);
 
 		START_TIMING(renderGreen);	
-		[self _drawImageAtPath: [self _imagePath: @"green" pathExtension: @"jpg" finalSize: finalSize useHeight: NO]
+		[self _drawImageAtPath: [[NSBundle mainBundle] pathForResource:@"green" ofType:@"jpg"]
 					   context: context
 					 landscape: landscape
 					 blendMode: kCGBlendModeOverlay
@@ -474,7 +430,8 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
     
 		START_TIMING(renderFrame);
 		
-		[self _drawImageAtPath: [self _imagePath: @"frame" pathExtension: @"png" finalSize: finalSize useHeight: YES]
+        NSString * framePath = [self _framePath: _usePolaroidAssets];
+		[self _drawImageAtPath: framePath
 					   context: context
 					 landscape: landscape
 					 blendMode: kCGBlendModeNormal
