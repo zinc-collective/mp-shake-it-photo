@@ -8,4 +8,3 @@
 
 NSString* const      kShakeItPhotoFasterShakingKey = @"ShakeItPhotoFasterShakingKey";
 NSString* const      kShakeItPhotoPolaroidBorderKey = @"ShakeItPhotoPolaroidBorderKey";
-NSString* const      kShakeItPhotoMakeSquareKey = @"kShakeItPhotoMakeSquareKey";

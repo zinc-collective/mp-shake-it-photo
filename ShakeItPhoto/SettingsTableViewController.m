@@ -53,7 +53,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,7 +65,6 @@
         case 0:
         case 1:
         case 2:
-        case 3:
             cell.accessoryView = [[UISwitch alloc] init];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
@@ -75,7 +74,7 @@
             break;
     }
     
-    if(indexPath.row <= 3) {
+    if(indexPath.row <= 2) {
         
         NSUserDefaults*     defaults = [NSUserDefaults standardUserDefaults];
         UISwitch*           aSwitch  = (UISwitch*)cell.accessoryView;
@@ -92,9 +91,6 @@
                 break;
             case 2:
                 aSwitch.on = [defaults boolForKey: kBananaCameraSaveOriginalKey];
-                break;
-            case 3:
-                aSwitch.on = [defaults boolForKey: kShakeItPhotoMakeSquareKey];
                 break;
         }
     }
@@ -115,9 +111,6 @@
             cell.textLabel.text = @"Keep Original";
             break;
         case 3:
-            cell.textLabel.text = @"MakeSquare™";
-            break;
-        case 4:
             cell.textLabel.text = @"More Apps";
             break;
       
@@ -144,10 +137,6 @@
         case 2:
             [defaults setBool:isOn forKey:kBananaCameraSaveOriginalKey];
             break;
-        case 3:
-            [defaults setBool:isOn forKey:kShakeItPhotoMakeSquareKey];
-            break;
-            
             
         default:
             break;
@@ -225,7 +214,7 @@
     
     //NSURL *url;
     switch (indexPath.row) {
-        case 4:
+        case 3:
             //url = [NSURL URLWithString:kBananaCameraMoreAppsURL];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kBananaCameraMoreAppsURL]];
             //return;

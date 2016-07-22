@@ -114,7 +114,6 @@
     NSDictionary *defaultVaules = @{kBananaCameraSocialURL:@(NO),
                                     kShakeItPhotoFasterShakingKey:@(YES),
                                     kShakeItPhotoPolaroidBorderKey:@(YES),
-                                    kShakeItPhotoMakeSquareKey:@(NO),
                                     kBananaCameraFirstLaunchKey:@(NO)};
     [userDefaults registerDefaults:defaultVaules];
     
@@ -160,7 +159,6 @@
     [[NSUserDefaults standardUserDefaults] setBool: NO forKey: kBananaCameraSaveOriginalKey];
     [[NSUserDefaults standardUserDefaults] setBool: NO forKey: kShakeItPhotoFasterShakingKey];
     [[NSUserDefaults standardUserDefaults] setBool: YES forKey: kShakeItPhotoPolaroidBorderKey];
-    [[NSUserDefaults standardUserDefaults] setBool: YES forKey: kShakeItPhotoMakeSquareKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     */
     

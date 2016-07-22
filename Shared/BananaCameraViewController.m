@@ -323,15 +323,8 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                          CGRect newRect   = CGRectIntegral(CGRectMake(0.0, 0.0, 640.0, 640.0));
                          CGRect scaleRect = newRect;
                          
-                         BOOL makeSquare = [[NSUserDefaults standardUserDefaults] boolForKey: kShakeItPhotoMakeSquareKey];
-                         
-                         if (makeSquare) {
-                             scaleRect.size.width *= (CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef);
-                             scaleRect.origin.x    = (newRect.size.width - scaleRect.size.width)/2;
-                         } else {
-                             scaleRect.size.height *= (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
-                             scaleRect.origin.y = newRect.size.height - scaleRect.size.height;
-                         }
+                         scaleRect.size.height *= (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
+                         scaleRect.origin.y = newRect.size.height - scaleRect.size.height;
                          
                          //NSLog(@"%f",(CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef));
                          // Build a context that's the same dimensions as the new size
