@@ -348,7 +348,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 		BananaCameraImage*	finalImage = [[BananaCameraImage alloc] initWithImage: self.rawImage 
 																			size: finalSize
 																	   imageRect: imageRect];
-		
+        
 		if(self.writeOriginalToPhotoLibrary == NO)
 		{
 			self.rawImage = nil;
@@ -356,8 +356,6 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 		
 		CGContextRef		context = [finalImage pushContext];
 		 
-#ifdef SIP_ORIGINAL
-		
 		START_TIMING(renderBlue);
     
     if(_usePolaroidAssets)
@@ -387,29 +385,6 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
     {
         CGContextRestoreGState(context);
     }
-		
-#else
-    // border
-		// overlay (80% overlay)
-		// curves
-		// original
-		
-    /*
-    START_TIMING(curves);
-		[finalImage applyCurves: _curves];
-    END_TIMING(curves);
-		
-		START_TIMING(overlay);	
-		[self _drawImageAtPath: [self _imagePath: @"overlay" pathExtension: @"png" finalSize: finalSize useHeight: NO]
-					   context: context
-					 landscape: landscape
-					 blendMode: kCGBlendModeOverlay
-						 alpha: 1.0
-				finalImageSize: finalSize];
-		END_TIMING(overlay);
-    
-    */
-#endif
 		
 		// Generate a preview image that doesn't include the frame.
 		
@@ -591,7 +566,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 			{
 				CGContextSaveGState(inContext);
 				
-				CGRect		imageRect = CGRectMake(0, 0, CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
+				CGRect		imageRect = CGRectMake(0, 0, finalSize.width, finalSize.height);
 				
 				CGContextSetAlpha(inContext, inAlpha);
 				CGContextSetBlendMode(inContext, inBlendMode);
