@@ -22,6 +22,7 @@
 		6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD324621A8DC70400C115A5 /* InstagramActivity.m */; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
+		89BA00EC22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */; };
 		9312B5F412A8C12000A3FBFB /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5EB12A8C12000A3FBFB /* frame.png */; };
 		9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9321E54612891031001EC80F /* ShakeItPhotoImageProcessor.mm */; };
 		9326E01B13E87C710087542A /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9326E01513E87C710087542A /* green.jpg */; };
@@ -95,6 +96,8 @@
 		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
+		89BA00EA22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+CSNAdditions.h"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.h"; sourceTree = "<group>"; };
+		89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+CSNAdditions.m"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.m"; sourceTree = "<group>"; };
 		930E05FE13E8AB4600F49FF5 /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
 		9312B5EB12A8C12000A3FBFB /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = ShakeItPhoto/frame.png; sourceTree = "<group>"; };
 		9321E54512891031001EC80F /* ShakeItPhotoImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeItPhotoImageProcessor.h; path = ShakeItPhoto/ShakeItPhotoImageProcessor.h; sourceTree = "<group>"; };
@@ -245,6 +248,15 @@
 			name = Instagram;
 			sourceTree = "<group>";
 		};
+		89BA00ED22A998270046C17C /* ALAssetsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				89BA00EA22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.h */,
+				89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */,
+			);
+			name = ALAssetsLibrary;
+			sourceTree = "<group>";
+		};
 		8AA634DC5CB6C73E7B06D857 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +327,7 @@
 		934321F1128533BD002FFB39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				89BA00ED22A998270046C17C /* ALAssetsLibrary */,
 				93D764661290E12300BD26DC /* UIImage */,
 			);
 			name = Vendor;
@@ -380,13 +393,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ShakeItPhoto" */;
 			buildPhases = (
+				18CFC66E418A48C730F8BAFE /* [CP] Check Pods Manifest.lock */,
 				2FE6EB3B54CDB1DC773B0486 /* 📦 Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				0970C3128534A61703A59EA9 /* 📦 Embed Pods Frameworks */,
-				9D605C474ED3D7FB48FBB3CF /* 📦 Copy Pods Resources */,
 				788D21091D09CFDF009DD1FE /* ShellScript */,
+				09BF7BDD24A919ED8EE4EC3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,10 +417,10 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1020;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = G8R2KJ59DE;
+						DevelopmentTeam = 5GGD34ZNFU;
 					};
 				};
 			};
@@ -421,6 +435,7 @@
 				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -484,6 +499,52 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		09BF7BDD24A919ED8EE4EC3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ALAssetsLibrary-CustomPhotoAlbum/ALAssetsLibrary_CustomPhotoAlbum.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ALAssetsLibrary_CustomPhotoAlbum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18CFC66E418A48C730F8BAFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShakeItPhoto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2FE6EB3B54CDB1DC773B0486 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,21 +573,6 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 6a09c19815c2f7f42d12f74f97f8f87c0f139e62 d29b37ba3305e7a136158c7684175a69995c401705890454f260b5b758d91816";
 		};
-		9D605C474ED3D7FB48FBB3CF /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -546,6 +592,7 @@
 				937C25DD12853C8500D660AA /* CALayer_Additions.mm in Sources */,
 				937C25DE12853C8500D660AA /* NSNotificationCenter_Additions.mm in Sources */,
 				937C25E612853CF800D660AA /* BananaCameraSoundEffect.m in Sources */,
+				89BA00EC22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m in Sources */,
 				6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */,
 				6AC4EB7E19D9036A00409E34 /* SettingsTableViewController.m in Sources */,
 				6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */,
@@ -574,6 +621,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -599,6 +647,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
@@ -623,6 +672,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
@@ -638,10 +688,34 @@
 		93AE66A8133AAECE0096D79C /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tammy Brennan";
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB1A5F8F-D996-48D2-8B35-7E63EA6CACD9";
@@ -661,11 +735,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -676,11 +751,35 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -690,10 +789,34 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
