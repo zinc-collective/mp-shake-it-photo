@@ -10,8 +10,7 @@
 #import "BananaCameraUtilities.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MessageUI/MessageUI.h>
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
+#import <Firebase.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
@@ -33,8 +32,7 @@
 
 - (BOOL) application: (UIApplication*) application didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
 {
-    [Fabric with:@[[Crashlytics class]]];
-    
+    [FIRApp configure];
 	// Check for background task support
 	
 	UIDevice* device = [UIDevice currentDevice];

@@ -22,6 +22,7 @@
 		6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD324621A8DC70400C115A5 /* InstagramActivity.m */; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
+		6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */; };
 		89BA00EC22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */; };
 		9312B5F412A8C12000A3FBFB /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5EB12A8C12000A3FBFB /* frame.png */; };
 		9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9321E54612891031001EC80F /* ShakeItPhotoImageProcessor.mm */; };
@@ -95,6 +96,7 @@
 		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.h"; sourceTree = "<group>"; };
 		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
+		6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		89BA00EA22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+CSNAdditions.h"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.h"; sourceTree = "<group>"; };
 		89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+CSNAdditions.m"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.m"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */,
 				78158BC91D086FBF005FD10A /* todo.md */,
 				934321F1128533BD002FFB39 /* Vendor */,
 				934321F2128533C7002FFB39 /* Banana Camera */,
@@ -399,8 +402,8 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				0970C3128534A61703A59EA9 /* 📦 Embed Pods Frameworks */,
-				788D21091D09CFDF009DD1FE /* ShellScript */,
 				09BF7BDD24A919ED8EE4EC3E /* [CP] Embed Pods Frameworks */,
+				6DD8DC1422BC0DE400F46261 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -466,6 +469,7 @@
 				93418A1812976B9F00538E80 /* welcome_screen@2x.png in Resources */,
 				6AC4EB6519D8B00B00409E34 /* FontAwesome.otf in Resources */,
 				9312B5F412A8C12000A3FBFB /* frame.png in Resources */,
+				6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */,
 				937641E012AAB68300619899 /* preview_polaroid.png in Resources */,
 				937641E112AAB68300619899 /* preview_polaroid@2x.png in Resources */,
 				93F5FC0212EFED6D0090853B /* info.png in Resources */,
@@ -509,14 +513,18 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ALAssetsLibrary-CustomPhotoAlbum/ALAssetsLibrary_CustomPhotoAlbum.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ALAssetsLibrary_CustomPhotoAlbum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -560,18 +568,23 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		788D21091D09CFDF009DD1FE /* ShellScript */ = {
+		6DD8DC1422BC0DE400F46261 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 6a09c19815c2f7f42d12f74f97f8f87c0f139e62 d29b37ba3305e7a136158c7684175a69995c401705890454f260b5b758d91816";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
