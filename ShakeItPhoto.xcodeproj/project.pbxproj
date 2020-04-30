@@ -10,7 +10,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		409944A8A90E37B1D734C3B4 /* Pods_ShakeItPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 584E24281D4028E00E323549 /* Pods_ShakeItPhoto.framework */; };
+		48052D19B5E95D2EA8336542 /* Pods_ShakeItPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC3B9F2BA2D96DD8A5B69FF /* Pods_ShakeItPhoto.framework */; };
 		6AC4EB6519D8B00B00409E34 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6419D8B00B00409E34 /* FontAwesome.otf */; };
 		6AC4EB7219D8C22B00409E34 /* bg_iPhone6Plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */; };
 		6AC4EB7319D8C22B00409E34 /* bg_iPhone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6F19D8C22B00409E34 /* bg_iPhone4@2x.png */; };
@@ -73,14 +73,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E358FF93FBD47D26D9B3AD9 /* Pods-ShakeItPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.debug.xcconfig"; sourceTree = "<group>"; };
-		1694F9B24DD03D94E7F7747F /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig"; sourceTree = "<group>"; };
+		17EF7A2A398FA746C414E7D4 /* Pods-ShakeItPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.debug.xcconfig"; path = "Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* ShakeItPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeItPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		539D7EB2DDDB4A3C251822AB /* Pods-ShakeItPhoto.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.distribution.xcconfig"; sourceTree = "<group>"; };
-		584E24281D4028E00E323549 /* Pods_ShakeItPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShakeItPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC3B9F2BA2D96DD8A5B69FF /* Pods_ShakeItPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShakeItPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC4EB6419D8B00B00409E34 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_iPhone6Plus@2x.png"; sourceTree = "<group>"; };
 		6AC4EB6F19D8C22B00409E34 /* bg_iPhone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_iPhone4@2x.png"; sourceTree = "<group>"; };
@@ -158,6 +156,7 @@
 		937C27C31285F9DB00D660AA /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = preview.png; path = ShakeItPhoto/preview.png; sourceTree = "<group>"; };
 		937C27C41285F9DB00D660AA /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
 		939EE6B51338DA920079B253 /* MadeinPolaroid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MadeinPolaroid@2x.png"; path = "ShakeItPhoto/MadeinPolaroid@2x.png"; sourceTree = "<group>"; };
+		93D4C71D95E8C7E4555997FA /* Pods-ShakeItPhoto.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.distribution.xcconfig"; path = "Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.distribution.xcconfig"; sourceTree = "<group>"; };
 		93D7647E1290E36E00BD26DC /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Alpha.h"; path = "Vendor/Other/UIImage+Alpha.h"; sourceTree = "<group>"; };
 		93D7647F1290E36E00BD26DC /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Alpha.m"; path = "Vendor/Other/UIImage+Alpha.m"; sourceTree = "<group>"; };
 		93D764801290E36E00BD26DC /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RoundedCorner.h"; path = "Vendor/Other/UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
@@ -167,7 +166,8 @@
 		93F5FC0112EFED6D0090853B /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Shared/info.png; sourceTree = "<group>"; };
 		93F5FC0412EFED800090853B /* pickphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pickphoto.png; path = Shared/pickphoto.png; sourceTree = "<group>"; };
 		93F5FC0712EFEDF70090853B /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "Shared/info@2x.png"; sourceTree = "<group>"; };
-		A93532DF8070C06C7911DF69 /* Pods-ShakeItPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.release.xcconfig"; sourceTree = "<group>"; };
+		9E3B91EA0FE1348D509D01D9 /* Pods-ShakeItPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.release.xcconfig"; path = "Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.release.xcconfig"; sourceTree = "<group>"; };
+		DB6748E7F426D05467C392A3 /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig"; path = "Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +184,7 @@
 				9343213212852FCC002FFB39 /* CoreMedia.framework in Frameworks */,
 				9343213312852FCC002FFB39 /* QuartzCore.framework in Frameworks */,
 				937C26B41285946000D660AA /* MessageUI.framework in Frameworks */,
-				409944A8A90E37B1D734C3B4 /* Pods_ShakeItPhoto.framework in Frameworks */,
+				48052D19B5E95D2EA8336542 /* Pods_ShakeItPhoto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +199,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */,
@@ -210,7 +210,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				8AA634DC5CB6C73E7B06D857 /* Pods */,
+				96CE9A323DA5A680AD064706 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 				9343212B12852FCC002FFB39 /* CoreLocation.framework */,
 				9343212C12852FCC002FFB39 /* CoreMedia.framework */,
 				9343212D12852FCC002FFB39 /* QuartzCore.framework */,
-				584E24281D4028E00E323549 /* Pods_ShakeItPhoto.framework */,
+				4DC3B9F2BA2D96DD8A5B69FF /* Pods_ShakeItPhoto.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -258,17 +258,6 @@
 				89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */,
 			);
 			name = ALAssetsLibrary;
-			sourceTree = "<group>";
-		};
-		8AA634DC5CB6C73E7B06D857 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0E358FF93FBD47D26D9B3AD9 /* Pods-ShakeItPhoto.debug.xcconfig */,
-				A93532DF8070C06C7911DF69 /* Pods-ShakeItPhoto.release.xcconfig */,
-				539D7EB2DDDB4A3C251822AB /* Pods-ShakeItPhoto.distribution.xcconfig */,
-				1694F9B24DD03D94E7F7747F /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		934320C512852F03002FFB39 /* ShakeItPhoto */ = {
@@ -389,6 +378,18 @@
 			name = UIImage;
 			sourceTree = "<group>";
 		};
+		96CE9A323DA5A680AD064706 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17EF7A2A398FA746C414E7D4 /* Pods-ShakeItPhoto.debug.xcconfig */,
+				9E3B91EA0FE1348D509D01D9 /* Pods-ShakeItPhoto.release.xcconfig */,
+				93D4C71D95E8C7E4555997FA /* Pods-ShakeItPhoto.distribution.xcconfig */,
+				DB6748E7F426D05467C392A3 /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,14 +397,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ShakeItPhoto" */;
 			buildPhases = (
-				18CFC66E418A48C730F8BAFE /* [CP] Check Pods Manifest.lock */,
-				2FE6EB3B54CDB1DC773B0486 /* 📦 Check Pods Manifest.lock */,
+				4E455CA05853FFEAFCC402ED /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				0970C3128534A61703A59EA9 /* 📦 Embed Pods Frameworks */,
-				09BF7BDD24A919ED8EE4EC3E /* [CP] Embed Pods Frameworks */,
 				6DD8DC1422BC0DE400F46261 /* ShellScript */,
+				F95778E7C49AA5A0141C39EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,7 +436,7 @@
 				French,
 				German,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -488,50 +487,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0970C3128534A61703A59EA9 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		09BF7BDD24A919ED8EE4EC3E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ALAssetsLibrary-CustomPhotoAlbum/ALAssetsLibrary_CustomPhotoAlbum.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ALAssetsLibrary_CustomPhotoAlbum.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		18CFC66E418A48C730F8BAFE /* [CP] Check Pods Manifest.lock */ = {
+		4E455CA05853FFEAFCC402ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -553,21 +509,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2FE6EB3B54CDB1DC773B0486 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		6DD8DC1422BC0DE400F46261 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -585,6 +526,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		F95778E7C49AA5A0141C39EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ALAssetsLibrary-CustomPhotoAlbum/ALAssetsLibrary_CustomPhotoAlbum.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ALAssetsLibrary_CustomPhotoAlbum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -624,7 +591,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E358FF93FBD47D26D9B3AD9 /* Pods-ShakeItPhoto.debug.xcconfig */;
+			baseConfigurationReference = 17EF7A2A398FA746C414E7D4 /* Pods-ShakeItPhoto.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -650,7 +617,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A93532DF8070C06C7911DF69 /* Pods-ShakeItPhoto.release.xcconfig */;
+			baseConfigurationReference = 9E3B91EA0FE1348D509D01D9 /* Pods-ShakeItPhoto.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -675,7 +642,7 @@
 		};
 		93863811130843A900EC3F3F /* ShakeItPhoto_Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1694F9B24DD03D94E7F7747F /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */;
+			baseConfigurationReference = DB6748E7F426D05467C392A3 /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -738,7 +705,7 @@
 		};
 		93AE66A9133AAECE0096D79C /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 539D7EB2DDDB4A3C251822AB /* Pods-ShakeItPhoto.distribution.xcconfig */;
+			baseConfigurationReference = 93D4C71D95E8C7E4555997FA /* Pods-ShakeItPhoto.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
