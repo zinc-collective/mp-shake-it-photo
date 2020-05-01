@@ -1,7 +1,7 @@
 //
 //  BananaCameraUtilities.h
 //
-//  Copyright 2010 Banana Camera Company. All rights reserved.
+//  Copyright 2020 Zinc Collective, LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
