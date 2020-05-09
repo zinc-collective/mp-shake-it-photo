@@ -199,7 +199,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */,
@@ -386,7 +386,6 @@
 				93D4C71D95E8C7E4555997FA /* Pods-ShakeItPhoto.distribution.xcconfig */,
 				DB6748E7F426D05467C392A3 /* Pods-ShakeItPhoto.shakeitphoto_distribution.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -436,7 +435,7 @@
 				French,
 				German,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -609,6 +608,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MARKETING_VERSION = 3.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -633,6 +633,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MARKETING_VERSION = 3.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -658,6 +659,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MARKETING_VERSION = 3.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
@@ -721,6 +723,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MARKETING_VERSION = 3.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
