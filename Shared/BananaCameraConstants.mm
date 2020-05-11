@@ -22,7 +22,7 @@ NSString* const     kBananaCameraSaveOriginalKey = @"BananaCameraSaveOriginalKey
 NSString* const		kBananaCameraCompanyURL = @"http://momentpark.com";
 NSString* const		kBananaCameraMoreAppsURL = @"http://momentpark.com/products";
 NSString* const		kBananaCameraSocialURL = @"http://momentpark.com/shakeitphoto";
-NSString* const		kBananaCameraIntroVideoURL = @"http://www.momentpark.com/shakeitphoto-videos";
+NSString* const		kBananaCameraIntroVideoURL = @"https://www.momentpark.com/shakeitphototutorial";
 
 NSString* const		kDidWriteOriginalImageToPhotoLibraryNotification = @"DidWriteOriginalImageToPhotoLibraryNotification";
 NSString* const		kDidWriteProcessedImageToPhotoLibraryNotification = @"DidWriteProcessedImageToPhotoLibraryNotification";
