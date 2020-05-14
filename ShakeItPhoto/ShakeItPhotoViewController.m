@@ -476,6 +476,16 @@
             break;
         case 736: //5.5
             imageName = @"bg_iPhone6Plus";
+            break;
+        case 1792:
+            imageName = @"bg_iPhoneXR";
+            break;
+        case 2436:
+            imageName = @"bg_iPhoneX";
+            break;
+        case 2688:
+            imageName = @"bg_iPhoneXSmax";
+            break;
             
         default:
             break;
