@@ -2,7 +2,7 @@
   "images" : [
     {
       "extent" : "full-screen",
-      "filename" : "iPhoneXSmax.png",
+      "filename" : "bg_iPhoneXSmax-1.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -19,7 +19,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "iPhoneXR.png",
+      "filename" : "bg_iPhoneXR-1.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
