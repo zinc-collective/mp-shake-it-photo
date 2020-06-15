@@ -10,6 +10,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2F230564246D005700291AC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F230563246D005700291AC7 /* LaunchScreen.storyboard */; };
+		2FF0ED75246D04F3006B4A1B /* bg_iPhoneXSmax.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ED74246D04F3006B4A1B /* bg_iPhoneXSmax.png */; };
+		2FF0ED79246D0644006B4A1B /* bg_iPhoneXR.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ED78246D0643006B4A1B /* bg_iPhoneXR.png */; };
 		48052D19B5E95D2EA8336542 /* Pods_ShakeItPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC3B9F2BA2D96DD8A5B69FF /* Pods_ShakeItPhoto.framework */; };
 		6AC4EB6519D8B00B00409E34 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6419D8B00B00409E34 /* FontAwesome.otf */; };
 		6AC4EB7219D8C22B00409E34 /* bg_iPhone6Plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */; };
@@ -78,6 +81,9 @@
 		1D6058910D05DD3D006BFB54 /* ShakeItPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeItPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2F230563246D005700291AC7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2FF0ED74246D04F3006B4A1B /* bg_iPhoneXSmax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_iPhoneXSmax.png; path = ShakeItPhoto/Images.xcassets/LaunchImage.launchimage/bg_iPhoneXSmax.png; sourceTree = "<group>"; };
+		2FF0ED78246D0643006B4A1B /* bg_iPhoneXR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_iPhoneXR.png; path = ShakeItPhoto/Images.xcassets/LaunchImage.launchimage/bg_iPhoneXR.png; sourceTree = "<group>"; };
 		4DC3B9F2BA2D96DD8A5B69FF /* Pods_ShakeItPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShakeItPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC4EB6419D8B00B00409E34 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_iPhone6Plus@2x.png"; sourceTree = "<group>"; };
@@ -279,6 +285,7 @@
 				6AC4EB7D19D9036A00409E34 /* SettingsTableViewController.xib */,
 				6AC4EB8019D90F9000409E34 /* WebViewController.h */,
 				6AC4EB8119D90F9000409E34 /* WebViewController.m */,
+				2F230563246D005700291AC7 /* LaunchScreen.storyboard */,
 			);
 			name = ShakeItPhoto;
 			sourceTree = "<group>";
@@ -286,6 +293,8 @@
 		934320C912852F52002FFB39 /* ShakeItPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				2FF0ED78246D0643006B4A1B /* bg_iPhoneXR.png */,
+				2FF0ED74246D04F3006B4A1B /* bg_iPhoneXSmax.png */,
 				934321E312853387002FFB39 /* ShakeItPhotoMainWindow.xib */,
 				934321E412853387002FFB39 /* ShakeItPhotoViewController.xib */,
 				6AC4EB6E19D8C22B00409E34 /* bg_iPhone6Plus@2x.png */,
@@ -462,15 +471,18 @@
 				937C27C51285F9DB00D660AA /* preview.png in Resources */,
 				6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */,
 				937C27C61285F9DB00D660AA /* preview@2x.png in Resources */,
+				2FF0ED79246D0644006B4A1B /* bg_iPhoneXR.png in Resources */,
 				93488C841289F90400E90B20 /* iTunesArtwork in Resources */,
 				93418A1712976B9F00538E80 /* welcome_screen.png in Resources */,
 				93418A1812976B9F00538E80 /* welcome_screen@2x.png in Resources */,
 				6AC4EB6519D8B00B00409E34 /* FontAwesome.otf in Resources */,
 				9312B5F412A8C12000A3FBFB /* frame.png in Resources */,
+				2F230564246D005700291AC7 /* LaunchScreen.storyboard in Resources */,
 				6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */,
 				937641E012AAB68300619899 /* preview_polaroid.png in Resources */,
 				937641E112AAB68300619899 /* preview_polaroid@2x.png in Resources */,
 				93F5FC0212EFED6D0090853B /* info.png in Resources */,
+				2FF0ED75246D04F3006B4A1B /* bg_iPhoneXSmax.png in Resources */,
 				93F5FC0512EFED800090853B /* pickphoto.png in Resources */,
 				93F5FC0812EFEDF70090853B /* info@2x.png in Resources */,
 				9340F96213101A7600FF756E /* MadeinPolaroid.png in Resources */,
