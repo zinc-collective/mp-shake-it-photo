@@ -1,8 +1,20 @@
 # ShakeItPhoto
 
-## Contributing
 
-### Prerequisite
+## Become a Tester
+
+If you would like to provide feedback on ShakeIt Photo's upcoming releases,
+please [let us know](http://www.momentpark.com/contact-us) and we will invite
+you to Test Flight.
+
+You can [find a summary of the latest changes in our changelog](./CHANGELOG.md)
+
+## Become a Contributor
+
+Familiarize yourself with [Zinc's guide to becoming a
+contributor](https://www.zinc.coop/contributing/) and read on!
+
+### Prerequisites
 
 [Download the GoogleService-Info.plist from the Firebase console] and place it
 in the project root directory. See [Add Firebase to your iOS project] for more
