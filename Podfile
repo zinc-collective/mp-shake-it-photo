@@ -6,8 +6,10 @@ target 'ShakeItPhoto' do
 
     
     pod 'ALAssetsLibrary-CustomPhotoAlbum', '~> 1.3'
-    pod 'Crashlytics', '~> 3.13.2'
-    pod 'Fabric', '~> 1.10.2'
-    pod 'Firebase/Core'
+    # Add the pod for Firebase Crashlytics
+    pod 'Firebase/Crashlytics'
+    # Recommended: Add the Firebase pod for Google Analytics
+    pod 'Firebase/Analytics'
     pod 'SVProgressHUD', '~> 2.0'
+
 end

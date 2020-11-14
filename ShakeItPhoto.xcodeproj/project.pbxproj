@@ -536,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "#\"${PODS_ROOT}/Fabric/run\"\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		F95778E7C49AA5A0141C39EC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
