@@ -10,6 +10,6 @@
 
 @interface InstagramActivity : UIActivity
 
-@property (nonatomic, copy) void (^activity)();
+@property (nonatomic, copy) void (^activity)(void);
 
 @end
