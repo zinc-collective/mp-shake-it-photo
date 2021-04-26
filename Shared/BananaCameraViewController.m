@@ -292,7 +292,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      }
                      
                      NSString *shareText = @"Made with #ShakeItPhoto";
-                     NSURL *shareURL = [NSURL URLWithString:@"http://shakeitphoto.com"];
+                     NSURL *shareURL = [NSURL URLWithString:@"http://www.momentpark.com/shakeitphoto/"];
                      NSArray *activityItems = @[image, shareText, shareURL];
                      
                      UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities];

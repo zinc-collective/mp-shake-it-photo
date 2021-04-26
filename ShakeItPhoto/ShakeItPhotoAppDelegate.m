@@ -18,7 +18,7 @@
 
 - (NSString*) applicationURL
 {
-	return @"http://shakeitphoto.com/";
+	return @"http://www.momentpark.com/shakeitphoto/";
 }
 
 
