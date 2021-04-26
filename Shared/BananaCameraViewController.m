@@ -82,6 +82,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	[self disableToolbarItems: kAllItems];
 	_toolbar.alpha = 0.0;
     
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    _toolbar.bounds = CGRectMake(0, screenHeight - 120, screenWidth, 100);
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -675,7 +680,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     space.width = 20;
-
+    
     NSMutableArray *items = [NSMutableArray arrayWithObjects:space,actionButton,flexibleSpace,infoButton,space, nil];
     
 	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES)
