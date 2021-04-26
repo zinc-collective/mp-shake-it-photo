@@ -296,9 +296,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      NSArray *activityItems = @[image, shareText, shareURL];
                      
                      UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities];
-                     [self presentViewController:activityViewController animated:YES completion:nil];
-                     
-                     // WTF is this? Why?
+                     activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAirDrop];
+                     activityViewController.popoverPresentationController.barButtonItem = sender;
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self presentViewController:activityViewController animated:YES completion:nil];
+                     });
                  }
              }
             failureBlock:^(NSError *error) {
