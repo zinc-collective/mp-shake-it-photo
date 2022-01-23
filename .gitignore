@@ -7,5 +7,6 @@ Podfile.lock
 *.ipa
 img
 Todo.md
+NOTES.txt
 GoogleService-Info.plist
 Marketing/
