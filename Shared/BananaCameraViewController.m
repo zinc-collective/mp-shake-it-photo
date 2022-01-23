@@ -666,7 +666,44 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 -(UIBarButtonItem*)barButtonItemWithSystemItem:(UIBarButtonSystemItem)item action:(SEL)action {
     
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:self action:action];
-
+//    button.width = 60;
+//    CGRectMake(0.0, 0.0, 30.0, 30.0);
+//    UIButton *label = [UIButton buttonWithType:UIButtonTypeCustom];
+//    UIView *view = [button valueForKey:@"view"];
+//    if(view){
+//        [view frame] = CGSizeMake(100.0, 30.0);
+//        [view frame]: frame
+//    }
+//    else{
+//        width=(CGFloat)0.0 ;
+//    }
+//    button setCustomView:<#(__kindof UIView * _Nullable)#>
+//    share-square-o
+//    share-alt
+//    send-o
+//    external-link
+//    plus
+//    plus-square-o
+//    cross
+//    let menuBtn = UIButton(type: .custom)
+//    menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 20, height: 20)
+//    menuBtn.setImage(UIImage(named:"menuIcon"), for: .normal)
+//    menuBtn.addTarget(self, action: #selector(vc.onMenuButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+//
+//    let menuBarItem = UIBarButtonItem(customView: menuBtn)
+//
+//    UIButton* menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *label2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [label2 setFrame:CGRectMake(0.0, 0.0, 30.0, 30.0)];
+//    [label setTitle:[NSString stringWithFormat:@"%C",icon] forState:UIControlStateNormal];
+//    [label setTitleColor:_toolbar.tintColor forState:UIControlStateNormal];
+//    label.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:25.0];
+    [label2 addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *b22 = [[UIBarButtonItem alloc] initWithCustomView:label2];
+    
+//    return b22;
+    
     return button;
 }
 
@@ -675,7 +712,8 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     UIBarButtonItem*    flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil];
     
 
-    UIBarButtonItem* actionButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemAction action:@selector(performAction:)];
+//    UIBarButtonItem* actionButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemAction action:@selector(performAction:)];
+    UIBarButtonItem* actionButton = [self barButtonItemWithIcon:0xf045 action:@selector(performAction:)];
     UIBarButtonItem* infoButton   = [self barButtonItemWithIcon:0xf013 action:@selector(chooseOptions:)];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -685,7 +723,8 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
 	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES)
 	{
-        UIBarButtonItem*    cameraButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemCamera action:@selector(capturePhoto:)];
+//        UIBarButtonItem*    cameraButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemCamera action:@selector(capturePhoto:)];
+        UIBarButtonItem*    cameraButton = [self barButtonItemWithIcon:0xf030 action:@selector(capturePhoto:)];
         [items insertObject:flexibleSpace atIndex:3];
         [items insertObject:cameraButton atIndex:3];
     }
@@ -693,7 +732,8 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary] ||
        [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeSavedPhotosAlbum])
     {
-        UIBarButtonItem*    photoButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemAdd action:@selector(choosePhoto:)];
+//        UIBarButtonItem*    photoButton = [self barButtonItemWithSystemItem:UIBarButtonSystemItemAdd action:@selector(choosePhoto:)];
+        UIBarButtonItem*    photoButton = [self barButtonItemWithIcon:0xf196 action:@selector(choosePhoto:)];
         [items insertObject:flexibleSpace atIndex:3];
         [items insertObject:photoButton atIndex:3];
     }
