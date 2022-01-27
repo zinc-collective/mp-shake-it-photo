@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,22 +17,21 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6" userLabel="Main View">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6" userLabel="Main View">
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17">
                     <subviews>
-                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="8">
-                            <rect key="frame" x="0.0" y="346" width="320" height="44"/>
+                        <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8">
+                            <rect key="frame" x="0.0" y="-134" width="0.0" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="ACi-ef-Xg4"/>
                             </constraints>
                             <items/>
+                            <color key="tintColor" systemColor="systemPinkColor"/>
                         </toolbar>
                     </subviews>
-                    <color key="backgroundColor" red="0.094107367100000006" green="0.086282961069999997" blue="0.1215485707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.094117647058823528" green="0.086274509803921567" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="8" secondAttribute="bottom" constant="90" id="8cT-4h-7fY"/>
                         <constraint firstAttribute="trailing" secondItem="8" secondAttribute="trailing" id="FBT-J0-MvU"/>
@@ -39,16 +39,16 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="17" secondAttribute="trailing" id="24Z-BX-ue2"/>
-                <constraint firstItem="17" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="HWL-gD-X1w"/>
-                <constraint firstItem="17" firstAttribute="top" secondItem="6" secondAttribute="top" id="Nsn-dA-bGL"/>
-                <constraint firstAttribute="bottom" secondItem="17" secondAttribute="bottom" id="jXX-M4-Hhj"/>
+                <constraint firstItem="17" firstAttribute="bottom" secondItem="6" secondAttribute="bottom" id="B1Z-Rq-6Aw"/>
+                <constraint firstItem="17" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="LXj-a9-3fR"/>
+                <constraint firstItem="17" firstAttribute="centerY" secondItem="6" secondAttribute="centerY" id="O69-7p-6Gh"/>
+                <constraint firstItem="17" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="QiU-qh-oXV"/>
+                <constraint firstItem="17" firstAttribute="top" secondItem="6" secondAttribute="top" id="nZi-b6-e0K"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="139" y="368"/>
+            <point key="canvasLocation" x="137.68115942028987" y="367.63392857142856"/>
         </view>
         <view opaque="NO" clearsContextBeforeDrawing="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11" userLabel="Welcome View">
             <rect key="frame" x="0.0" y="0.0" width="460" height="480"/>
@@ -99,4 +99,9 @@ Or choose an existing shot from your photo library by touching cancel and touchi
             </connections>
         </tapGestureRecognizer>
     </objects>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
