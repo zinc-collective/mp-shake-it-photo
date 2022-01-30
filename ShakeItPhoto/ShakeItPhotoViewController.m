@@ -358,7 +358,9 @@
         } else {
 			[self processImage: originalImage shouldWriteOriginal: writeOriginal];
 		}
-	}
+    } else {
+        NSLog(@"selected image is not keyed: [UIImagePickerControllerMediaType: @'public.image']");
+    }
 }
 
 - (void) imagePickerControllerDidCancel: (UIImagePickerController*) picker
