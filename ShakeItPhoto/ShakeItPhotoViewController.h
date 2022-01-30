@@ -22,7 +22,7 @@
     
     UIView*							_frameView;                  // This is the frame layer that houses the polaroid frame.
     UIView*							_undevelopedView;            // This is the undeveloped layer.
-    UIView*							_developedView;              // This is the developed layer
+    UIImageView*					_developedView;              // This is the developed layer
 	UIView*							_shakeView;
 
     UITableViewCell*				_fasterShakingCell;
