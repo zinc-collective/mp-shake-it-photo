@@ -528,8 +528,9 @@
 {
     _imageProcessor = nil;
 	_imageProcessed = YES;
-    _developedView = [[UIView alloc] initWithFrame: _undevelopedView.frame];
-    _developedView.layer.contents = (id)previewImage.CGImage;
+    _developedView = [[UIImageView alloc] initWithFrame: _undevelopedView.frame];
+    [_developedView setImage:previewImage];
+//    _developedView.layer.contents = (id)previewImage.CGImage;
     
 	//_developedView.layer.contentsGravity = kCAGravityResizeAspect;
     
