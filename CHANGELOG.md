@@ -41,5 +41,5 @@
   contribution](https://github.com/zinc-collective/mp-shake-it-photo/pull/2)
 
 
-[Tom Lee]:https://github.com/user512
+[Tom Lee]:https://www.tomlee.app/
 [Zee Spencer]:https://www.zeespencer.com
