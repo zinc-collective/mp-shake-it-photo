@@ -1,6 +1,9 @@
 # ShakeIt Photo ChangeLog
 
-## Development (3.2.6)
+## 3.3.1
+
+* Rephrased Copy to Match Polaroid's IP Requirements
+## 3.2.6
 
 ### Fixes
 
