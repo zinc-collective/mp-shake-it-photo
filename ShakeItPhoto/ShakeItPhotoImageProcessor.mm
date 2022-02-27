@@ -400,7 +400,8 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
             UIImage* scaledImage = [finalPreviewImage resizedImage:CGSizeMake(640.0, 640.0) interpolationQuality:kCGInterpolationDefault];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_delegate imageProcessor:self didFinishProcessingPreviewImage:scaledImage];
+//                I think I need to capture the scaledImage to pass here
+                [self->_delegate imageProcessor:self didFinishProcessingPreviewImage:scaledImage];
             });
             
             CGImageRelease(imageRef);
