@@ -98,7 +98,7 @@
     switch (indexPath.row) {
         case 0:
         {
-            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"Polaroid Photo"];
+            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"Polaroid Frame Photos"];
             [str addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:cell.textLabel.font.pointSize] range:NSMakeRange(0, 8)];
             cell.textLabel.attributedText = str;
         }

@@ -1,6 +1,9 @@
 # ShakeIt Photo ChangeLog
 
-## Development (3.2.6)
+## 3.3.1
+
+* Rephrased Copy to Match Polaroid's IP Requirements
+## 3.2.6
 
 ### Fixes
 
@@ -41,5 +44,5 @@
   contribution](https://github.com/zinc-collective/mp-shake-it-photo/pull/2)
 
 
-[Tom Lee]:https://github.com/user512
+[Tom Lee]:https://www.tomlee.app/
 [Zee Spencer]:https://www.zeespencer.com

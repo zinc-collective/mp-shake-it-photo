@@ -3,7 +3,6 @@
 xcuserdata
 /build
 Pods/
-Podfile.lock
 *.ipa
 img
 Todo.md
