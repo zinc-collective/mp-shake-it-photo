@@ -531,7 +531,21 @@
     _imageProcessor = nil;
 	_imageProcessed = YES;
     _developedView = [[UIImageView alloc] initWithFrame: _undevelopedView.frame];
-    [_developedView setImage:previewImage];
+    if(previewImage != nil) {
+        if(_developedView != nil) {
+            [_developedView setImage:previewImage];
+//            [self animateDevelopedView];
+        } else {
+            
+            NSLog(@"missing _developedView");
+        }
+    } else {
+        
+        NSLog(@"missing previewImage");
+//        NSLog(@"missing previewImage: %@", previewImage);
+//        NSLog(@"missing _developedView: %@", _developedView);
+    }
+    
 //    _developedView.layer.contents = (id)previewImage.CGImage;
     
 	//_developedView.layer.contentsGravity = kCAGravityResizeAspect;
