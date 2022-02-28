@@ -24,7 +24,7 @@ Install Cocoapod and install Cocoa dependency
 
 ```bash
 gem install cocoapods
-pod install
+pod install --clean-install --repo-update
 ```
 
 Open `ShakeItPhoto.xcworkspace` with XCode
