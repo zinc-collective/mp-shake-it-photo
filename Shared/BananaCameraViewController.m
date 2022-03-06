@@ -79,8 +79,10 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
 	[self setBackgroundImage];
 	[self setToolbarItems];
+    [self setSafeArea];
 	[self disableToolbarItems: kAllItems];
 	_toolbar.alpha = 0.0;
+
     
 }
 
@@ -692,6 +694,24 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     }
     
     [self.toolbar setItems: items animated: NO];
+}
+
+- (void) setSafeArea
+{
+    if (@available(iOS 11, *)) {
+        UILayoutGuide * guide = self.view.safeAreaLayoutGuide;
+        [self.view.leadingAnchor constraintEqualToAnchor:guide.leadingAnchor].active = YES;
+        [self.view.trailingAnchor constraintEqualToAnchor:guide.trailingAnchor].active = YES;
+        [self.view.topAnchor constraintEqualToAnchor:guide.topAnchor].active = YES;
+        [self.view.bottomAnchor constraintEqualToAnchor:guide.bottomAnchor].active = YES;
+    } else {
+        UILayoutGuide *margins = self.view.layoutMarginsGuide;
+        [self.view.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+        [self.view.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+        [self.view.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
+        [self.view.bottomAnchor constraintEqualToAnchor:self.bottomLayoutGuide.topAnchor].active = YES;
+
+    }
 }
 
 #pragma mark -

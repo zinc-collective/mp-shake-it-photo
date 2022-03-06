@@ -47,6 +47,7 @@ enum ToolbarItems
 - (void) setBackgroundImage;
 - (void) clearBackgroundImage;
 - (void) setToolbarItems;
+- (void) setSafeArea;
 
 - (void) disableToolbarItems: (uint) itemsToDisable;
 - (void) enableToolbarItems: (uint) itemsToEnable;
