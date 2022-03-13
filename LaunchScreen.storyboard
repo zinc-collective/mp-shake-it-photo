@@ -19,18 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame_polaroid.png" translatesAutoresizingMaskIntoConstraints="NO" id="IJP-1S-n7E">
-                                <rect key="frame" x="132" y="348" width="150" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Jad-n2-CXD"/>
-                                    <constraint firstAttribute="height" constant="200" id="Uie-qA-a4p"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_iPhone4.png" translatesAutoresizingMaskIntoConstraints="NO" id="3LP-uo-QDy">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <color key="backgroundColor" red="0.074509803921568626" green="0.066666666666666666" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.28418874611344325" blue="0.25042963318004186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.074509803921568626" green="0.066666666666666666" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="IJP-1S-n7E" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="SXr-m6-msK"/>
-                            <constraint firstItem="IJP-1S-n7E" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="u9S-ce-pw0"/>
+                            <constraint firstItem="3LP-uo-QDy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="9Mt-1W-2q7"/>
+                            <constraint firstItem="3LP-uo-QDy" firstAttribute="top" secondItem="z0Y-kR-uKJ" secondAttribute="bottom" id="Kka-X0-56i"/>
+                            <constraint firstItem="CpX-m2-F0s" firstAttribute="top" secondItem="3LP-uo-QDy" secondAttribute="bottom" id="T57-Qp-nAr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3LP-uo-QDy" secondAttribute="trailing" id="oH2-Sh-8P3"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,7 +40,7 @@
     </scenes>
     <color key="tintColor" systemColor="systemPinkColor"/>
     <resources>
-        <image name="frame_polaroid.png" width="2941.276611328125" height="3523.404296875"/>
+        <image name="bg_iPhone4.png" width="320" height="480"/>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
