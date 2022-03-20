@@ -1,5 +1,8 @@
 # ShakeIt Photo ChangeLog
 
+## 3.3.2
+
+* Rephrased PLR IP LLC to Polaroid BV to match Polaroid's IP Requirements.
 ## 3.3.1
 
 * Rephrased Copy to Match Polaroid's IP Requirements
