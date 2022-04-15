@@ -1,15 +1,13 @@
 # ShakeIt Photo ChangeLog
 
 ## 3.3.2
-
 * Rephrased PLR IP LLC to Polaroid BV to match Polaroid's IP Requirements.
+
 ## 3.3.1
-
 * Rephrased Copy to Match Polaroid's IP Requirements
+
 ## 3.2.6
-
 ### Fixes
-
 - **Fix broken link to the Shake It Photo Tutorial.** Upon initial
   installation, the app would link to a tutorial. However, this link was
   broken. **Test this by** doing a fresh installation of
@@ -18,9 +16,7 @@
   for [his generous
   contribution](https://github.com/zinc-collective/mp-shake-it-photo/pull/10).
 
-
 ### Enhancements
-
 - **Improve support for larger sized and notched screens.** Since the
   release of the the larger iPhone screens, ShakeIt Photo has had gaps
   between the application interface and the larger devices bezels. With
@@ -33,7 +29,6 @@
   contribution](https://github.com/zinc-collective/mp-shake-it-photo/pull/12)
 
 ### Changes
-
 - **Adopt the Prosperity License and publicly release the source code.** The
   Cooperative has decided that it is safe for us to release ShakeIt Photo's
   source code publicly under a non-commercial license, so that folks who want to
@@ -46,6 +41,28 @@
   you to [Tom Lee] for [his generous
   contribution](https://github.com/zinc-collective/mp-shake-it-photo/pull/2)
 
+## 3.2.7
+### Fixes
+- **Improve toolbar usability**  On smaller devices the touch zone for the
+  toolbar buttons was too close to the bottom of the screen making it difficult
+  to use without triggering the app switcher. The toolbar position has been
+  adjusted resulting in easier to reach buttons and a reduced chance of
+  triggering the app switcher with unintended swipe motions.
 
+  [This update](https://github.com/zinc-collective/mp-shake-it-photo/pull/41) was contributed by [Cricket].
+
+### Changes
+- **Update build tools to Xcode 13.x**  The project files were converted to
+  be compiled with the latest development tools from Apple in preparation for
+  future releases.
+
+  [This update](https://github.com/zinc-collective/mp-shake-it-photo/pull/40) was contributed by [Cricket].
+
+
+
+
+
+
+[Cricket]:https://wearetheinternauts.com/
 [Tom Lee]:https://www.tomlee.app/
 [Zee Spencer]:https://www.zeespencer.com
