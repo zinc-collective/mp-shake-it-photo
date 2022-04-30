@@ -20,12 +20,19 @@ contributor](https://www.zinc.coop/contributing/) and read on!
 in the project root directory. See [Add Firebase to your iOS project] for more
 information.
 
-Install Cocoapod and install Cocoa dependency
-
+Install [rbenv](https://github.com/rbenv/rbenv) and install ruby 2.7.2
+We **HIGHLY RECOMMEND** that you read the Readme for rbenv to learn about your install and configuration options.
+This is a Quick/typical summary of commands
 ```bash
-gem install cocoapods
+brew install rbenv ruby-build
+rbenv init
+rbenv install 2.7.2
+rbenv local 2.7.2
+gem install bundler
+bundle install
 pod install
-```
+````
+
 
 Open `ShakeItPhoto.xcworkspace` with XCode
 
