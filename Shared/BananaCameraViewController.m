@@ -514,6 +514,16 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 }
 
 #pragma mark
+- (void) enableFuntionalToolbarItems {
+    for(UIBarButtonItem* item in [self.toolbar items])
+    {
+        if(@selector(performAction:) == [item action] && _latestProcessedImageURL == nil) {
+            item.enabled = NO;
+        } else {
+            item.enabled = YES;
+        }
+    }
+}
 
 - (void) disableToolbarItems: (uint) itemsToDisable
 {
@@ -535,29 +545,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	if(itemsToDisable & kActionItem)
 	{
 		[self _actionBarButtonItem].enabled = NO;
-	}
-}
-
-- (void) enableToolbarItems: (uint) itemsToEnable
-{
-	if(itemsToEnable & kCapturePhotoItem)
-	{
-		[self _capturePhotoBarButtonItem].enabled = YES;
-	}
-	
-	if(itemsToEnable & kPickPhotoItem)
-	{
-		[self _pickPhotoBarButtonItem].enabled = YES;
-	}
-
-	if(itemsToEnable & kSettingsItem)
-	{
-		[self _settingsBarButtonItem].enabled = YES;
-	}
-
-	if(itemsToEnable & kActionItem)
-	{
-		[self _actionBarButtonItem].enabled = YES;
 	}
 }
 
@@ -920,25 +907,19 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	
 	imagePath = (NSURL*)[userInfo objectForKey: @"url"];
 	error = (NSError*)[userInfo objectForKey: @"error"];
-	
-//    [self enableToolbarItems: kAllItems];
-    [self enableToolbarItems: kCapturePhotoItem | kPickPhotoItem | kSettingsItem];
     
 	if(imagePath)
 	{
 		//NSLog(@"Did write processed image to photo library - %@", [imagePath absoluteString]);
-		
-		_latestProcessedImageURL = imagePath;
-		[self _actionBarButtonItem].enabled = YES;
-        
+		_latestProcessedImageURL = imagePath;        
     } else {
-        [self _actionBarButtonItem].enabled = NO;
+        _latestProcessedImageURL = nil;
     }
+    [self enableFuntionalToolbarItems];
 	if(error)
 	{
 		NSLog(@"Error writing processed image written to photo library - %@", [error description]);
 	}
-    NSLog(@"$$$--->_latestProcessedImageURL: %@", _latestProcessedImageURL);
 }
 
 @end

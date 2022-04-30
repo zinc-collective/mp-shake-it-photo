@@ -372,10 +372,7 @@
 		[self processImage: image shouldWriteOriginal: imageFlags];
 	} else {
 		self.toolbar.alpha = 1.0;
-        NSLog(@"$$$--->SHOULD ALL items be enabled here or just the main three (not actionbutton) --  How to detect is there is an image for the action controller? -- NOTE: BananaCamVC._latestProcessedImageURL");
-        NSLog(@"$$$--->NOTE: BananaCamVC._latestProcessedImageURL");
-		[self disableToolbarItems: kAllItems];
-        [self enableToolbarItems: kCapturePhotoItem | kPickPhotoItem | kSettingsItem];
+        [self enableFuntionalToolbarItems];
 	}
 }
 
@@ -542,7 +539,7 @@
 -(void)animateDevelopedView {
     if(_slideOutAnimationFinished && _imageProcessed) {
         [self _animateDevelopedView];
-        [self enableToolbarItems: kCapturePhotoItem | kPickPhotoItem | kSettingsItem];
+        [self enableFuntionalToolbarItems];
     }
 }
 
