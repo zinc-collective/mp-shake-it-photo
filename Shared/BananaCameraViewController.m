@@ -296,9 +296,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      NSArray *activityItems = @[image, shareText, shareURL];
                      
                      UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities];
-                     [self presentViewController:activityViewController animated:YES completion:nil];
-                     
-                     // WTF is this? Why?
+                     activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAirDrop];
+                     activityViewController.popoverPresentationController.barButtonItem = sender;
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self presentViewController:activityViewController animated:YES completion:nil];
+                     });
                  }
              }
             failureBlock:^(NSError *error) {
@@ -919,19 +921,24 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	imagePath = (NSURL*)[userInfo objectForKey: @"url"];
 	error = (NSError*)[userInfo objectForKey: @"error"];
 	
+//    [self enableToolbarItems: kAllItems];
+    [self enableToolbarItems: kCapturePhotoItem | kPickPhotoItem | kSettingsItem];
+    
 	if(imagePath)
 	{
 		//NSLog(@"Did write processed image to photo library - %@", [imagePath absoluteString]);
 		
 		_latestProcessedImageURL = imagePath;
 		[self _actionBarButtonItem].enabled = YES;
-	}
-	else if(error)
+        
+    } else {
+        [self _actionBarButtonItem].enabled = NO;
+    }
+	if(error)
 	{
 		NSLog(@"Error writing processed image written to photo library - %@", [error description]);
 	}
-	
-	[self enableToolbarItems: kAllItems];
+    NSLog(@"$$$--->_latestProcessedImageURL: %@", _latestProcessedImageURL);
 }
 
 @end
