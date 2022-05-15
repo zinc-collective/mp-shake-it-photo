@@ -372,7 +372,7 @@
 		[self processImage: image shouldWriteOriginal: imageFlags];
 	} else {
 		self.toolbar.alpha = 1.0;
-		[self enableToolbarItems: kAllItems];
+        [self enableFuntionalToolbarItems];
 	}
 }
 
@@ -539,7 +539,7 @@
 -(void)animateDevelopedView {
     if(_slideOutAnimationFinished && _imageProcessed) {
         [self _animateDevelopedView];
-        [self enableToolbarItems: kCapturePhotoItem | kPickPhotoItem | kSettingsItem];
+        [self enableFuntionalToolbarItems];
     }
 }
 

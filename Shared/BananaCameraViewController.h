@@ -49,7 +49,7 @@ enum ToolbarItems
 - (void) setToolbarItems;
 
 - (void) disableToolbarItems: (uint) itemsToDisable;
-- (void) enableToolbarItems: (uint) itemsToEnable;
+- (void) enableFuntionalToolbarItems;
 
 - (IBAction) capturePhoto: (id) sender;
 - (IBAction) choosePhoto: (id) sender;
