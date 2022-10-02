@@ -10,7 +10,6 @@
 #import "BananaCameraUtilities.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MessageUI/MessageUI.h>
-#import <Firebase.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
@@ -32,8 +31,7 @@
 
 - (BOOL) application: (UIApplication*) application didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
 {
-    [FIRApp configure];
-	// Check for background task support
+    // Check for background task support
 	
 	UIDevice* device = [UIDevice currentDevice];
 	if([device respondsToSelector: @selector(isMultitaskingSupported)])
