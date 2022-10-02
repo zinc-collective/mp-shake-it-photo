@@ -177,7 +177,7 @@
 			}
 			else 
 			{
-				NSLog(@"Unable to get JPEG representation from original image. Could be low memory issue");
+				NSLog(@"###---> Unable to get JPEG representation from original image. Could be low memory issue");
 			}
 			
 		});		
@@ -239,7 +239,7 @@
 - (NSUInteger) imagesToProcess
 {
 	NSUInteger	number = [_imagesToProcess count];
-	//NSLog(@"imagesToProcess - %d", number);
+	//NSLog(@"###---> imagesToProcess - %d", number);
 	return number;
 }
 

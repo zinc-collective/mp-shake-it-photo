@@ -44,7 +44,7 @@
                                                  
                                                  if(error){
                                                      
-                                                     NSLog(@"%@", error);
+                                                     NSLog(@"###---> %@", error);
                                                  }
                                              }];
     
@@ -61,7 +61,7 @@
 
 -(void)updateAccelerometer:(CMAcceleration)acceleration {
     
-    //NSLog(@"currentAcceleration %f %f %f",acceleration.x,acceleration.y,acceleration.z);
+    //NSLog(@"###---> currentAcceleration %f %f %f",acceleration.x,acceleration.y,acceleration.z);
     
     if(!IsRunningInSimulator())
     {
@@ -125,7 +125,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSLog(@"viewDidAppear %i",_firstLoad);
+    NSLog(@"###---> viewDidAppear %i",_firstLoad);
     if(_firstLoad == NO) {
         [self handleLaunch];
         [self setFirstLoad:YES];
@@ -268,13 +268,13 @@
                 
             } completion:^(BOOL finished) {
                 
-                NSLog(@"finished %i",finished);
+                NSLog(@"###---> finished %i",finished);
                 
                 if(finished) {
-                    NSLog(@"Animation Completed On Time");
+                    NSLog(@"###---> Animation Completed On Time");
                     [self slideOutAnimationCompelte];
                 } else {
-                    NSLog(@"Animation Completed Early");
+                    NSLog(@"###---> Animation Completed Early");
                     //Hack because complete animation fires too early
                     [self performSelector:@selector(slideOutAnimationCompelte) withObject:nil afterDelay:2.5];
                 }            
@@ -398,7 +398,7 @@
     
     CGFloat r2 = previewSize.width / previewSize.height;
     
-    NSLog(@"%f %f %f",scale,r1,r2);
+    NSLog(@"###---> %f %f %f",scale,r1,r2);
     
 	return previewSize;
 }
@@ -458,7 +458,7 @@
 
 - (void) setBackgroundImage
 {
-    //NSLog(@"setting background image");
+    //NSLog(@"###---> setting background image");
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     NSInteger height = fmaxf(screenBounds.size.width, screenBounds.size.height);
@@ -555,7 +555,7 @@
 
 - (void) imageProcessorWroteProcessedImageToLibrary: (NSNotification*) notification
 {
-	//NSLog(@"imageProcessorWroteProcessedImageToLibrary triggered");
+	//NSLog(@"###---> imageProcessorWroteProcessedImageToLibrary triggered");
 	
 	[super imageProcessorWroteProcessedImageToLibrary: notification];
 	
@@ -568,7 +568,7 @@
 	}
 	else
 	{
-		//NSLog(@"No images to process");
+		//NSLog(@"###---> No images to process");
 	}
 }
 
@@ -601,7 +601,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self setFirstLoad:NO];
-        NSLog(@"set first load %i",_firstLoad);
+        NSLog(@"###---> set first load %i",_firstLoad);
     }];
 }
 

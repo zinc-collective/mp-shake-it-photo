@@ -33,11 +33,11 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     
-    NSLog(@"request %@ %li",request.URL.absoluteString,(long)navigationType);
+    NSLog(@"###---> request %@ %li",request.URL.absoluteString,(long)navigationType);
     if ([request.URL.scheme isEqualToString:@"itms-apps"]) {
         //[[UIApplication sharedApplication] canOpenURL:myAppURL]) {
         //[[UIApplication sharedApplication] openURL:myAppURL];
-        NSLog(@"blocking redirect");
+        NSLog(@"###---> blocking redirect");
         return NO;
     }
    NSString *requestedURL = [[request URL] absoluteString];

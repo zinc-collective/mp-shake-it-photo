@@ -269,7 +269,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
         previewSize = CGSizeMake(previewSize.height, previewSize.width);
     }
     
-    NSLog(@"Preview Image Size = %@", NSStringFromCGSize(previewSize));
+    NSLog(@"###---> Preview Image Size = %@", NSStringFromCGSize(previewSize));
     return previewSize;
 }
 
@@ -331,7 +331,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
                                finalSize.height - ((finalSize.height * kInteriorTop) + (finalSize.height * kInteriorBottom)));
     }
     
-    NSLog(@"_computeImageRect = %@", NSStringFromCGRect(imageRect));
+    NSLog(@"###---> _computeImageRect = %@", NSStringFromCGRect(imageRect));
     return CGRectIntegral(imageRect);
 }
 

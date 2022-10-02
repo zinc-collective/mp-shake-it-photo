@@ -52,7 +52,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void) viewDidLoad
 {
-	//NSLog(@"viewDidLoad");
+	//NSLog(@"###---> viewDidLoad");
 
     [super viewDidLoad];
 
@@ -91,7 +91,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void) viewDidUnload 
 {
-	//NSLog(@"viewDidUnload");
+	//NSLog(@"###---> viewDidUnload");
 	
 	[super viewDidUnload];
 
@@ -118,7 +118,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void) didReceiveMemoryWarning
 {
-	NSLog(@"didReceiveMemoryWarning");
+	NSLog(@"###---> didReceiveMemoryWarning");
 
 	[self clearBackgroundImage];
     [super didReceiveMemoryWarning];
@@ -144,7 +144,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     //previewRect.size.width = 20.0;
     //previewRect.size.height = 200.0;
     
-//    NSLog(@"preview rect %@",NSStringFromCGRect(previewRect));
+//    NSLog(@"###---> preview rect %@",NSStringFromCGRect(previewRect));
 //    SCNavigationController *nav = [[SCNavigationController alloc] init];
 //    nav.scNaigationDelegate = self;
 //    //nav.customAlbumName = @"Shake It Photo";
@@ -304,7 +304,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                  }
              }
             failureBlock:^(NSError *error) {
-                NSLog(@"_loadProcessedImageDataForURL failed - %@", [error description]);
+                NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
             }];
 }
 
@@ -328,7 +328,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                          scaleRect.size.height *= (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
                          scaleRect.origin.y = newRect.size.height - scaleRect.size.height;
                          
-                         //NSLog(@"%f",(CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef));
+                         //NSLog(@"###---> %f",(CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef));
                          // Build a context that's the same dimensions as the new size
                          CGContextRef bitmap = CGBitmapContextCreate(NULL,
                                                                      newRect.size.width,
@@ -376,9 +376,9 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                              cropRect.origin.x = (size.width - finalSize.width)/2;
                          }
                          
-                         NSLog(@"size %f %f",size.width,size.height);
+                         NSLog(@"###---> size %f %f",size.width,size.height);
                          UIImage *image = [imagez resizedImage:size interpolationQuality:kCGInterpolationDefault];
-                         NSLog(@"image size %f %f",image.size.width,image.size.height);
+                         NSLog(@"###---> image size %f %f",image.size.width,image.size.height);
                          
                          CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
                          NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
@@ -404,7 +404,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      }
                  }
                 failureBlock:^(NSError *error) {
-                    NSLog(@"_loadProcessedImageDataForURL failed - %@", [error description]);
+                    NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
                 }];
                           
     } else {
@@ -431,12 +431,12 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (void)documentInteractionController:(UIDocumentInteractionController *)controller
         willBeginSendingToApplication:(NSString *)application {
-    NSLog(@"Start!");
+    NSLog(@"###---> Start!");
 }
 
 -(void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application
 {
-    NSLog(@"Endg!");
+    NSLog(@"###---> Endg!");
 }
 
 
@@ -868,7 +868,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
     if(filename == NULL)
     {
-        NSLog(@"Could not create file in directory %@", directory);
+        NSLog(@"###---> Could not create file in directory %@", directory);
         return nil;
     }
 
@@ -891,11 +891,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 	
 	if(imagePath)
 	{
-		//NSLog(@"Did write original image to photo library - %@", [imagePath absoluteString]);
+		//NSLog(@"###---> Did write original image to photo library - %@", [imagePath absoluteString]);
 	}
 	else if(error)
 	{
-		NSLog(@"Error writing original image written to photo library - %@", [error description]);
+		NSLog(@"###---> Error writing original image written to photo library - %@", [error description]);
 	}
 }
 
@@ -910,7 +910,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
 	if(imagePath)
 	{
-		//NSLog(@"Did write processed image to photo library - %@", [imagePath absoluteString]);
+		//NSLog(@"###---> Did write processed image to photo library - %@", [imagePath absoluteString]);
 		_latestProcessedImageURL = imagePath;        
     } else {
         _latestProcessedImageURL = nil;
@@ -918,7 +918,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     [self enableFuntionalToolbarItems];
 	if(error)
 	{
-		NSLog(@"Error writing processed image written to photo library - %@", [error description]);
+		NSLog(@"###---> Error writing processed image written to photo library - %@", [error description]);
 	}
 }
 
