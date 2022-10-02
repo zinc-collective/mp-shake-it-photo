@@ -1,9 +1,13 @@
 PODS:
   - ALAssetsLibrary-CustomPhotoAlbum (1.3.4)
+  - Sentry (7.27.0):
+    - Sentry/Core (= 7.27.0)
+  - Sentry/Core (7.27.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - ALAssetsLibrary-CustomPhotoAlbum (~> 1.3)
+  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `7.27.0`)
   - SVProgressHUD (~> 2.0)
 
 SPEC REPOS:
@@ -11,10 +15,21 @@ SPEC REPOS:
     - ALAssetsLibrary-CustomPhotoAlbum
     - SVProgressHUD
 
+EXTERNAL SOURCES:
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+    :tag: 7.27.0
+
+CHECKOUT OPTIONS:
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+    :tag: 7.27.0
+
 SPEC CHECKSUMS:
   ALAssetsLibrary-CustomPhotoAlbum: 73ce379e8bef8bb6ff2f286cd98461422f869fae
+  Sentry: 026b36fdc09531604db9279e55f047fe652e3f4a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 3449a480575f1480a0449ee2b123128e7d34884e
+PODFILE CHECKSUM: 875d31c6494a21bddf83d0c3db93165a136f29e7
 
 COCOAPODS: 1.11.3
