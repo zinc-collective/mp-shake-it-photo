@@ -35,7 +35,7 @@
     //Add Sentry
     [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
         options.dsn = @"https://dcd916a406c542578bc6471feab830a1@o268108.ingest.sentry.io/4503914870996993";
-        options.debug = true; // Enabled debug when first installing is always helpful
+        options.debug = false; // Enabled debug when first installing is always helpful
         // Example uniform sample rate: capture 100% of transactions for performance monitoring
         options.tracesSampleRate = @1.0;
         
