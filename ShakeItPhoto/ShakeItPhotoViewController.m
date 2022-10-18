@@ -4,6 +4,7 @@
 //  Copyright 2020 Zinc Collective, LLC. All rights reserved.
 //
 
+#import "ShakeItPhoto-Swift.h"
 #import "ShakeItPhotoViewController.h"
 #import "ShakeItPhotoConstants.h"
 #import "BananaCameraUtilities.h"
@@ -423,10 +424,10 @@
 		[self.shakeView insertSubview: _frameView belowSubview: self.toolbar];
 		
 		//previewSize = [self _previewImageSize];
-    UIImage*    undevelopedPreviewImage = [UIImage imageNamed: @"film.png"];
-    _undevelopedView = [[UIView alloc] initWithFrame: _frameView.frame];
-    _undevelopedView.layer.contents = (id)undevelopedPreviewImage.CGImage;
-    [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
+        UIImage*    undevelopedPreviewImage = [UIImage imageNamed: @"film.png"];
+        _undevelopedView = [[UIView alloc] initWithFrame: _frameView.frame];
+        _undevelopedView.layer.contents = (id)undevelopedPreviewImage.CGImage;
+        [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
 	
     }
 }
@@ -516,12 +517,13 @@
         [UIView animateWithDuration:_developAnimationDuration delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
             _undevelopedView.alpha =  0.001f;
         } completion:^(BOOL finished) {
-            
+            NSLog(@"###---> %n", finished);
             [_undevelopedView removeFromSuperview];
             _undevelopedView = nil;
             [self stopTrackingAcceleration];
         }];
 	}
+    NSLog(@"###---> outside");
 }
 
 - (void) imageProcessor: (ShakeItPhotoImageProcessor*) ip didFinishProcessingPreviewImage: (UIImage*) previewImage
@@ -540,6 +542,8 @@
     if(_slideOutAnimationFinished && _imageProcessed) {
         [self _animateDevelopedView];
         [self enableFuntionalToolbarItems];
+    } else {
+        NSLog(@"###---> animateDevelopedView: skipped development in preview");
     }
 }
 
@@ -555,7 +559,7 @@
 
 - (void) imageProcessorWroteProcessedImageToLibrary: (NSNotification*) notification
 {
-	//NSLog(@"###---> imageProcessorWroteProcessedImageToLibrary triggered");
+	NSLog(@"###---> imageProcessorWroteProcessedImageToLibrary triggered");
 	
 	[super imageProcessorWroteProcessedImageToLibrary: notification];
 	
@@ -568,7 +572,7 @@
 	}
 	else
 	{
-		//NSLog(@"###---> No images to process");
+		NSLog(@"###---> No images to process");
 	}
 }
 
@@ -601,7 +605,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self setFirstLoad:NO];
-        NSLog(@"###---> set first load %i",_firstLoad);
+        NSLog(@"###---> set first load %i", _firstLoad);
     }];
 }
 

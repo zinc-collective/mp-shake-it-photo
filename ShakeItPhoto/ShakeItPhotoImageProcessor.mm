@@ -277,6 +277,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 {
     CGSize	finalSize = self.rawImage.size;
     CGFloat	testDim = MIN(finalSize.width, finalSize.height);
+    NSLog(@"###---> _finalImageSize => [rawImage, testDim] = %@ --- %f", NSStringFromCGSize(finalSize), testDim);
     
     if(testDim >= 1700.0) {
         if(_usePolaroidAssets) {
@@ -315,6 +316,9 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 +(CGRect) computeImageRect:(CGSize)finalSize usePolaroidAssets:(BOOL)_usePolaroidAssets
 {
     CGRect		imageRect = CGRectZero;
+    finalSize = CGSizeMake(1920.0, 2300.0);
+    NSLog(@"###---> _computeImageRect(BEFORE-A) = %@", NSStringFromCGRect(imageRect));
+    NSLog(@"###---> _computeImageRect(BEFORE-B) = %@ --- %i", NSStringFromCGSize(finalSize), _usePolaroidAssets);
     
     if(_usePolaroidAssets)
     {
@@ -331,7 +335,7 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
                                finalSize.height - ((finalSize.height * kInteriorTop) + (finalSize.height * kInteriorBottom)));
     }
     
-    NSLog(@"###---> _computeImageRect = %@", NSStringFromCGRect(imageRect));
+    NSLog(@"###---> _computeImageRect(AFTER) = %@", NSStringFromCGRect(imageRect));
     return CGRectIntegral(imageRect);
 }
 
