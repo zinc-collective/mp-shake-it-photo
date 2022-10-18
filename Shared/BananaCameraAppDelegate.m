@@ -10,7 +10,6 @@
 #import "BananaCameraUtilities.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MessageUI/MessageUI.h>
-#import <Firebase.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
@@ -18,6 +17,7 @@
 - (void) _addImagePath: (NSString*) path imageFlags: (BOOL) flags;
 @end
 
+@import Sentry;
 @implementation BananaCameraAppDelegate
 
 @synthesize window = _window;
@@ -32,8 +32,26 @@
 
 - (BOOL) application: (UIApplication*) application didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
 {
-    [FIRApp configure];
-	// Check for background task support
+    //Add Sentry
+    [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+        options.dsn = @"https://dcd916a406c542578bc6471feab830a1@o268108.ingest.sentry.io/4503914870996993";
+        options.debug = false; // Enabled debug when first installing is always helpful
+        // Example uniform sample rate: capture 100% of transactions for performance monitoring
+        options.tracesSampleRate = @1.0;
+        
+        // Features turned off by default, but worth checking out
+        options.enableAppHangTracking = true;
+        options.enableFileIOTracking = true;
+        options.enableCoreDataTracking = true;
+        
+        // Enable all experimental features
+        options.enableUserInteractionTracing = true;
+        options.attachScreenshot = true;
+        options.attachViewHierarchy = true;
+    }];
+    
+    
+    // Check for background task support
 	
 	UIDevice* device = [UIDevice currentDevice];
 	if([device respondsToSelector: @selector(isMultitaskingSupported)])
@@ -179,7 +197,7 @@
 			}
 			else 
 			{
-				NSLog(@"Unable to get JPEG representation from original image. Could be low memory issue");
+				NSLog(@"###---> Unable to get JPEG representation from original image. Could be low memory issue");
 			}
 			
 		});		
@@ -241,7 +259,7 @@
 - (NSUInteger) imagesToProcess
 {
 	NSUInteger	number = [_imagesToProcess count];
-	//NSLog(@"imagesToProcess - %d", number);
+	//NSLog(@"###---> imagesToProcess - %d", number);
 	return number;
 }
 

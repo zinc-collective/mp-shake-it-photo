@@ -17,7 +17,7 @@ void LogTiming(NSString* message, uint64_t startTime, uint64_t endTime)
 		conversion = 1e-9 * (double)info.numer / (double)info.denom;
     }
     
-    NSLog(@"%@: %e", message, (endTime - startTime) * conversion);
+    NSLog(@"###---> %@: %e", message, (endTime - startTime) * conversion);
 }
 
 CGRect CenterRectOverRect(CGRect a, CGRect b)

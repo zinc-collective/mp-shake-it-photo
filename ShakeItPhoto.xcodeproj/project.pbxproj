@@ -25,7 +25,10 @@
 		6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD324621A8DC70400C115A5 /* InstagramActivity.m */; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
+		6D76E24728FC013D00D83D42 /* ShakeItPhoto-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
+		6DCB806528F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */; };
 		6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */; };
+		6DEBF87828FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
 		89BA00EC22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */; };
 		9312B5F412A8C12000A3FBFB /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5EB12A8C12000A3FBFB /* frame.png */; };
 		9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9321E54612891031001EC80F /* ShakeItPhotoImageProcessor.mm */; };
@@ -101,7 +104,9 @@
 		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.h"; sourceTree = "<group>"; };
 		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
+		6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShakeItPhotoViewController+Ext.swift"; sourceTree = "<group>"; };
 		6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShakeItPhoto-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E73C50128138453542FE24D /* Pods-ShakeItPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.release.xcconfig"; path = "Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.release.xcconfig"; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		89BA00EA22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+CSNAdditions.h"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.h"; sourceTree = "<group>"; };
@@ -205,9 +210,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */,
 				6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */,
 				78158BC91D086FBF005FD10A /* todo.md */,
 				934321F1128533BD002FFB39 /* Vendor */,
@@ -286,6 +292,7 @@
 				6AC4EB8019D90F9000409E34 /* WebViewController.h */,
 				6AC4EB8119D90F9000409E34 /* WebViewController.m */,
 				2F230563246D005700291AC7 /* LaunchScreen.storyboard */,
+				6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */,
 			);
 			name = ShakeItPhoto;
 			sourceTree = "<group>";
@@ -405,6 +412,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DEBF87828FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +450,7 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 5GGD34ZNFU;
+						LastSwiftMigration = 1400;
 					};
 				};
 			};
@@ -456,7 +465,7 @@
 				Base,
 				ja,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -551,6 +560,7 @@
 		};
 		6DD8DC1422BC0DE400F46261 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -563,10 +573,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/newOutputFile",
+				"$(DERIVED_FILE_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Swift.h",
+				"$(DERIVED_FILE_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -575,11 +589,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D76E24728FC013D00D83D42 /* ShakeItPhoto-Bridging-Header.h in Sources */,
 				934321DC12853379002FFB39 /* BananaCameraAppDelegate.m in Sources */,
 				934321DD12853379002FFB39 /* BananaCameraViewController.m in Sources */,
 				934321DE12853379002FFB39 /* main.m in Sources */,
 				934321F712853449002FFB39 /* ShakeItPhotoAppDelegate.m in Sources */,
 				934321F812853449002FFB39 /* ShakeItPhotoViewController.m in Sources */,
+				6DCB806528F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift in Sources */,
 				937C25AF12853A7B00D660AA /* BananaCameraImage.mm in Sources */,
 				937C25B012853A7B00D660AA /* BananaCameraImageCurve.mm in Sources */,
 				937C25B112853A7B00D660AA /* BananaCameraUtilities.mm in Sources */,
@@ -617,7 +633,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -625,11 +642,25 @@
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ShakeItPhoto;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 3.3.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -646,17 +677,31 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ShakeItPhoto;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 3.3.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -674,19 +719,33 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ShakeItPhoto;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 3.3.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = ShakeItPhoto_Distribution;
@@ -726,8 +785,15 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = ShakeItPhoto;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB1A5F8F-D996-48D2-8B35-7E63EA6CACD9";
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "-Swift.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 			};
 			name = Distribution;
 		};
@@ -744,17 +810,31 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5GGD34ZNFU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shared/ShakeItPhoto_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShakeItPhoto/ShakeItPhoto-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ShakeItPhoto;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 3.3.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greyscalegorilla.ShakeItPhoto;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = ShakeItPhoto;
 				PROVISIONING_PROFILE = "";
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -795,7 +875,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = ShakeItPhoto;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "-Swift.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 			};
 			name = Debug;
 		};
@@ -834,7 +921,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = ShakeItPhoto;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "-Swift.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 			};
 			name = Release;
 		};

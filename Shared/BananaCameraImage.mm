@@ -172,7 +172,7 @@
 
 - (void) dealloc
 {
-	//NSLog(@"BananaCameraImage dealloced");
+	//NSLog(@"###---> BananaCameraImage dealloced");
 	
 	[self dumpPixels];
 	

@@ -36,18 +36,18 @@
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems
 {
-    NSLog(@"%s %@",__FUNCTION__,activityItems);
+    NSLog(@"###---> %s %@",__FUNCTION__,activityItems);
     return YES;
 }
 
 - (void)prepareWithActivityItems:(NSArray *)activityItems
 {
-    NSLog(@"%s %@",__FUNCTION__,activityItems);
+    NSLog(@"###---> %s %@",__FUNCTION__,activityItems);
 }
 
 - (UIViewController *)activityViewController
 {
-    NSLog(@"%s",__FUNCTION__);
+    NSLog(@"###---> %s",__FUNCTION__);
     return nil;
 }
 

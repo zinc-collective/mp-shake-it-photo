@@ -4,6 +4,7 @@
 //  Copyright 2020 Zinc Collective, LLC. All rights reserved.
 //
 
+#import "ShakeItPhoto-Swift.h"
 #import "ShakeItPhotoViewController.h"
 #import "ShakeItPhotoConstants.h"
 #import "BananaCameraUtilities.h"
@@ -44,7 +45,7 @@
                                                  
                                                  if(error){
                                                      
-                                                     NSLog(@"%@", error);
+                                                     NSLog(@"###---> %@", error);
                                                  }
                                              }];
     
@@ -61,7 +62,7 @@
 
 -(void)updateAccelerometer:(CMAcceleration)acceleration {
     
-    //NSLog(@"currentAcceleration %f %f %f",acceleration.x,acceleration.y,acceleration.z);
+    //NSLog(@"###---> currentAcceleration %f %f %f",acceleration.x,acceleration.y,acceleration.z);
     
     if(!IsRunningInSimulator())
     {
@@ -125,7 +126,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSLog(@"viewDidAppear %i",_firstLoad);
+    NSLog(@"###---> viewDidAppear %i",_firstLoad);
     if(_firstLoad == NO) {
         [self handleLaunch];
         [self setFirstLoad:YES];
@@ -268,13 +269,13 @@
                 
             } completion:^(BOOL finished) {
                 
-                NSLog(@"finished %i",finished);
+                NSLog(@"###---> finished %i",finished);
                 
                 if(finished) {
-                    NSLog(@"Animation Completed On Time");
+                    NSLog(@"###---> Animation Completed On Time");
                     [self slideOutAnimationCompelte];
                 } else {
-                    NSLog(@"Animation Completed Early");
+                    NSLog(@"###---> Animation Completed Early");
                     //Hack because complete animation fires too early
                     [self performSelector:@selector(slideOutAnimationCompelte) withObject:nil afterDelay:2.5];
                 }            
@@ -398,7 +399,7 @@
     
     CGFloat r2 = previewSize.width / previewSize.height;
     
-    NSLog(@"%f %f %f",scale,r1,r2);
+    NSLog(@"###---> %f %f %f",scale,r1,r2);
     
 	return previewSize;
 }
@@ -423,10 +424,10 @@
 		[self.shakeView insertSubview: _frameView belowSubview: self.toolbar];
 		
 		//previewSize = [self _previewImageSize];
-    UIImage*    undevelopedPreviewImage = [UIImage imageNamed: @"film.png"];
-    _undevelopedView = [[UIView alloc] initWithFrame: _frameView.frame];
-    _undevelopedView.layer.contents = (id)undevelopedPreviewImage.CGImage;
-    [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
+        UIImage*    undevelopedPreviewImage = [UIImage imageNamed: @"film.png"];
+        _undevelopedView = [[UIView alloc] initWithFrame: _frameView.frame];
+        _undevelopedView.layer.contents = (id)undevelopedPreviewImage.CGImage;
+        [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
 	
     }
 }
@@ -458,7 +459,7 @@
 
 - (void) setBackgroundImage
 {
-    //NSLog(@"setting background image");
+    //NSLog(@"###---> setting background image");
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     NSInteger height = fmaxf(screenBounds.size.width, screenBounds.size.height);
@@ -516,12 +517,13 @@
         [UIView animateWithDuration:_developAnimationDuration delay:0.0f options:UIViewAnimationCurveEaseInOut animations:^{
             _undevelopedView.alpha =  0.001f;
         } completion:^(BOOL finished) {
-            
+            NSLog(@"###---> %n", finished);
             [_undevelopedView removeFromSuperview];
             _undevelopedView = nil;
             [self stopTrackingAcceleration];
         }];
 	}
+    NSLog(@"###---> outside");
 }
 
 - (void) imageProcessor: (ShakeItPhotoImageProcessor*) ip didFinishProcessingPreviewImage: (UIImage*) previewImage
@@ -540,6 +542,8 @@
     if(_slideOutAnimationFinished && _imageProcessed) {
         [self _animateDevelopedView];
         [self enableFuntionalToolbarItems];
+    } else {
+        NSLog(@"###---> animateDevelopedView: skipped development in preview");
     }
 }
 
@@ -555,7 +559,7 @@
 
 - (void) imageProcessorWroteProcessedImageToLibrary: (NSNotification*) notification
 {
-	//NSLog(@"imageProcessorWroteProcessedImageToLibrary triggered");
+	NSLog(@"###---> imageProcessorWroteProcessedImageToLibrary triggered");
 	
 	[super imageProcessorWroteProcessedImageToLibrary: notification];
 	
@@ -568,7 +572,7 @@
 	}
 	else
 	{
-		//NSLog(@"No images to process");
+		NSLog(@"###---> No images to process");
 	}
 }
 
@@ -601,7 +605,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self setFirstLoad:NO];
-        NSLog(@"set first load %i",_firstLoad);
+        NSLog(@"###---> set first load %i", _firstLoad);
     }];
 }
 
