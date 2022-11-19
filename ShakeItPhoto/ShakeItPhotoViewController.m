@@ -224,6 +224,27 @@
     return (CFAbsoluteTimeGetCurrent() - _developAnimationStartTime) > _developAnimationDuration;
 }
 
+- (IBAction) chooseOptions: (id) sender
+{
+    NewSettingsVC *settings = [[NewSettingsVC alloc] init];
+    settings.title = @"Options";
+    
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:settings];
+    [nav setNavigationBarHidden:NO];
+    
+    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(onSettingsDoneTap:)];
+    settings.navigationItem.leftBarButtonItem = done;
+
+    
+    nav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
+    NSLog(@"###---> NEW chooseOptions");
+    
+}
+
 - (void) processImage: (UIImage*) originalImage shouldWriteOriginal: (BOOL) writeOriginal
 {
 	[self clearBackgroundImage];

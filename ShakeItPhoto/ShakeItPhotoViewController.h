@@ -40,6 +40,7 @@
 
 - (IBAction) allowFasterShaking: (id) sender;
 - (IBAction) usePolaroidBorder: (id) sender;
+- (IBAction) choosePhoto: (id) sender;
 
 - (void) processImage: (UIImage*) originalImage shouldWriteOriginal: (BOOL) writeOriginal;
 

@@ -25,6 +25,9 @@
 		6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD324621A8DC70400C115A5 /* InstagramActivity.m */; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
+		6D696E9A2906D5B500D99311 /* NewSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D696E992906D5B500D99311 /* NewSettingsVC.swift */; };
+		6D696E9D2909683F00D99311 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D696E9C2909683F00D99311 /* Constants.swift */; };
+		6D696E9F29096AF300D99311 /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D696E9E29096AF300D99311 /* NSObject+Ext.swift */; };
 		6D76E24728FC013D00D83D42 /* ShakeItPhoto-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
 		6DCB806528F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */; };
 		6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */; };
@@ -104,6 +107,9 @@
 		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.h"; sourceTree = "<group>"; };
 		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
+		6D696E992906D5B500D99311 /* NewSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewSettingsVC.swift; path = ShakeItPhoto/NewSettingsVC.swift; sourceTree = "<group>"; };
+		6D696E9C2909683F00D99311 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6D696E9E29096AF300D99311 /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShakeItPhotoViewController+Ext.swift"; sourceTree = "<group>"; };
 		6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShakeItPhoto-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -263,6 +269,15 @@
 			name = Instagram;
 			sourceTree = "<group>";
 		};
+		6D696E9B2909681500D99311 /* MISC */ = {
+			isa = PBXGroup;
+			children = (
+				6D696E9C2909683F00D99311 /* Constants.swift */,
+				6D696E9E29096AF300D99311 /* NSObject+Ext.swift */,
+			);
+			path = MISC;
+			sourceTree = "<group>";
+		};
 		89BA00ED22A998270046C17C /* ALAssetsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +290,7 @@
 		934320C512852F03002FFB39 /* ShakeItPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				6D696E9B2909681500D99311 /* MISC */,
 				934321F312853449002FFB39 /* ShakeItPhotoAppDelegate.h */,
 				934321F412853449002FFB39 /* ShakeItPhotoAppDelegate.m */,
 				934321F512853449002FFB39 /* ShakeItPhotoViewController.h */,
@@ -293,6 +309,7 @@
 				6AC4EB8119D90F9000409E34 /* WebViewController.m */,
 				2F230563246D005700291AC7 /* LaunchScreen.storyboard */,
 				6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */,
+				6D696E992906D5B500D99311 /* NewSettingsVC.swift */,
 			);
 			name = ShakeItPhoto;
 			sourceTree = "<group>";
@@ -595,6 +612,7 @@
 				934321DE12853379002FFB39 /* main.m in Sources */,
 				934321F712853449002FFB39 /* ShakeItPhotoAppDelegate.m in Sources */,
 				934321F812853449002FFB39 /* ShakeItPhotoViewController.m in Sources */,
+				6D696E9A2906D5B500D99311 /* NewSettingsVC.swift in Sources */,
 				6DCB806528F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift in Sources */,
 				937C25AF12853A7B00D660AA /* BananaCameraImage.mm in Sources */,
 				937C25B012853A7B00D660AA /* BananaCameraImageCurve.mm in Sources */,
@@ -613,7 +631,9 @@
 				9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */,
 				93D764821290E36E00BD26DC /* UIImage+Alpha.m in Sources */,
 				93D764831290E36E00BD26DC /* UIImage+RoundedCorner.m in Sources */,
+				6D696E9F29096AF300D99311 /* NSObject+Ext.swift in Sources */,
 				93E593A713160AC00085345E /* RoundedRectView.mm in Sources */,
+				6D696E9D2909683F00D99311 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
