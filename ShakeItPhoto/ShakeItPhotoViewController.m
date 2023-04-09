@@ -118,7 +118,7 @@
                                     kBananaCameraFirstLaunchKey:@(NO)};
     [userDefaults registerDefaults:defaultVaules];
     
-    
+    [self checkAndRequestPermissionsWithCompletionHandler: ^{}];
     [self setFirstLoad:NO];
     
 }
