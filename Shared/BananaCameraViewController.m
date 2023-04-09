@@ -307,127 +307,127 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                 NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
             }];
 }
-
-- (void) shareImageToInstagram
-{
-    NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
-    if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
-    {
-        
-        ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
-        [library assetForURL: _latestProcessedImageURL
-                 resultBlock:^(ALAsset *asset) {
-                     
-                      ALAssetRepresentation *rep = [asset defaultRepresentation];
-                     CGImageRef imageRef = [rep fullResolutionImage];
-                     if (imageRef) {
-                         
-                         CGRect newRect   = CGRectIntegral(CGRectMake(0.0, 0.0, 640.0, 640.0));
-                         CGRect scaleRect = newRect;
-                         
-                         scaleRect.size.height *= (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
-                         scaleRect.origin.y = newRect.size.height - scaleRect.size.height;
-                         
-                         //NSLog(@"###---> %f",(CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef));
-                         // Build a context that's the same dimensions as the new size
-                         CGContextRef bitmap = CGBitmapContextCreate(NULL,
-                                                                     newRect.size.width,
-                                                                     newRect.size.height,
-                                                                     CGImageGetBitsPerComponent(imageRef),
-                                                                     0,
-                                                                     CGImageGetColorSpace(imageRef),
-                                                                     CGImageGetBitmapInfo(imageRef));
-                         
-                         // Rotate and/or flip the image if required by its orientation
-                         //CGContextConcatCTM(bitmap, transform);
-                         
-                         // Set the quality level to use when rescaling
-                         CGContextSetInterpolationQuality(bitmap, kCGInterpolationHigh);
-                         
-                         CGContextSetFillColorWithColor(bitmap, UIColor.whiteColor.CGColor);
-                         CGContextFillRect(bitmap, newRect);
-                         // Draw into the context; this scales the image
-                         CGContextDrawImage(bitmap, scaleRect, imageRef);
-                         
-                         // Get the resized image from the context and a UIImage
-                         CGImageRef newImageRef = CGBitmapContextCreateImage(bitmap);
-                         
-                         UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-                         
-                         // Clean up
-                         CGContextRelease(bitmap);
-                         CGImageRelease(newImageRef);
-                         
-                         
-                         [self presentImageInInstagram:newImage];
-                         
-                         /*
-                         
-                
-                         const CGSize finalSize = CGSizeMake(640.0, 640.0);
-                         UIImage *imagez = [UIImage imageWithCGImage:iref];
-                         CGRect cropRect = CGRectMake(0.0, 0.0, finalSize.width,finalSize.height);
-                         CGSize size     = finalSize;
-                         BOOL scaleToFill = NO;
-                         if (scaleToFill) {
-                             size.height *= finalSize.height/imagez.size.width;
-                         } else {
-                             size.width *= finalSize.width/imagez.size.height;
-                             cropRect.origin.x = (size.width - finalSize.width)/2;
-                         }
-                         
-                         NSLog(@"###---> size %f %f",size.width,size.height);
-                         UIImage *image = [imagez resizedImage:size interpolationQuality:kCGInterpolationDefault];
-                         NSLog(@"###---> image size %f %f",image.size.width,image.size.height);
-                         
-                         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-                         NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
-                         UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
-                         
-                         [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
-                         
-                         CGImageRelease(imageRef);
-                        
-                         ReleaseAndClear(img);
-                         
-                         NSURL *igImageHookFile = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",jpgPath]];
-                         
-                         UIDocumentInteractionController *doc = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
-                         
-                         doc.delegate = self;
-                         doc.annotation = @{@"InstagramCaption":@"Shake it Photo"};
-                         doc.UTI = @"com.instagram.exclusivegram";
-                         
-                         [doc presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-                         [self setDoc:doc];
-                          */
-                     }
-                 }
-                failureBlock:^(NSError *error) {
-                    NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
-                }];
-                          
-    } else {
-        //DisplayAlert(@"Instagram not installed in this device!\nTo share image please install instagram.");
-    }
-}
-
--(void)presentImageInInstagram:(UIImage*)image {
-    
-    NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
-    [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
-   
-    NSURL *igImageHookFile = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",jpgPath]];
-    UIDocumentInteractionController *doc = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
-    
-    doc.delegate    = self;
-    doc.annotation  = @{@"InstagramCaption":@"#ShakeItPhoto"};
-    doc.UTI         = @"com.instagram.exclusivegram";
-    
-    [doc presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-    [self setDoc:doc];
-    doc = nil;
-}
+//
+//- (void) shareImageToInstagram
+//{
+//    NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
+//    if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
+//    {
+//
+//        ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
+//        [library assetForURL: _latestProcessedImageURL
+//                 resultBlock:^(ALAsset *asset) {
+//
+//                      ALAssetRepresentation *rep = [asset defaultRepresentation];
+//                     CGImageRef imageRef = [rep fullResolutionImage];
+//                     if (imageRef) {
+//
+//                         CGRect newRect   = CGRectIntegral(CGRectMake(0.0, 0.0, 640.0, 640.0));
+//                         CGRect scaleRect = newRect;
+//
+//                         scaleRect.size.height *= (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
+//                         scaleRect.origin.y = newRect.size.height - scaleRect.size.height;
+//
+//                         //NSLog(@"###---> %f",(CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef));
+//                         // Build a context that's the same dimensions as the new size
+//                         CGContextRef bitmap = CGBitmapContextCreate(NULL,
+//                                                                     newRect.size.width,
+//                                                                     newRect.size.height,
+//                                                                     CGImageGetBitsPerComponent(imageRef),
+//                                                                     0,
+//                                                                     CGImageGetColorSpace(imageRef),
+//                                                                     CGImageGetBitmapInfo(imageRef));
+//
+//                         // Rotate and/or flip the image if required by its orientation
+//                         //CGContextConcatCTM(bitmap, transform);
+//
+//                         // Set the quality level to use when rescaling
+//                         CGContextSetInterpolationQuality(bitmap, kCGInterpolationHigh);
+//
+//                         CGContextSetFillColorWithColor(bitmap, UIColor.whiteColor.CGColor);
+//                         CGContextFillRect(bitmap, newRect);
+//                         // Draw into the context; this scales the image
+//                         CGContextDrawImage(bitmap, scaleRect, imageRef);
+//
+//                         // Get the resized image from the context and a UIImage
+//                         CGImageRef newImageRef = CGBitmapContextCreateImage(bitmap);
+//
+//                         UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
+//
+//                         // Clean up
+//                         CGContextRelease(bitmap);
+//                         CGImageRelease(newImageRef);
+//
+//
+//                         [self presentImageInInstagram:newImage];
+//
+//                         /*
+//
+//
+//                         const CGSize finalSize = CGSizeMake(640.0, 640.0);
+//                         UIImage *imagez = [UIImage imageWithCGImage:iref];
+//                         CGRect cropRect = CGRectMake(0.0, 0.0, finalSize.width,finalSize.height);
+//                         CGSize size     = finalSize;
+//                         BOOL scaleToFill = NO;
+//                         if (scaleToFill) {
+//                             size.height *= finalSize.height/imagez.size.width;
+//                         } else {
+//                             size.width *= finalSize.width/imagez.size.height;
+//                             cropRect.origin.x = (size.width - finalSize.width)/2;
+//                         }
+//
+//                         NSLog(@"###---> size %f %f",size.width,size.height);
+//                         UIImage *image = [imagez resizedImage:size interpolationQuality:kCGInterpolationDefault];
+//                         NSLog(@"###---> image size %f %f",image.size.width,image.size.height);
+//
+//                         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+//                         NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
+//                         UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
+//
+//                         [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
+//
+//                         CGImageRelease(imageRef);
+//
+//                         ReleaseAndClear(img);
+//
+//                         NSURL *igImageHookFile = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",jpgPath]];
+//
+//                         UIDocumentInteractionController *doc = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
+//
+//                         doc.delegate = self;
+//                         doc.annotation = @{@"InstagramCaption":@"Shake it Photo"};
+//                         doc.UTI = @"com.instagram.exclusivegram";
+//
+//                         [doc presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+//                         [self setDoc:doc];
+//                          */
+//                     }
+//                 }
+//                failureBlock:^(NSError *error) {
+//                    NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
+//                }];
+//
+//    } else {
+//        //DisplayAlert(@"Instagram not installed in this device!\nTo share image please install instagram.");
+//    }
+//}
+//
+//-(void)presentImageInInstagram:(UIImage*)image {
+//
+//    NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
+//    [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
+//
+//    NSURL *igImageHookFile = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",jpgPath]];
+//    UIDocumentInteractionController *doc = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
+//
+//    doc.delegate    = self;
+//    doc.annotation  = @{@"InstagramCaption":@"#ShakeItPhoto"};
+//    doc.UTI         = @"com.instagram.exclusivegram";
+//
+//    [doc presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+//    [self setDoc:doc];
+//    doc = nil;
+//}
 
 - (void)documentInteractionController:(UIDocumentInteractionController *)controller
         willBeginSendingToApplication:(NSString *)application {
