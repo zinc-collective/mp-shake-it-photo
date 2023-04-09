@@ -274,28 +274,28 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
                      
                      
                      NSArray *activities = @[];
-                     NSURL *instagramURL = [NSURL URLWithString:@"instagram://location?id=1"];
-                     InstagramActivity *instagram = [[InstagramActivity alloc] init];
-                     [instagram setActivity:^{
-                         
-                         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-                            [self shareImageToInstagram];
-                         } else {
-                             [self dismissViewControllerAnimated:YES completion:^{
-                                 [self shareImageToInstagram];
-                             }];
-                         }
-                     }];
-                     
-                     if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-                         activities = @[instagram];
-                     }
+//                     NSURL *instagramURL = [NSURL URLWithString:@"instagram://location?id=1"];
+//                     InstagramActivity *instagram = [[InstagramActivity alloc] init];
+//                     [instagram setActivity:^{
+//
+//                         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+//                            [self shareImageToInstagram];
+//                         } else {
+//                             [self dismissViewControllerAnimated:YES completion:^{
+//                                 [self shareImageToInstagram];
+//                             }];
+//                         }
+//                     }];
+//
+//                     if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+//                         activities = @[instagram];
+//                     }
                      
                      NSString *shareText = @"Made with #ShakeItPhoto";
                      NSURL *shareURL = [NSURL URLWithString:@"http://shakeitphoto.com"];
                      NSArray *activityItems = @[image, shareText, shareURL];
                      
-                     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities];
+                     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
                      activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAirDrop];
                      activityViewController.popoverPresentationController.barButtonItem = sender;
                      dispatch_async(dispatch_get_main_queue(), ^{

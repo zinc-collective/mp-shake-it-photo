@@ -43,4 +43,15 @@ import AVFoundation
         return status == .authorized
         
     }
+    
+    @objc func basicImageShare(withImage image: UIImage) -> Void {
+        let items = [image]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
+    }
+}
+
+
+class SocialShare: UIActivity {
+    
 }
