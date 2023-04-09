@@ -64,8 +64,8 @@
 
 	// Hide the status bar
 	
-    [application setStatusBarHidden: YES];
-    [application setStatusBarStyle:UIStatusBarStyleDefault];
+    [[self viewController] prefersStatusBarHidden];
+    [[self viewController] preferredStatusBarStyle];
 
     
 	// Create the window and views
