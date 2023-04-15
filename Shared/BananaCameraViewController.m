@@ -302,7 +302,11 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 //                A toast showing an error to the user would be nice, too.
                 return;
             }
-            PHAsset *as1=arrPhassets[0];
+            
+            //If the original was saved the processed photo is the second image (for now)
+            BOOL shouldSaveOriginal = [[NSUserDefaults standardUserDefaults] boolForKey:kBananaCameraSaveOriginalKey];
+            PHAsset *as1=arrPhassets[shouldSaveOriginal?1:0];
+            
             PHCachingImageManager *imagemanager = [[PHCachingImageManager alloc] init];
             [imagemanager requestImageForAsset:as1 targetSize:targetSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                 //here "result" is the image for asset as1.
