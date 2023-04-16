@@ -454,7 +454,9 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 - (void) imagePickerControllerDidCancel: (UIImagePickerController*) picker
 {
 	[self setBackgroundImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self setToolbarItems];
+    }];
 }
 
 #pragma mark
