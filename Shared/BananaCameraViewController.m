@@ -323,8 +323,9 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
             }
             
             //If the original was saved the processed photo is the second image (for now)
-            BOOL shouldSaveOriginal = [[NSUserDefaults standardUserDefaults] boolForKey:kBananaCameraSaveOriginalKey];
-            PHAsset *as1=arrPhassets[shouldSaveOriginal?1:0];
+//            BOOL shouldSaveOriginal = [[NSUserDefaults standardUserDefaults] boolForKey:kBananaCameraSaveOriginalKey];
+//            PHAsset *as1=arrPhassets[shouldSaveOriginal?1:0];
+            PHAsset *as1=arrPhassets[0];
             
             PHCachingImageManager *imagemanager = [[PHCachingImageManager alloc] init];
             [imagemanager requestImageForAsset:as1 targetSize:targetSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
