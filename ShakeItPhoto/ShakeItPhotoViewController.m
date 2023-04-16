@@ -341,9 +341,9 @@
 //https://ikyle.me/blog/2020/phpickerviewcontroller
 - (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
     
-    [super picker:picker didFinishPicking:results];
+//    [super picker:picker didFinishPicking:results];
     
-    [self clearBackgroundImage];
+//    [self clearBackgroundImage];
     [picker dismissViewControllerAnimated:YES completion:^{
         [self setToolbarItems];
     }];
