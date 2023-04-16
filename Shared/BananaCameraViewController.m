@@ -806,15 +806,17 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     char        template[templateStr.length + 1];
     
     strcpy(template, [templateStr cStringUsingEncoding: NSASCIIStringEncoding]);
-    char*       filename = mktemp(template);
+    // https://www.thegeekstuff.com/2012/06/c-temporary-files/
+//    char*       filename = mktemp(template);
+    UInt8 res = mkstemp(template);
     
-    if(filename == NULL)
+    if(res < 1)
     {
         NSLog(@"###---> Could not create file in directory %@", directory);
         return nil;
     }
 
-    NSString* result = [NSString stringWithCString: filename encoding: NSASCIIStringEncoding];
+    NSString* result = [NSString stringWithCString: template encoding: NSASCIIStringEncoding];
     result = [result stringByAppendingPathExtension: ext];
     return result;
 }
