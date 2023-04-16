@@ -29,7 +29,6 @@
 		6DCB806528F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */; };
 		6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */; };
 		6DEBF87828FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
-		89BA00EC22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */; };
 		9312B5F412A8C12000A3FBFB /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9312B5EB12A8C12000A3FBFB /* frame.png */; };
 		9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9321E54612891031001EC80F /* ShakeItPhotoImageProcessor.mm */; };
 		9326E01B13E87C710087542A /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9326E01513E87C710087542A /* green.jpg */; };
@@ -109,8 +108,6 @@
 		6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShakeItPhoto-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E73C50128138453542FE24D /* Pods-ShakeItPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShakeItPhoto.release.xcconfig"; path = "Target Support Files/Pods-ShakeItPhoto/Pods-ShakeItPhoto.release.xcconfig"; sourceTree = "<group>"; };
 		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
-		89BA00EA22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+CSNAdditions.h"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.h"; sourceTree = "<group>"; };
-		89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+CSNAdditions.m"; path = "ShakeItPhoto/ALAssetsLibrary+CSNAdditions.m"; sourceTree = "<group>"; };
 		930E05FE13E8AB4600F49FF5 /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
 		9312B5EB12A8C12000A3FBFB /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = ShakeItPhoto/frame.png; sourceTree = "<group>"; };
 		9321E54512891031001EC80F /* ShakeItPhotoImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeItPhotoImageProcessor.h; path = ShakeItPhoto/ShakeItPhotoImageProcessor.h; sourceTree = "<group>"; };
@@ -263,15 +260,6 @@
 			name = Instagram;
 			sourceTree = "<group>";
 		};
-		89BA00ED22A998270046C17C /* ALAssetsLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				89BA00EA22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.h */,
-				89BA00EB22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m */,
-			);
-			name = ALAssetsLibrary;
-			sourceTree = "<group>";
-		};
 		934320C512852F03002FFB39 /* ShakeItPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,7 +323,6 @@
 		934321F1128533BD002FFB39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				89BA00ED22A998270046C17C /* ALAssetsLibrary */,
 				93D764661290E12300BD26DC /* UIImage */,
 			);
 			name = Vendor;
@@ -603,7 +590,6 @@
 				937C25DD12853C8500D660AA /* CALayer_Additions.mm in Sources */,
 				937C25DE12853C8500D660AA /* NSNotificationCenter_Additions.mm in Sources */,
 				937C25E612853CF800D660AA /* BananaCameraSoundEffect.m in Sources */,
-				89BA00EC22A995FE0046C17C /* ALAssetsLibrary+CSNAdditions.m in Sources */,
 				6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */,
 				6AC4EB7E19D9036A00409E34 /* SettingsTableViewController.m in Sources */,
 				6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */,

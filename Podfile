@@ -5,7 +5,6 @@ target 'ShakeItPhoto' do
     use_frameworks!
 
     
-    pod 'ALAssetsLibrary-CustomPhotoAlbum', '~> 1.3'
     pod 'SVProgressHUD', '~> 2.0'
     pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.27.0'
 

@@ -16,7 +16,6 @@
 #import "NSNotificationCenter_Additions.h"
 #import "UIImage+Resize.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "ALAssetsLibrary+CSNAdditions.h"
 
 // Returns an affine transform that takes into account the image orientation when drawing a scaled image
 
