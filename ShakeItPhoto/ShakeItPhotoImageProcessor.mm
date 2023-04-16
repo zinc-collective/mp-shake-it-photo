@@ -434,13 +434,13 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
         // Done processing the final image - need to write the created image to the
         // the photo library.
         
-        [self _writeProcessedImageToPhotoLibrary: finalImage];
-        
         if(_writeOriginalToPhotoLibrary && _rawImage)
         {
             [self _writeOriginalImageToPhotoLibrary: _rawImage];
             _rawImage = nil;
         }
+        
+        [self _writeProcessedImageToPhotoLibrary: finalImage];
         
         END_TIMING(processFinalImage);
         

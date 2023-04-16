@@ -316,14 +316,10 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
             
             //Extract single image from the arrPhassets if there is one...
             if([arrPhassets count] <= 0){
-//                Should log and error here before returning.
+//                TODO: Should log and error here before returning.
 //                A toast showing an error to the user would be nice, too.
                 return;
             }
-            
-            //If the original was saved the processed photo is the second image (for now)
-//            BOOL shouldSaveOriginal = [[NSUserDefaults standardUserDefaults] boolForKey:kBananaCameraSaveOriginalKey];
-//            PHAsset *as1=arrPhassets[shouldSaveOriginal?1:0];
             PHAsset *as1=arrPhassets[0];
             
             PHCachingImageManager *imagemanager = [[PHCachingImageManager alloc] init];
