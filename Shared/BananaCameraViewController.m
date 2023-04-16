@@ -153,16 +153,18 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
     if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
     {
-        
+        /***/
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.delegate = self;
 //        picker.showsCameraControls = NO;
         picker.allowsEditing = NO;
 //        picker.modalPresentationStyle =
-        
+
         [self presentViewController:picker animated:YES completion:^{}];
         
+        
+        /***/
         /*
         _toolbar.alpha = 0.0;
 		[self disableToolbarItems: kAllItems];
