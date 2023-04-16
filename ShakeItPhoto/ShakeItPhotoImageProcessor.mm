@@ -4,6 +4,8 @@
 //  Copyright Banana Camera Company 2010. All rights reserved.
 //
 
+#import <Photos/Photos.h>
+
 #import "ShakeItPhoto-Swift.h"
 #import "ShakeItPhotoImageProcessor.h"
 #import "ShakeItPhotoConstants.h"
@@ -177,26 +179,30 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
                 });
             }];
             
-            
-            [ALAssetsLibrary csn_requestAccessToAssetsLibraryWithCompletionBlock:^(BOOL granted, NSError *error) {
-                // Start the long-running task and return immediately.
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    
-                    // Process the image.
-                    [processor _process];
-                    
-                    // Synchronize the cleanup call on the main thread in case
-                    // the expiration handler is fired at the same time.
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if(bgTask != UIBackgroundTaskInvalid)
-                        {
-                            [app endBackgroundTask:bgTask];
-                            bgTask = UIBackgroundTaskInvalid;
-                        }
+            [PHPhotoLibrary requestAuthorizationForAccessLevel:PHAccessLevelReadWrite handler:^(PHAuthorizationStatus status){
+                if(status == PHAuthorizationStatusAuthorized | status == PHAuthorizationStatusLimited) {
+                    // Start the long-running task and return immediately.
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        // Process the image.
+                        [processor _process];
+                        
+                        // Synchronize the cleanup call on the main thread in case
+                        // the expiration handler is fired at the same time.
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if(bgTask != UIBackgroundTaskInvalid)
+                            {
+                                [app endBackgroundTask:bgTask];
+                                bgTask = UIBackgroundTaskInvalid;
+                            }
+                        });
                     });
-                });
+                } else {
+                    // TODO: throw error and send message the authroization is required
+                }
             }];
+            
         }
         else
         {
