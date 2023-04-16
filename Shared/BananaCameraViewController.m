@@ -245,16 +245,33 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (IBAction) choosePhoto: (id) sender
 {
-	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
-	{
-		_toolbar.alpha = 0.0;
-		[self disableToolbarItems: kAllItems];
+//	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
+//	{
+//		_toolbar.alpha = 0.0;
+//		[self disableToolbarItems: kAllItems];
+//
+//		UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+//		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//		picker.delegate = self;
+//        [self presentViewController:picker animated:YES completion:^{
+////            [self setToolbarItems];
+//        }];
+//	}
+    _toolbar.alpha = 0.0;
+    [self disableToolbarItems: kAllItems];
+    /***/
+    //https://ikyle.me/blog/2020/phpickerviewcontroller
+    PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
+    config.selectionLimit = 1;
+    config.filter = [PHPickerFilter imagesFilter];
 
-		UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-		picker.delegate = self;
-        [self presentViewController:picker animated:YES completion:nil];
-	}
+    PHPickerViewController *pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
+    pickerViewController.delegate = self;
+    [self presentViewController:pickerViewController animated:YES completion:^{
+        [self setToolbarItems];
+    }];
+    /***/
+        
 }
 
 #pragma mark Activity View
@@ -393,9 +410,32 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 //}
 //
 
+#pragma mark - PHPickerViewControllerDelegate
+//https://ikyle.me/blog/2020/phpickerviewcontroller
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
+    [self clearBackgroundImage];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self setToolbarItems];
+    }];
+    
+    for (PHPickerResult *result in results)
+    {
+        // Get UIImage
+        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error)
+         {
+            if ([object isKindOfClass:[UIImage class]])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Selected image: %@", (UIImage*)object);
+                });
+            }
+        }];
+    }
+}
+
+
 
 #pragma mark - UIImagePickerControllerDelegate
-
 - (void) imagePickerController: (UIImagePickerController*) picker didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
 	[self clearBackgroundImage];
