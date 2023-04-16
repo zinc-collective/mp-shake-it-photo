@@ -22,7 +22,6 @@
 		6AC4EB7E19D9036A00409E34 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4EB7C19D9036A00409E34 /* SettingsTableViewController.m */; };
 		6AC4EB7F19D9036A00409E34 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC4EB7D19D9036A00409E34 /* SettingsTableViewController.xib */; };
 		6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4EB8119D90F9000409E34 /* WebViewController.m */; };
-		6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD324621A8DC70400C115A5 /* InstagramActivity.m */; };
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
 		6D76E24728FC013D00D83D42 /* ShakeItPhoto-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
@@ -98,8 +97,6 @@
 		6AC4EB7D19D9036A00409E34 /* SettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsTableViewController.xib; path = ShakeItPhoto/SettingsTableViewController.xib; sourceTree = "<group>"; };
 		6AC4EB8019D90F9000409E34 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = ShakeItPhoto/WebViewController.h; sourceTree = "<group>"; };
 		6AC4EB8119D90F9000409E34 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = ShakeItPhoto/WebViewController.m; sourceTree = "<group>"; };
-		6AD324611A8DC70400C115A5 /* InstagramActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramActivity.h; path = ShakeItPhoto/InstagramActivity.h; sourceTree = "<group>"; };
-		6AD324621A8DC70400C115A5 /* InstagramActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramActivity.m; path = ShakeItPhoto/InstagramActivity.m; sourceTree = "<group>"; };
 		6AEB15DE1ABA503400B497BC /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.h"; sourceTree = "<group>"; };
 		6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendor/SCCaptureCamera/SCCaptureCamera/UIImage+Resize.m"; sourceTree = "<group>"; };
 		6AF1255A19D7467F00E2905F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShakeItPhoto/Images.xcassets; sourceTree = "<group>"; };
@@ -251,15 +248,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6AD324601A8DC6C100C115A5 /* Instagram */ = {
-			isa = PBXGroup;
-			children = (
-				6AD324611A8DC70400C115A5 /* InstagramActivity.h */,
-				6AD324621A8DC70400C115A5 /* InstagramActivity.m */,
-			);
-			name = Instagram;
-			sourceTree = "<group>";
-		};
 		934320C512852F03002FFB39 /* ShakeItPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,7 +323,6 @@
 				934321D812853379002FFB39 /* BananaCameraAppDelegate.m */,
 				934321D912853379002FFB39 /* BananaCameraViewController.h */,
 				934321DA12853379002FFB39 /* BananaCameraViewController.m */,
-				6AD324601A8DC6C100C115A5 /* Instagram */,
 				937C2652128540D000D660AA /* BananaCameraConstants.h */,
 				937C2653128540D000D660AA /* BananaCameraConstants.mm */,
 				937C25E412853CF800D660AA /* BananaCameraSoundEffect.h */,
@@ -593,7 +580,6 @@
 				6AC4EB8219D90F9000409E34 /* WebViewController.m in Sources */,
 				6AC4EB7E19D9036A00409E34 /* SettingsTableViewController.m in Sources */,
 				6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */,
-				6AD324631A8DC70400C115A5 /* InstagramActivity.m in Sources */,
 				937C2654128540D000D660AA /* BananaCameraConstants.mm in Sources */,
 				937C27621285B6B100D660AA /* ShakeItPhotoConstants.mm in Sources */,
 				9321E54712891031001EC80F /* ShakeItPhotoImageProcessor.mm in Sources */,

@@ -15,7 +15,6 @@
 #import "BananaCameraGrowlView.h"
 #import "SettingsTableViewController.h"
 #import "UIImage+Resize.h"
-#import "InstagramActivity.h"
 #import "ShakeItPhotoConstants.h"
 #import "ShakeItPhotoImageProcessor.h"
 
