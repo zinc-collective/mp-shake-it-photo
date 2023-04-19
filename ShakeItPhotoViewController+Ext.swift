@@ -51,7 +51,12 @@ import AVFoundation
     }
 }
 
-
-class SocialShare: UIActivity {
+@objc extension ShakeItPhotoImageProcessor {
+    @objc func modernWriteProcessedImageToPhotoLibrary(image: CGImage) -> Void {
+        
+    }
     
+    @objc func modernWriteOriginalImageToPhotoLibrary(image: UIImage) -> Void {
+        
+    }
 }

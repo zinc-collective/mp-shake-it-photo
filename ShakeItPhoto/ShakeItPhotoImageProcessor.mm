@@ -4,6 +4,9 @@
 //  Copyright Banana Camera Company 2010. All rights reserved.
 //
 
+#import <Photos/Photos.h>
+
+#import "ShakeItPhoto-Swift.h"
 #import "ShakeItPhotoImageProcessor.h"
 #import "ShakeItPhotoConstants.h"
 #import "BananaCameraUtilities.h"
@@ -13,7 +16,6 @@
 #import "NSNotificationCenter_Additions.h"
 #import "UIImage+Resize.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "ALAssetsLibrary+CSNAdditions.h"
 
 // Returns an affine transform that takes into account the image orientation when drawing a scaled image
 
@@ -176,26 +178,30 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
                 });
             }];
             
-            
-            [ALAssetsLibrary csn_requestAccessToAssetsLibraryWithCompletionBlock:^(BOOL granted, NSError *error) {
-                // Start the long-running task and return immediately.
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    
-                    // Process the image.
-                    [processor _process];
-                    
-                    // Synchronize the cleanup call on the main thread in case
-                    // the expiration handler is fired at the same time.
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if(bgTask != UIBackgroundTaskInvalid)
-                        {
-                            [app endBackgroundTask:bgTask];
-                            bgTask = UIBackgroundTaskInvalid;
-                        }
+            [PHPhotoLibrary requestAuthorizationForAccessLevel:PHAccessLevelReadWrite handler:^(PHAuthorizationStatus status){
+                if(status == PHAuthorizationStatusAuthorized | status == PHAuthorizationStatusLimited) {
+                    // Start the long-running task and return immediately.
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        // Process the image.
+                        [processor _process];
+                        
+                        // Synchronize the cleanup call on the main thread in case
+                        // the expiration handler is fired at the same time.
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if(bgTask != UIBackgroundTaskInvalid)
+                            {
+                                [app endBackgroundTask:bgTask];
+                                bgTask = UIBackgroundTaskInvalid;
+                            }
+                        });
                     });
-                });
+                } else {
+                    // TODO: throw error and send message the authroization is required
+                }
             }];
+            
         }
         else
         {
@@ -428,13 +434,13 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
         // Done processing the final image - need to write the created image to the
         // the photo library.
         
-        [self _writeProcessedImageToPhotoLibrary: finalImage];
-        
         if(_writeOriginalToPhotoLibrary && _rawImage)
         {
             [self _writeOriginalImageToPhotoLibrary: _rawImage];
             _rawImage = nil;
         }
+        
+        [self _writeProcessedImageToPhotoLibrary: finalImage];
         
         END_TIMING(processFinalImage);
         
@@ -443,101 +449,38 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 
 - (void) _writeProcessedImageToPhotoLibrary: (BananaCameraImage*) image
 {
-    if(NSStringFromClass([ALAssetsLibrary class]) && image)
+//    [self modernWriteProcessedImageToPhotoLibraryWithImage:image.CGImageRef];
+    CGImageRef	imageRef = image.CGImageRef;
+    UIImage*	imageNew = [UIImage imageWithCGImage: imageRef];
+    UIImageWriteToSavedPhotosAlbum(imageNew, nil, NULL, NULL);
+    
+    NSData*		imageData = UIImageJPEGRepresentation(imageNew, 1.0);
+    if(imageData)
     {
-        //uint64_t startTime = StartTiming();
+        NSString*	uniquePath = [ApplicationDelegate() createUniqueImagePath];
+        [imageData writeToFile: uniquePath atomically: NO];
         
-        ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
-        CGImageRef			imageRef = image.CGImageRef;
-        
-        [library writeImageToSavedPhotosAlbum: imageRef
-                                  orientation: ALAssetOrientationUp
-                              completionBlock: ^(NSURL* assetURL, NSError* error)
-         {
-             //EndTiming(@"Time to write to photo album:", startTime);
-             
-             NSDictionary*	userInfo = nil;
-             
-             if(assetURL) {
-                 userInfo =  [NSDictionary dictionaryWithObject: assetURL forKey: @"url"];
-             } else {
-                 userInfo = [NSDictionary dictionaryWithObject: error forKey: @"error"];
-             }
-             
-             [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteProcessedImageToPhotoLibraryNotification
-                                                                             object: self
-                                                                           userInfo: userInfo];
-             //[image dumpPixels];
-             
-         }];
-        
-        CGImageRelease(imageRef);
+        NSDictionary*	userInfo = nil;
+        userInfo = [NSDictionary dictionaryWithObject: [NSURL fileURLWithPath: uniquePath isDirectory: NO] forKey: @"url"];
+        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteProcessedImageToPhotoLibraryNotification
+                                                                        object: self
+                                                                      userInfo: userInfo];
     }
-    else
-    {
-        CGImageRef	imageRef = image.CGImageRef;
-        UIImage*	image = [UIImage imageWithCGImage: imageRef];
-        UIImageWriteToSavedPhotosAlbum(image, nil, NULL, NULL);
-        
-        NSData*		imageData = UIImageJPEGRepresentation(image, 1.0);
-        if(imageData)
-        {
-            NSString*	uniquePath = [ApplicationDelegate() createUniqueImagePath];
-            [imageData writeToFile: uniquePath atomically: NO];
-            
-            NSDictionary*	userInfo = nil;
-            userInfo = [NSDictionary dictionaryWithObject: [NSURL fileURLWithPath: uniquePath isDirectory: NO] forKey: @"url"];
-            [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteProcessedImageToPhotoLibraryNotification
-                                                                            object: self
-                                                                          userInfo: userInfo];
-        }
-        
-        CGImageRelease(imageRef);
-    }
+    
+    CGImageRelease(imageRef);
 }
 
 - (void) _writeOriginalImageToPhotoLibrary: (UIImage*) originalImage
 {
+//    [self modernWriteOriginalImageToPhotoLibraryWithImage:originalImage];
+    UIImageWriteToSavedPhotosAlbum(originalImage, nil, NULL, NULL);
     
-    if(NSStringFromClass([ALAssetsLibrary class]) && originalImage)
-    {
-        ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
-        CGImageRef			imageRef = originalImage.CGImage;
-        
-        [library writeImageToSavedPhotosAlbum: imageRef
-                                  orientation: (ALAssetOrientation)originalImage.imageOrientation
-                              completionBlock: ^(NSURL* assetURL, NSError* error)
-         {
-             NSDictionary*	userInfo = nil;
-             
-             if(assetURL)
-             {
-                 userInfo = [NSDictionary dictionaryWithObject: assetURL forKey: @"url"];
-             }
-             else
-             {
-                 userInfo = [NSDictionary dictionaryWithObject: error forKey: @"error"];
-             }
-             
-             [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteOriginalImageToPhotoLibraryNotification
-                                                                             object: self
-                                                                           userInfo: userInfo];
-             
-         }];
-        
-    }
-    else
-    {
-        UIImageWriteToSavedPhotosAlbum(originalImage, nil, NULL, NULL);
-        
-        NSDictionary*	userInfo = nil;
-        userInfo = [NSDictionary dictionaryWithObject: @"original" forKey: @"url"];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteOriginalImageToPhotoLibraryNotification
-                                                                        object: self
-                                                                      userInfo: userInfo];
-        
-    }
+    NSDictionary*	userInfo = nil;
+    userInfo = [NSDictionary dictionaryWithObject: @"original" forKey: @"url"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName: kDidWriteOriginalImageToPhotoLibraryNotification
+                                                                    object: self
+                                                                  userInfo: userInfo];
 }
 
 - (void) _drawImageAtPath: (NSString*) inPath 

@@ -5,7 +5,7 @@
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 #import "BananaCameraViewController.h"
 #import "BananaCameraAppDelegate.h"
@@ -15,7 +15,6 @@
 #import "BananaCameraGrowlView.h"
 #import "SettingsTableViewController.h"
 #import "UIImage+Resize.h"
-#import "InstagramActivity.h"
 #import "ShakeItPhotoConstants.h"
 #import "ShakeItPhotoImageProcessor.h"
 
@@ -153,16 +152,18 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
     if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
     {
-        
+        /***/
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.delegate = self;
 //        picker.showsCameraControls = NO;
         picker.allowsEditing = NO;
 //        picker.modalPresentationStyle =
-        
+
         [self presentViewController:picker animated:YES completion:^{}];
         
+        
+        /***/
         /*
         _toolbar.alpha = 0.0;
 		[self disableToolbarItems: kAllItems];
@@ -245,188 +246,104 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (IBAction) choosePhoto: (id) sender
 {
-	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
-	{
-		_toolbar.alpha = 0.0;
-		[self disableToolbarItems: kAllItems];
+//	if([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
+//	{
+//		_toolbar.alpha = 0.0;
+//		[self disableToolbarItems: kAllItems];
+//
+//		UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+//		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//		picker.delegate = self;
+//        [self presentViewController:picker animated:YES completion:^{
+////            [self setToolbarItems];
+//        }];
+//	}
+    _toolbar.alpha = 0.0;
+    [self disableToolbarItems: kAllItems];
+    /***/
+    //https://ikyle.me/blog/2020/phpickerviewcontroller
+    PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
+    config.selectionLimit = 1;
+    config.filter = [PHPickerFilter imagesFilter];
 
-		UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-		picker.delegate = self;
-        [self presentViewController:picker animated:YES completion:nil];
-	}
+    PHPickerViewController *pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
+    pickerViewController.delegate = self;
+    [self presentViewController:pickerViewController animated:YES completion:^{
+        [self setToolbarItems];
+    }];
+    /***/
+        
 }
 
 #pragma mark Activity View
 
 - (IBAction) performAction: (id) sender
 {
+    [PHPhotoLibrary requestAuthorizationForAccessLevel:PHAccessLevelReadWrite handler:^(PHAuthorizationStatus status) {
+        NSLog(@"### --->   inside");
+        if (status != (PHAuthorizationStatusAuthorized | PHAuthorizationStatusLimited)) {
+            /**
+                Need to FIND the image asset from the known path  OR somehow pass the asset/image from the sender
+                         self->_latestProcessedImageURL ===  asset-url://
+             **/
+            
+            __block double scale;
+            __block CGSize targetSize;
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                scale = [UIScreen mainScreen].scale;
+                targetSize = CGSizeMake(self.view.bounds.size.width * scale, self.view.bounds.size.height * scale);
+            });
+            
+            PHFetchOptions *allPhotosOptions = [PHFetchOptions new];
+            allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+            PHFetchResult *allPhotosResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:allPhotosOptions];
+            
+            /**
+                When I have a better identifier use this to find the specific asset instead of polling ALL assets.
+            **/
+//            PHFetchResult *allPhotosResult = [PHAsset fetchAssetsWithLocalIdentifiers:[[NSArray alloc] initWithObjects:self->_latestProcessedImageURL.absoluteString, nil] options:allPhotosOptions];
+            
 
-    ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
-    
-    [library assetForURL: _latestProcessedImageURL
-             resultBlock:^(ALAsset *asset) {
-                 
-                 ALAssetRepresentation *rep = [asset defaultRepresentation];
-                 CGImageRef iref = [rep fullResolutionImage];
-                 if (iref) {
-                     UIImage *image = [UIImage imageWithCGImage:iref];
-                     
-                     
-                     NSArray *activities = @[];
-//                     NSURL *instagramURL = [NSURL URLWithString:@"instagram://location?id=1"];
-//                     InstagramActivity *instagram = [[InstagramActivity alloc] init];
-//                     [instagram setActivity:^{
-//
-//                         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-//                            [self shareImageToInstagram];
-//                         } else {
-//                             [self dismissViewControllerAnimated:YES completion:^{
-//                                 [self shareImageToInstagram];
-//                             }];
-//                         }
-//                     }];
-//
-//                     if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-//                         activities = @[instagram];
-//                     }
-                     
-                     NSString *shareText = @"Made with #ShakeItPhoto";
-                     NSURL *shareURL = [NSURL URLWithString:@"http://www.momentpark.com/shakeitphoto"];
-                     NSArray *activityItems = @[image, shareText, shareURL];
-                     
-                     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-                     activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAirDrop];
-                     activityViewController.popoverPresentationController.barButtonItem = sender;
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         [self presentViewController:activityViewController animated:YES completion:nil];
-                     });
-                 }
-             }
-            failureBlock:^(NSError *error) {
-                NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
+            NSMutableArray *arrPhassets=[[NSMutableArray alloc]init];
+            [allPhotosResult enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
+                [arrPhassets addObject:asset];
             }];
-}
-
-- (void) shareImageToInstagram
-{
-    NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
-    if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
-    {
-        
-        ALAssetsLibrary*	library = [[ALAssetsLibrary alloc] init];
-        [library assetForURL: _latestProcessedImageURL
-                 resultBlock:^(ALAsset *asset) {
-                     
-                      ALAssetRepresentation *rep = [asset defaultRepresentation];
-                     CGImageRef imageRef = [rep fullResolutionImage];
-                     if (imageRef) {
-                         
-                         CGRect newRect   = CGRectIntegral(CGRectMake(0.0, 0.0, 640.0, 640.0));
-                         CGRect scaleRect = newRect;
-                         
-                         scaleRect.size.height *= (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
-                         scaleRect.origin.y = newRect.size.height - scaleRect.size.height;
-                         
-                         //NSLog(@"###---> %f",(CGFloat)CGImageGetWidth(imageRef)/(CGFloat)CGImageGetHeight(imageRef));
-                         // Build a context that's the same dimensions as the new size
-                         CGContextRef bitmap = CGBitmapContextCreate(NULL,
-                                                                     newRect.size.width,
-                                                                     newRect.size.height,
-                                                                     CGImageGetBitsPerComponent(imageRef),
-                                                                     0,
-                                                                     CGImageGetColorSpace(imageRef),
-                                                                     CGImageGetBitmapInfo(imageRef));
-                         
-                         // Rotate and/or flip the image if required by its orientation
-                         //CGContextConcatCTM(bitmap, transform);
-                         
-                         // Set the quality level to use when rescaling
-                         CGContextSetInterpolationQuality(bitmap, kCGInterpolationHigh);
-                         
-                         CGContextSetFillColorWithColor(bitmap, UIColor.whiteColor.CGColor);
-                         CGContextFillRect(bitmap, newRect);
-                         // Draw into the context; this scales the image
-                         CGContextDrawImage(bitmap, scaleRect, imageRef);
-                         
-                         // Get the resized image from the context and a UIImage
-                         CGImageRef newImageRef = CGBitmapContextCreateImage(bitmap);
-                         
-                         UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-                         
-                         // Clean up
-                         CGContextRelease(bitmap);
-                         CGImageRelease(newImageRef);
-                         
-                         
-                         [self presentImageInInstagram:newImage];
-                         
-                         /*
-                         
-                
-                         const CGSize finalSize = CGSizeMake(640.0, 640.0);
-                         UIImage *imagez = [UIImage imageWithCGImage:iref];
-                         CGRect cropRect = CGRectMake(0.0, 0.0, finalSize.width,finalSize.height);
-                         CGSize size     = finalSize;
-                         BOOL scaleToFill = NO;
-                         if (scaleToFill) {
-                             size.height *= finalSize.height/imagez.size.width;
-                         } else {
-                             size.width *= finalSize.width/imagez.size.height;
-                             cropRect.origin.x = (size.width - finalSize.width)/2;
-                         }
-                         
-                         NSLog(@"###---> size %f %f",size.width,size.height);
-                         UIImage *image = [imagez resizedImage:size interpolationQuality:kCGInterpolationDefault];
-                         NSLog(@"###---> image size %f %f",image.size.width,image.size.height);
-                         
-                         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-                         NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
-                         UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
-                         
-                         [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
-                         
-                         CGImageRelease(imageRef);
-                        
-                         ReleaseAndClear(img);
-                         
-                         NSURL *igImageHookFile = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",jpgPath]];
-                         
-                         UIDocumentInteractionController *doc = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
-                         
-                         doc.delegate = self;
-                         doc.annotation = @{@"InstagramCaption":@"Shake it Photo"};
-                         doc.UTI = @"com.instagram.exclusivegram";
-                         
-                         [doc presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-                         [self setDoc:doc];
-                          */
-                     }
-                 }
-                failureBlock:^(NSError *error) {
-                    NSLog(@"###---> _loadProcessedImageDataForURL failed - %@", [error description]);
-                }];
-                          
-    } else {
-        //DisplayAlert(@"Instagram not installed in this device!\nTo share image please install instagram.");
-    }
-}
-
--(void)presentImageInInstagram:(UIImage*)image {
-    
-    NSString *jpgPath   = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.igo"];
-    [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
-   
-    NSURL *igImageHookFile = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",jpgPath]];
-    UIDocumentInteractionController *doc = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
-    
-    doc.delegate    = self;
-    doc.annotation  = @{@"InstagramCaption":@"#ShakeItPhoto"};
-    doc.UTI         = @"com.instagram.exclusivegram";
-    
-    [doc presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-    [self setDoc:doc];
-    doc = nil;
+            
+            // PHImage request options
+            PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+            options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+            [options setNetworkAccessAllowed:NO];
+            
+            //Extract single image from the arrPhassets if there is one...
+            if([arrPhassets count] <= 0){
+//                TODO: Should log and error here before returning.
+//                A toast showing an error to the user would be nice, too.
+                return;
+            }
+            PHAsset *as1=arrPhassets[0];
+            
+            PHCachingImageManager *imagemanager = [[PHCachingImageManager alloc] init];
+            [imagemanager requestImageForAsset:as1 targetSize:targetSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                //here "result" is the image for asset as1.
+                if(result != nil) {
+                    NSString *shareText = @"Made with #ShakeItPhoto";
+                    NSURL *shareURL = [NSURL URLWithString:@"http://www.momentpark.com/shakeitphoto"];
+                    NSArray *activityItems = @[result, shareText, shareURL];
+                    
+                    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+                    activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAirDrop];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        activityViewController.popoverPresentationController.barButtonItem = sender;
+                        [self presentViewController:activityViewController animated:YES completion:nil];
+                    });
+                }
+            }];
+        } else {
+            // send message to user
+            NSLog(@"###---> _loadProcessedImageDataForURL failed");
+        }
+    }];
 }
 
 - (void)documentInteractionController:(UIDocumentInteractionController *)controller
@@ -491,9 +408,32 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 //}
 //
 
+#pragma mark - PHPickerViewControllerDelegate
+//https://ikyle.me/blog/2020/phpickerviewcontroller
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
+    [self clearBackgroundImage];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self setToolbarItems];
+    }];
+    
+    for (PHPickerResult *result in results)
+    {
+        // Get UIImage
+        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error)
+         {
+            if ([object isKindOfClass:[UIImage class]])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Selected image: %@", (UIImage*)object);
+                });
+            }
+        }];
+    }
+}
+
+
 
 #pragma mark - UIImagePickerControllerDelegate
-
 - (void) imagePickerController: (UIImagePickerController*) picker didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
 	[self clearBackgroundImage];
@@ -510,7 +450,9 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 - (void) imagePickerControllerDidCancel: (UIImagePickerController*) picker
 {
 	[self setBackgroundImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self setToolbarItems];
+    }];
 }
 
 #pragma mark
@@ -755,7 +697,7 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
 
 - (IBAction) introVideo:(id)sender {
     NSURL *url = [NSURL URLWithString:kBananaCameraIntroVideoURL];
-    [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 - (IBAction) acknowledgeWelcome: (id) sender
@@ -864,15 +806,17 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     char        template[templateStr.length + 1];
     
     strcpy(template, [templateStr cStringUsingEncoding: NSASCIIStringEncoding]);
-    char*       filename = mktemp(template);
+    // https://www.thegeekstuff.com/2012/06/c-temporary-files/
+//    char*       filename = mktemp(template);
+    UInt8 res = mkstemp(template);
     
-    if(filename == NULL)
+    if(res < 1)
     {
         NSLog(@"###---> Could not create file in directory %@", directory);
         return nil;
     }
 
-    NSString* result = [NSString stringWithCString: filename encoding: NSASCIIStringEncoding];
+    NSString* result = [NSString stringWithCString: template encoding: NSASCIIStringEncoding];
     result = [result stringByAppendingPathExtension: ext];
     return result;
 }

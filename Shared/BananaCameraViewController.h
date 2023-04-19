@@ -6,6 +6,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import <PhotosUI/PhotosUI.h>
 
 @class BananaCameraSoundEffect;
 
@@ -20,6 +21,7 @@ enum ToolbarItems
 
 @interface BananaCameraViewController : UIViewController<UINavigationControllerDelegate, 
 														 UIImagePickerControllerDelegate,
+                                                         PHPickerViewControllerDelegate,
                                                          UIDocumentInteractionControllerDelegate,
 													     UIWebViewDelegate,
 														 UIActionSheetDelegate,
