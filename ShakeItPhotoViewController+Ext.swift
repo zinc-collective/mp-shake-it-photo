@@ -10,6 +10,14 @@ import AVFoundation
 
 
 @objc extension ShakeItPhotoViewController {
+    @objc func setToolbarVisibility(_ state: Bool) -> Void {
+        let duration = 0.3
+        
+        UIView.animate(withDuration: duration, animations: { [weak self, state] in
+            self?.toolbar.alpha = state ? 1.0 : 0.0
+        })
+    }
+    
     @objc func animateDevelopment(_ duration: TimeInterval) {
 //        UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseInOut, animations: {[weak self] in
 //            self._undevelopedView.alpha =  0.001;

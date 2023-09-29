@@ -327,7 +327,7 @@
     }
     
     [picker dismissViewControllerAnimated:YES completion:^{
-        [self setToolbarItems];
+        [self setToolbarVisibility:YES];
     }];
 }
 
@@ -366,8 +366,8 @@
 		UIImage*	image = [UIImage imageWithContentsOfFile: imagePath];
 		[self processImage: image shouldWriteOriginal: imageFlags];
 	} else {
-		self.toolbar.alpha = 1.0;
-        [self enableFuntionalToolbarItems];
+		[self enableFuntionalToolbarItems];
+        [self setToolbarVisibility:YES];
 	}
 }
 
