@@ -296,80 +296,39 @@
     [self animateDevelopedView];
 }
 
-#pragma mark - Did Take Picture
-
-
-//-(void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image {
-//    
-//    [super didTakePicture:navigationController image:image];
-//    [self _discardPreviewLayers];
-//    
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        
-//        //[self.view addSubview:[[UIImageView alloc] initWithImage:image]]; return;
-//        
-//        BOOL writeOriginal = ([[NSUserDefaults standardUserDefaults] boolForKey: kBananaCameraSaveOriginalKey] == YES);
-//        
-//        // Do we already have a pending image processing operation going
-//        if(_imageProcessor) {
-//            [ApplicationDelegate() addImageToProcess: image imageFlags: writeOriginal];
-//        } else {
-//            [self processImage: image shouldWriteOriginal: writeOriginal];
-//        }
-//    }];
-//}
-//
-//
-//- (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController {
-//    
-//    [super willDismissNavigationController:navigatonController];
-//    
-//    if([ApplicationDelegate() imagesToProcess] > 0) {
-//        BOOL		imageFlags = NO;
-//        NSString*	imagePath = [ApplicationDelegate() nextImageToProcess: &imageFlags];
-//        UIImage*	image = [UIImage imageWithContentsOfFile: imagePath];
-//        [self processImage: image shouldWriteOriginal: imageFlags];
-//    } else {
-//        self.toolbar.alpha = 1.0;
-//        [self enableToolbarItems: kAllItems];
-//    }
-//
-//    return YES;
-//}
 
 #pragma mark - PHPickerViewControllerDelegate
 //https://ikyle.me/blog/2020/phpickerviewcontroller
-- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results {
+    if (results.count > 0) {
+        BOOL isFromPhotoLib = YES; // TODO: Assume the picker is ALWAYS the photolibrary until I can detect the camaera or otherwise
+        BOOL writeOriginal = ([[NSUserDefaults standardUserDefaults] boolForKey: kBananaCameraSaveOriginalKey] == YES) &&
+        (!isFromPhotoLib);
+        for (PHPickerResult *result in results)
+        {
+            // Get UIImage
+            [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error)
+             {
+                if ([object isKindOfClass:[UIImage class]])
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"#####---> Selected image: %@", (UIImage*)object);
+                        NSLog(@"#####---> _imageProcessor is NIL?: %d", (self->_imageProcessor == nil));
+                        // Do we already have a pending image processing operation going
+                        if(self->_imageProcessor) {
+                            [ApplicationDelegate() addImageToProcess: object imageFlags: writeOriginal];
+                        } else {
+                            [self processImage: object shouldWriteOriginal: writeOriginal];
+                        }
+                    });
+                }
+            }];
+        }
+    }
     
-//    [super picker:picker didFinishPicking:results];
-    
-//    [self clearBackgroundImage];
     [picker dismissViewControllerAnimated:YES completion:^{
         [self setToolbarItems];
     }];
-    
-    BOOL isFromPhotoLib = YES; // TODO: Assume the picker is ALWAYS the photolibrary until I can detect the camaera or otherwise
-    BOOL writeOriginal = ([[NSUserDefaults standardUserDefaults] boolForKey: kBananaCameraSaveOriginalKey] == YES) &&
-                                (!isFromPhotoLib);
-    for (PHPickerResult *result in results)
-    {
-        // Get UIImage
-        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error)
-         {
-            if ([object isKindOfClass:[UIImage class]])
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // Do we already have a pending image processing operation going
-                    if(self->_imageProcessor) {
-                        [ApplicationDelegate() addImageToProcess: object imageFlags: writeOriginal];
-                    } else {
-                        [self processImage: object shouldWriteOriginal: writeOriginal];
-                    }
-                    NSLog(@"###---> Selected image: %@", (UIImage*)object);
-                });
-            }
-        }];
-    }
 }
 
 #pragma mark - UIImagePickerController
