@@ -504,8 +504,6 @@
 
 - (void) _animateDevelopedView
 {
-//    [self _buildPreviewLayers];
-//    [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
 	if(_developedView && _undevelopedView)
 	{
 		[self.shakeView insertSubview: _developedView belowSubview: _undevelopedView];
@@ -544,12 +542,10 @@
     [self animateDevelopedView];
 }
 
--(void)animateDevelopedView {
+- (void)animateDevelopedView {
     if(_slideOutAnimationFinished && _imageProcessed) {
         [self _animateDevelopedView];
         [self enableFuntionalToolbarItems];
-    } else {
-        NSLog(@"###---> animateDevelopedView: skipped development in preview");
     }
 }
 
