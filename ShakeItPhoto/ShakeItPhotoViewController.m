@@ -304,23 +304,30 @@
         BOOL isFromPhotoLib = YES; // TODO: Assume the picker is ALWAYS the photolibrary until I can detect the camaera or otherwise
         BOOL writeOriginal = ([[NSUserDefaults standardUserDefaults] boolForKey: kBananaCameraSaveOriginalKey] == YES) &&
         (!isFromPhotoLib);
+        
         for (PHPickerResult *result in results)
         {
             // Get UIImage
-            [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error)
-             {
-                if ([object isKindOfClass:[UIImage class]])
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSLog(@"#####---> Selected image: %@", (UIImage*)object);
-                        NSLog(@"#####---> _imageProcessor is NIL?: %d", (self->_imageProcessor == nil));
-                        // Do we already have a pending image processing operation going
-                        if(self->_imageProcessor) {
-                            [ApplicationDelegate() addImageToProcess: object imageFlags: writeOriginal];
-                        } else {
-                            [self processImage: object shouldWriteOriginal: writeOriginal];
-                        }
-                    });
+            NSItemProvider *provider = result.itemProvider;
+            [provider loadImageWithCompletion:^(UIImage * _Nullable object, NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"####-----> ERROR: %@", error.description);
+                    NSAssert(false, @"ERROR");
+                } else {
+                    NSAssert(object != nil, @"UIImage should not be nil");
+                    if ([object isKindOfClass:[UIImage class]])
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            NSLog(@"#####---> Selected image: %@", (UIImage*)object);
+                            NSLog(@"#####---> _imageProcessor is NIL?: %d", (self->_imageProcessor == nil));
+                            // Do we already have a pending image processing operation going
+                            if(self->_imageProcessor) {
+                                [ApplicationDelegate() addImageToProcess: object imageFlags: writeOriginal];
+                            } else {
+                                [self processImage: object shouldWriteOriginal: writeOriginal];
+                            }
+                        });
+                    }
                 }
             }];
         }
