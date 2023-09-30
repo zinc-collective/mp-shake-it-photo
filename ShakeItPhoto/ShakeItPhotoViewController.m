@@ -259,13 +259,15 @@
         // the modal transition of the UIImagePicker dismissing
         NSTimeInterval delay = 0.3;
         double time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+        
+        __weak ShakeItPhotoViewController *weakSelf = self;
         dispatch_after(time, dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:2.5
                                   delay:0.0
                                 options:UIViewAnimationCurveEaseInOut animations:^{
                 
-                _frameView.frame       = frame;
-                _undevelopedView.frame = frame;
+                self->_frameView.frame       = frame;
+                self->_undevelopedView.frame = frame;
                 
             } completion:^(BOOL finished) {
                 
@@ -273,11 +275,12 @@
                 
                 if(finished) {
                     NSLog(@"###---> Animation Completed On Time");
-                    [self slideOutAnimationCompelte];
+                    [weakSelf.shakeView insertSubview: self->_developedView belowSubview: self->_undevelopedView];
+                    [weakSelf slideOutAnimationCompelte];
                 } else {
                     NSLog(@"###---> Animation Completed Early");
                     //Hack because complete animation fires too early
-                    [self performSelector:@selector(slideOutAnimationCompelte) withObject:nil afterDelay:2.5];
+                    [weakSelf performSelector:@selector(slideOutAnimationCompelte) withObject:nil afterDelay:2.5];
                 }            
             }];
         });
@@ -501,7 +504,9 @@
 
 - (void) _animateDevelopedView
 {
-	if(_developedView)
+//    [self _buildPreviewLayers];
+//    [self.shakeView insertSubview: _undevelopedView belowSubview: _frameView];
+	if(_developedView && _undevelopedView)
 	{
 		[self.shakeView insertSubview: _developedView belowSubview: _undevelopedView];
 		
