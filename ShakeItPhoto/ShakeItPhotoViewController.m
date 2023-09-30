@@ -268,6 +268,7 @@
                 
                 self->_frameView.frame       = frame;
                 self->_undevelopedView.frame = frame;
+                self->_developedView.frame = frame;
                 
             } completion:^(BOOL finished) {
                 
@@ -275,7 +276,6 @@
                 
                 if(finished) {
                     NSLog(@"###---> Animation Completed On Time");
-                    [weakSelf.shakeView insertSubview: self->_developedView belowSubview: self->_undevelopedView];
                     [weakSelf slideOutAnimationCompelte];
                 } else {
                     NSLog(@"###---> Animation Completed Early");
