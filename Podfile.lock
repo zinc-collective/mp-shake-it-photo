@@ -2,15 +2,9 @@ PODS:
   - Sentry (7.27.0):
     - Sentry/Core (= 7.27.0)
   - Sentry/Core (7.27.0)
-  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `7.27.0`)
-  - SVProgressHUD (~> 2.0)
-
-SPEC REPOS:
-  trunk:
-    - SVProgressHUD
 
 EXTERNAL SOURCES:
   Sentry:
@@ -24,8 +18,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Sentry: 026b36fdc09531604db9279e55f047fe652e3f4a
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 331787bcba21abcd0184dc4d96b53400649889f1
+PODFILE CHECKSUM: 24f3959e8923ac0fe20a623775d9e2adeb97dcb6
 
 COCOAPODS: 1.11.3
