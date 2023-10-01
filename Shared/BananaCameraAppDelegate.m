@@ -41,8 +41,8 @@
         
         // Features turned off by default, but worth checking out
         options.enableAppHangTracking = true;
-        options.enableFileIOTracking = true;
-        options.enableCoreDataTracking = true;
+        options.enableFileIOTracing = true;
+        options.enableCoreDataTracing = true;
         
         // Enable all experimental features
         options.enableUserInteractionTracing = true;
