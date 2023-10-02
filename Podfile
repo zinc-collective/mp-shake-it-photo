@@ -4,8 +4,5 @@ platform :ios, '14.0'
 target 'ShakeItPhoto' do
     use_frameworks!
 
-    
-    pod 'SVProgressHUD', '~> 2.0'
-    pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.27.0'
-
+    pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git'
 end

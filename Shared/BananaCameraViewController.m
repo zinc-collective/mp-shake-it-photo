@@ -393,45 +393,6 @@ void BananaCameraAudioSessionInterruptionListener(BananaCameraViewController* vi
     
 }
 
-#pragma mark - SCNavigationControllerDelegate
-
-//-(void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image {
-//    
-//    [self clearBackgroundImage];
-//    navigationController.delegate = nil;
-//}
-//
-//- (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController {
-//    
-//    [self setBackgroundImage];
-//    return YES;
-//}
-//
-
-#pragma mark - PHPickerViewControllerDelegate
-//https://ikyle.me/blog/2020/phpickerviewcontroller
-- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
-    [self clearBackgroundImage];
-    [picker dismissViewControllerAnimated:YES completion:^{
-        [self setToolbarItems];
-    }];
-    
-    for (PHPickerResult *result in results)
-    {
-        // Get UIImage
-        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error)
-         {
-            if ([object isKindOfClass:[UIImage class]])
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"Selected image: %@", (UIImage*)object);
-                });
-            }
-        }];
-    }
-}
-
-
 
 #pragma mark - UIImagePickerControllerDelegate
 - (void) imagePickerController: (UIImagePickerController*) picker didFinishPickingMediaWithInfo: (NSDictionary*) info

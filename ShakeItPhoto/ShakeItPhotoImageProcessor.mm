@@ -322,7 +322,6 @@ static inline void adjustForOrientation(CGContextRef context, UIImageOrientation
 +(CGRect) computeImageRect:(CGSize)finalSize usePolaroidAssets:(BOOL)_usePolaroidAssets
 {
     CGRect		imageRect = CGRectZero;
-    finalSize = CGSizeMake(1920.0, 2300.0);
     NSLog(@"###---> _computeImageRect(BEFORE-A) = %@", NSStringFromCGRect(imageRect));
     NSLog(@"###---> _computeImageRect(BEFORE-B) = %@ --- %i", NSStringFromCGSize(finalSize), _usePolaroidAssets);
     

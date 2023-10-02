@@ -37,13 +37,13 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We store photos taken with ShakeIt photo to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We use your photo library to save new photos or retouch photos you&apos;ve already taken.</string>
+	<string>We use your photo library to save new photos or retouch photos you've already taken.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>LaunchScreen.storyboard</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UIStatusBarStyle</key>
