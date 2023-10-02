@@ -24,6 +24,7 @@
 		6AEB15F41ABA503400B497BC /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB15DF1ABA503400B497BC /* UIImage+Resize.m */; };
 		6AF1255B19D7467F00E2905F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF1255A19D7467F00E2905F /* Images.xcassets */; };
 		6D76E24728FC013D00D83D42 /* ShakeItPhoto-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
+		6D7EABB42ACAF93F004158AF /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 6D7EABB32ACAF93F004158AF /* Sentry */; };
 		6DCB806528F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */; };
 		6DD8DC1322BC05F300F46261 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */; };
 		6DEBF87828FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */; };
@@ -99,7 +100,6 @@
 		6DCB806428F6F9AD00D193F9 /* ShakeItPhotoViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShakeItPhotoViewController+Ext.swift"; sourceTree = "<group>"; };
 		6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShakeItPhoto-Bridging-Header.h"; sourceTree = "<group>"; };
-		78158BC91D086FBF005FD10A /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		930E05FE13E8AB4600F49FF5 /* preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preview@2x.png"; path = "ShakeItPhoto/preview@2x.png"; sourceTree = "<group>"; };
 		9312B5EB12A8C12000A3FBFB /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = ShakeItPhoto/frame.png; sourceTree = "<group>"; };
 		9321E54512891031001EC80F /* ShakeItPhotoImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeItPhotoImageProcessor.h; path = ShakeItPhoto/ShakeItPhotoImageProcessor.h; sourceTree = "<group>"; };
@@ -179,6 +179,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				9343212E12852FCC002FFB39 /* AssetsLibrary.framework in Frameworks */,
 				9343212F12852FCC002FFB39 /* AudioToolbox.framework in Frameworks */,
+				6D7EABB42ACAF93F004158AF /* Sentry in Frameworks */,
 				9343213112852FCC002FFB39 /* CoreLocation.framework in Frameworks */,
 				9343213212852FCC002FFB39 /* CoreMedia.framework in Frameworks */,
 				9343213312852FCC002FFB39 /* QuartzCore.framework in Frameworks */,
@@ -197,19 +198,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				6DEBF87728FAE2E0003E53F0 /* ShakeItPhoto-Bridging-Header.h */,
 				6DD8DC1222BC05F300F46261 /* GoogleService-Info.plist */,
-				78158BC91D086FBF005FD10A /* todo.md */,
 				934321F1128533BD002FFB39 /* Vendor */,
 				934321F2128533C7002FFB39 /* Banana Camera */,
 				934320C512852F03002FFB39 /* ShakeItPhoto */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				96CE9A323DA5A680AD064706 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -360,13 +359,6 @@
 			name = UIImage;
 			sourceTree = "<group>";
 		};
-		96CE9A323DA5A680AD064706 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -396,6 +388,9 @@
 			dependencies = (
 			);
 			name = ShakeItPhoto;
+			packageProductDependencies = (
+				6D7EABB32ACAF93F004158AF /* Sentry */,
+			);
 			productName = BananaCamera;
 			productReference = 1D6058910D05DD3D006BFB54 /* ShakeItPhoto.app */;
 			productType = "com.apple.product-type.application";
@@ -425,7 +420,10 @@
 				Base,
 				ja,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			packageReferences = (
+				6D7EABB22ACAF93F004158AF /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+			);
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -500,7 +498,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -871,6 +870,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6D7EABB22ACAF93F004158AF /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6D7EABB32ACAF93F004158AF /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D7EABB22ACAF93F004158AF /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
